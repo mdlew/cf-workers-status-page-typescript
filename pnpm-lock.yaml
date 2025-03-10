@@ -15,8 +15,8 @@ importers:
         specifier: ^0.3.4
         version: 0.3.4
       '@floating-ui/react':
-        specifier: ^0.27.2
-        version: 0.27.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^0.27.5
+        version: 0.27.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@vitejs/plugin-react':
         specifier: ^4.3.4
         version: 4.3.4(vite@6.1.1(@types/node@22.10.2)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.7.0))
@@ -997,11 +997,11 @@ packages:
     resolution: {integrity: sha512-+KpH+QxZU7O4675t3mnkQKcZZg56u+K/Ct2K+N2AZYNVK8kyeo/bI18tI8aPm3tvNNRyTWfj6s5tnGNlcbQRsA==}
     engines: {node: '>=14'}
 
-  '@floating-ui/core@1.6.0':
-    resolution: {integrity: sha512-PcF++MykgmTj3CIyOQbKA/hDzOAiqI3mhuoN44WRCopIs1sgoDoU4oty4Jtqaj/y3oDU6fnVSm4QG0a3t5i0+g==}
+  '@floating-ui/core@1.6.9':
+    resolution: {integrity: sha512-uMXCuQ3BItDUbAMhIXw7UPXRfAlOAvZzdK9BWpE60MCn+Svt3aLn9jsPTi/WNGlRUu2uI0v5S7JiIUsbsvh3fw==}
 
-  '@floating-ui/dom@1.6.3':
-    resolution: {integrity: sha512-RnDthu3mzPlQ31Ss/BTwQ1zjzIhr3lk1gZB1OC56h/1vEtaXkESrOqL5fQVMfXpwGtRwX+YsZBdyHtJMQnkArw==}
+  '@floating-ui/dom@1.6.13':
+    resolution: {integrity: sha512-umqzocjDgNRGTuO7Q8CU32dkHkECqI8ZdMZ5Swb6QAM0t5rnlrN3lGo1hdpscRd3WS8T6DKYK4ephgIH9iRh3w==}
 
   '@floating-ui/react-dom@2.1.2':
     resolution: {integrity: sha512-06okr5cgPzMNBy+Ycse2A6udMi4bqwW/zgBF/rwjcNqWkyr82Mcg8b0vjX8OJpZFy/FKjJmw6wV7t44kK6kW7A==}
@@ -1009,14 +1009,14 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  '@floating-ui/react@0.27.2':
-    resolution: {integrity: sha512-k/yP6a9K9QwhLfIu87iUZxCH6XN5z5j/VUHHq0dEnbZYY2Y9jz68E/LXFtK8dkiaYltS2WYohnyKC0VcwVneVg==}
+  '@floating-ui/react@0.27.5':
+    resolution: {integrity: sha512-BX3jKxo39Ba05pflcQmqPPwc0qdNsdNi/eweAFtoIdrJWNen2sVEWMEac3i6jU55Qfx+lOcdMNKYn2CtWmlnOQ==}
     peerDependencies:
       react: '>=17.0.0'
       react-dom: '>=17.0.0'
 
-  '@floating-ui/utils@0.2.8':
-    resolution: {integrity: sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==}
+  '@floating-ui/utils@0.2.9':
+    resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -5322,30 +5322,30 @@ snapshots:
 
   '@fastify/busboy@2.1.0': {}
 
-  '@floating-ui/core@1.6.0':
+  '@floating-ui/core@1.6.9':
     dependencies:
-      '@floating-ui/utils': 0.2.8
+      '@floating-ui/utils': 0.2.9
 
-  '@floating-ui/dom@1.6.3':
+  '@floating-ui/dom@1.6.13':
     dependencies:
-      '@floating-ui/core': 1.6.0
-      '@floating-ui/utils': 0.2.8
+      '@floating-ui/core': 1.6.9
+      '@floating-ui/utils': 0.2.9
 
   '@floating-ui/react-dom@2.1.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@floating-ui/dom': 1.6.3
+      '@floating-ui/dom': 1.6.13
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@floating-ui/react@0.27.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@floating-ui/react@0.27.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@floating-ui/react-dom': 2.1.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@floating-ui/utils': 0.2.8
+      '@floating-ui/utils': 0.2.9
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       tabbable: 6.2.0
 
-  '@floating-ui/utils@0.2.8': {}
+  '@floating-ui/utils@0.2.9': {}
 
   '@humanfs/core@0.19.1': {}
 
