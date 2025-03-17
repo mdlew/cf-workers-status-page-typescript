@@ -43,14 +43,14 @@ importers:
         version: 0.4.218(react-streaming@0.3.46(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@6.1.1(@types/node@22.10.2)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))
       wrangler:
         specifier: ^3.98.0
-        version: 3.98.0(@cloudflare/workers-types@4.20250224.0)
+        version: 3.98.0(@cloudflare/workers-types@4.20250313.0)
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^2.27.1
         version: 2.27.1(@eslint-react/eslint-plugin@1.34.1(eslint@9.21.0(jiti@2.4.2))(ts-api-utils@2.0.1(typescript@5.7.2))(typescript@5.7.2))(@typescript-eslint/utils@8.26.1(eslint@9.21.0(jiti@2.4.2))(typescript@5.7.2))(@vue/compiler-sfc@3.4.21)(eslint-plugin-format@0.1.3(eslint@9.21.0(jiti@2.4.2)))(eslint-plugin-react-hooks@5.2.0(eslint@9.21.0(jiti@2.4.2)))(eslint-plugin-react-refresh@0.4.19(eslint@9.21.0(jiti@2.4.2)))(eslint@9.21.0(jiti@2.4.2))(typescript@5.7.2)
       '@cloudflare/workers-types':
-        specifier: ^4.20250224.0
-        version: 4.20250224.0
+        specifier: ^4.20250313.0
+        version: 4.20250313.0
       '@commitlint/cli':
         specifier: ^19.6.1
         version: 19.6.1(@types/node@22.10.2)(typescript@5.7.2)
@@ -386,8 +386,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@cloudflare/workers-types@4.20250224.0':
-    resolution: {integrity: sha512-j6ZwQ5G2moQRaEtGI2u5TBQhVXv/XwOS5jfBAheZHcpCM07zm8j0i8jZHHLq/6VA8e6VRjKohOyj5j6tZ1KHLQ==}
+  '@cloudflare/workers-types@4.20250313.0':
+    resolution: {integrity: sha512-iqyzZwogC+3yL8h58vMhjYQUHUZA8XazE3Q+ofR59wDOnsPe/u9W6+aCl408N0iNBhMPvpJQQ3/lkz0iJN2fhA==}
 
   '@commitlint/cli@19.6.1':
     resolution: {integrity: sha512-8hcyA6ZoHwWXC76BoC8qVOSr8xHy00LZhZpauiD0iO0VYbVhMnED0da85lTfIULxl7Lj4c6vZgF0Wu/ed1+jlQ==}
@@ -4816,7 +4816,7 @@ snapshots:
   '@cloudflare/workerd-windows-64@1.20241205.0':
     optional: true
 
-  '@cloudflare/workers-types@4.20250224.0': {}
+  '@cloudflare/workers-types@4.20250313.0': {}
 
   '@commitlint/cli@19.6.1(@types/node@22.10.2)(typescript@5.7.2)':
     dependencies:
@@ -9094,7 +9094,7 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20241205.0
       '@cloudflare/workerd-windows-64': 1.20241205.0
 
-  wrangler@3.98.0(@cloudflare/workers-types@4.20250224.0):
+  wrangler@3.98.0(@cloudflare/workers-types@4.20250313.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
@@ -9114,7 +9114,7 @@ snapshots:
       workerd: 1.20241205.0
       xxhash-wasm: 1.0.2
     optionalDependencies:
-      '@cloudflare/workers-types': 4.20250224.0
+      '@cloudflare/workers-types': 4.20250313.0
       fsevents: 2.3.3
     transitivePeerDependencies:
       - bufferutil
