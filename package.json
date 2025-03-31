@@ -65,7 +65,7 @@
     "tsx": "^4.19.3",
     "type-fest": "^4.32.0",
     "typescript": "^5.8.2",
-    "unplugin-auto-import": "^0.19.0",
+    "unplugin-auto-import": "^19.1.2",
     "unplugin-polish-tagged-templates": "0.1.1-beta.2",
     "vite": "^6.2.4",
     "zx": "^7.2.3"
