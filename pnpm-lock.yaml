@@ -24,8 +24,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       papaparse:
-        specifier: ^5.4.1
-        version: 5.4.1
+        specifier: ^5.5.2
+        version: 5.5.2
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -3668,8 +3668,8 @@ packages:
   package-manager-detector@0.2.11:
     resolution: {integrity: sha512-BEnLolu+yuz22S56CU1SUKq3XC3PkwD5wv4ikR4MfGvnRVcmzXR9DwSlW2fEamyTPyXHomBJRzgapeuBvRNzJQ==}
 
-  papaparse@5.4.1:
-    resolution: {integrity: sha512-HipMsgJkZu8br23pW15uvo6sib6wne/4woLZPlFf3rpDyMe9ywEXUsuD7+6K9PRkJlVT51j/sCOYDKGGS3ZJrw==}
+  papaparse@5.5.2:
+    resolution: {integrity: sha512-PZXg8UuAc4PcVwLosEEDYjPyfWnTEhOrUfdv+3Bx+NuAb+5NhDmXzg5fHWmdCh1mP5p7JAZfFr3IMQfcntNAdA==}
 
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -8516,7 +8516,7 @@ snapshots:
     dependencies:
       quansync: 0.2.10
 
-  papaparse@5.4.1: {}
+  papaparse@5.5.2: {}
 
   parent-module@1.0.1:
     dependencies:
