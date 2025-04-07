@@ -33,14 +33,14 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       react-streaming:
-        specifier: ^0.3.46
-        version: 0.3.46(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^0.3.50
+        version: 0.3.50(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       tagged-classnames-free:
         specifier: 0.1.1
         version: 0.1.1(clsx@2.1.0)(tailwind-merge@1.14.0)
       vike:
         specifier: 0.4.218
-        version: 0.4.218(react-streaming@0.3.46(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@6.2.5(@types/node@22.13.13)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))
+        version: 0.4.218(react-streaming@0.3.50(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@6.2.5(@types/node@22.13.13)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))
       wrangler:
         specifier: ^4.7.1
         version: 4.7.1(@cloudflare/workers-types@4.20250321.0)
@@ -348,11 +348,17 @@ packages:
   '@brillout/import@0.2.3':
     resolution: {integrity: sha512-1T8WlD75eeFSMrptGy8jiLHmfHgMmSjWvLOIUvHmSVZt+6k0eQqYUoK4KbmE4T9pVLIfxvZSOm2D68VEqKRHRw==}
 
+  '@brillout/import@0.2.6':
+    resolution: {integrity: sha512-1GUTmADc8trUC1YSW2lp9r6PmwluMoEyHajnE1kxVdbKGD0wJOlq/DvTWMUqLtBDCnQR+n//qgMtz6HwA/lotA==}
+
   '@brillout/json-serializer@0.5.15':
     resolution: {integrity: sha512-iLAyV1HNC3nG07ypBwCJohFrajY1HeZdfBBgGuRtMH/JPddgG9bPmoSI18A1RBx67vRmY6/8rgisjR5YfTvZHA==}
 
   '@brillout/picocolors@1.0.15':
     resolution: {integrity: sha512-VrgvPtfnKP/i8kxCAyQVd0DWg6xU8OZJndbLf/lrywd96UdMhnGL/PK42HhHhhwkDSkaiQU+zc+OPWpvqOe4Cg==}
+
+  '@brillout/picocolors@1.0.26':
+    resolution: {integrity: sha512-oJF92OEpzunaJyaEWXuS4PWY0k8JsqNO18kMf5hIwvsh+tyhbv+UwAnPPauSlO2eyvMSciui+YFKV9DEzTpmGA==}
 
   '@brillout/require-shim@0.1.2':
     resolution: {integrity: sha512-3I4LRHnVZXoSAsEoni5mosq9l6eiJED58d9V954W4CIZ88AUfYBanWGBGbJG3NztaRTpFHEA6wB3Hn93BmmJdg==}
@@ -3944,8 +3950,8 @@ packages:
     resolution: {integrity: sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==}
     engines: {node: '>=0.10.0'}
 
-  react-streaming@0.3.46:
-    resolution: {integrity: sha512-Apk0mkMQb7+bJ3jRWsgr3+VNa6h0SLIIK6GIJMa/ZFlmJYn19k/hvLAC9EKcV1pYe5xt4Bq9emNIRiRyxYLC+g==}
+  react-streaming@0.3.50:
+    resolution: {integrity: sha512-BRjWzY83dtnjgFUCYM0H2J3iRuYruE++/AidXmjxRclTsz1O/zBdUVgjAO2uKb05y/zybskcKjmK/5xyMc1MSg==}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
@@ -5024,16 +5030,20 @@ snapshots:
 
   '@brillout/import@0.2.3': {}
 
+  '@brillout/import@0.2.6': {}
+
   '@brillout/json-serializer@0.5.15': {}
 
   '@brillout/picocolors@1.0.15': {}
+
+  '@brillout/picocolors@1.0.26': {}
 
   '@brillout/require-shim@0.1.2': {}
 
   '@brillout/vite-plugin-server-entry@0.5.7':
     dependencies:
-      '@brillout/import': 0.2.3
-      '@brillout/picocolors': 1.0.15
+      '@brillout/import': 0.2.6
+      '@brillout/picocolors': 1.0.26
 
   '@clack/core@0.3.4':
     dependencies:
@@ -8771,11 +8781,11 @@ snapshots:
 
   react-refresh@0.14.2: {}
 
-  react-streaming@0.3.46(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-streaming@0.3.50(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      '@brillout/import': 0.2.3
+      '@brillout/import': 0.2.6
       '@brillout/json-serializer': 0.5.15
-      '@brillout/picocolors': 1.0.15
+      '@brillout/picocolors': 1.0.26
       isbot-fast: 1.2.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -9457,7 +9467,7 @@ snapshots:
 
   vfile-location@3.2.0: {}
 
-  vike@0.4.218(react-streaming@0.3.46(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@6.2.5(@types/node@22.13.13)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0)):
+  vike@0.4.218(react-streaming@0.3.50(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@6.2.5(@types/node@22.13.13)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0)):
     dependencies:
       '@brillout/import': 0.2.3
       '@brillout/json-serializer': 0.5.15
@@ -9473,7 +9483,7 @@ snapshots:
       semver: 7.6.3
       source-map-support: 0.5.21
     optionalDependencies:
-      react-streaming: 0.3.46(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-streaming: 0.3.50(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       vite: 6.2.5(@types/node@22.13.13)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0)
 
   vite@6.2.5(@types/node@22.13.13)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0):
