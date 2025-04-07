@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'node:url'
 
-import { fs, path } from 'zx'
+import * as fs from 'fs-extra'
+import * as path from 'path'
 import dedent from 'dedent'
 
 const __filename = fileURLToPath(import.meta.url)
