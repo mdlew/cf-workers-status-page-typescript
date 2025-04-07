@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.27.1",
-    "@cloudflare/workers-types": "^4.20250321.0",
+    "@cloudflare/workers-types": "^4.20250407.0",
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.8.0",
     "@commitlint/types": "^19.8.0",
