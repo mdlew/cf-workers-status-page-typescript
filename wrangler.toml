@@ -13,6 +13,10 @@ bucket = "./dist/client"
 [dev]
 port = 3000
 
+[observability]
+enabled = true
+head_sampling_rate = 0.1 # 10% of requests are logged
+
 [env.production]
 kv_namespaces = [ { binding = "KV_STORE", id = "f2e1bb2e72db49dab3020ba686faf442" }, ]
 
