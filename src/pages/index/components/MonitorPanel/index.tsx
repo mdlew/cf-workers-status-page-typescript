@@ -230,13 +230,13 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
 
                   return (
                     <Tooltip key={dateItem}>
-                      <TooltipTrigger asChild>
-                        <li
+                      <TooltipTrigger
+                        as='li'
                         className='h-full'
                         style={{
                           width: itemWidth,
-                        }}>
-                      
+                        }}
+                      >
                         <span
                           className={cls`
                             rounded transition-all hover:opacity-70
@@ -246,7 +246,6 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                             height: 28,
                           }}
                         />
-                        </li>
                       </TooltipTrigger>
                       <TooltipContent className={cls`
                         whitespace-pre rounded p-2 text-center text-sm
@@ -278,7 +277,7 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                             )}
                       </TooltipContent>
                     </Tooltip>
-                  ) // Fix error TS2322: Type '{ children: Element; as: string; className: string; style: { width: string; }; }' is not assignable to type 'IntrinsicAttributes & HTMLAttributes<HTMLElement> & { asChild?: boolean | undefined; } & RefAttributes<HTMLElement>'.
+                  )
                 })}
               </ul>
             </li>
