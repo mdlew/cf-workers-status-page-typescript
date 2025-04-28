@@ -63,7 +63,7 @@
     "tailwindcss-plugin-iconify": "^1.5.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.3",
-    "type-fest": "^4.39.1",
+    "type-fest": "^4.40.1",
     "typescript": "^5.8.3",
     "unplugin-auto-import": "^19.1.2",
     "unplugin-polish-tagged-templates": "0.1.1-beta.2",
