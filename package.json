@@ -1,7 +1,7 @@
 {
   "name": "cf-worker-status-page-pro",
   "type": "module",
-  "packageManager": "pnpm@9.9.0",
+  "packageManager": "pnpm@10.10.0",
   "scripts": {
     "dev": "tsx ./dev-server",
     "public:assets": "tsx ./scripts/public-assets.ts",
