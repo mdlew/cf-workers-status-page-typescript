@@ -23,7 +23,7 @@ export function Tooltip({
 
 export const TooltipTrigger = React.forwardRef<
   HTMLElement,
-  React.HTMLProps<HTMLElement> & { asChild?: boolean }
+  React.HTMLAttributes<HTMLElement> & { asChild?: boolean }
 >(({ children, asChild = false, ...props }, propRef) => {
   const context = useTooltipContext()
   const childrenRef = (children as any).ref
@@ -37,9 +37,9 @@ export const TooltipTrigger = React.forwardRef<
       context.getReferenceProps({
         ref,
         ...props,
-        ...children.props,
+        ...(children.props && typeof children.props === 'object' ? children.props : {}), // fix error TS2698: Spread types may only be created from object types.
         'data-state': context.open ? 'open' : 'closed',
-      }),
+      } as any), // fix error TS2353: Object literal may only specify known properties, and ''data-state'' does not exist in type 'HTMLProps<Element>'.
     )
   }
 
