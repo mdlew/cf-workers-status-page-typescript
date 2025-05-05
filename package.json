@@ -27,7 +27,7 @@
     "react-streaming": "^0.3.43",
     "tagged-classnames-free": "0.1.0-next.1",
     "vike": "0.4.195",
-    "wrangler": "^3.75.0"
+    "wrangler": "latest"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.27.1",
