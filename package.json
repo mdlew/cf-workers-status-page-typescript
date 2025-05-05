@@ -48,7 +48,7 @@
     "@types/react-dom": "^18.2.19",
     "autoprefixer": "^10.4.18",
     "compression": "^1.7.4",
-    "dedent": "^1.5.3",
+    "dedent": "^1.6.0",
     "eslint": "9.9.1",
     "eslint-plugin-format": "^0.1.2",
     "eslint-plugin-react-hooks": "5.1.0-rc-fb9a90fa48-20240614",
