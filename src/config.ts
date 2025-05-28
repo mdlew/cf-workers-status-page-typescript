@@ -21,6 +21,12 @@ export const config: Config = {
       followRedirect: false,
     },
     {
+      id: 'figshare.com.Lew_Lab_videos',
+      url: 'https://figshare.com/projects/Lew_Lab_videos/250634',
+      name: 'Lew Lab figshare videos',
+      followRedirect: true,
+    },
+    {
       id: 'osfi.io.utjmr',
       url: 'https://osf.io/utjmr/',
       name: 'Lew Lab OSF',
