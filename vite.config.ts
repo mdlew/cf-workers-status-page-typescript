@@ -12,7 +12,7 @@ export default {
     react(),
     vike(),
     polishTaggedTemplates({
-      cssTags: ['cls'],
+      clsTags: ['cls'],
     }),
     autoImport({
       imports: ['react', 'react-router-dom'],
