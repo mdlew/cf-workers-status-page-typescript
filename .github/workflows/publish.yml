@@ -37,3 +37,9 @@ jobs:
             SECRET_DISCORD_WEBHOOK_URL
         env:
           SECRET_DISCORD_WEBHOOK_URL: ${{ secrets.SECRET_DISCORD_WEBHOOK_URL }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pnpm-lock
+          path: |
+            ~/**/pnpm-lock.yaml
