@@ -8,7 +8,7 @@
     "paths": {
       "#src/*": ["./src/*"]
     },
-    "types": ["@cloudflare/workers-types", "@types/node", "vite/client"],
+    "types": ["./worker-configuration.d.ts", "@types/node", "vite/client"], // "@cloudflare/workers-types"
     "strict": true,
     "noEmit": true,
     "allowSyntheticDefaultImports": true,

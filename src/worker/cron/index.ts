@@ -45,7 +45,7 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
       method: monitor.method || 'GET',
       redirect: monitor.followRedirect ? 'follow' : 'manual',
       headers: {
-        'User-Agent': 'cf-worker-status-page-pro',
+        'User-Agent': 'cf-worker-status-page-typescript',
       },
     })
     const requestTime = Math.round(Date.now() - requestStartTime)
