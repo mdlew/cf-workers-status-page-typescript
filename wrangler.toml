@@ -1,7 +1,7 @@
 # account_id = ""
 name = "cf-worker-status-page-typescript"
 main = "./src/worker/index.ts"
-compatibility_flags = [ "streams_enable_constructors" ]
+compatibility_flags = [ ] # The compatibility flag streams_enable_constructors became the default as of 2022-11-30 so does not need to be specified anymore.
 compatibility_date = "2025-06-02"
 workers_dev = true
 # npx --no -- wrangler kv:namespace create cf-worker-status-page-typescript
