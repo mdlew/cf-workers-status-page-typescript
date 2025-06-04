@@ -34,12 +34,14 @@ export const TooltipTrigger = React.forwardRef<
     // eslint-disable-next-line react/no-clone-element
     return React.cloneElement(
       children,
-      context.getReferenceProps({
-        ref,
-        ...props,
-        ...children.props,
+      {
+        ...context.getReferenceProps({
+          ref,
+          ...props,
+        }),
+        ...(children.props || {}), // Ensure children.props is an object before spreading
         'data-state': context.open ? 'open' : 'closed',
-      }),
+      } as any, // Cast to `any` to bypass type restrictions
     )
   }
 
