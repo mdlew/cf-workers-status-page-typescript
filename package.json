@@ -67,7 +67,7 @@
     "unplugin-auto-import": "^19.3.0",
     "unplugin-polish-tagged-templates": "^0.2.1",
     "vite": "^6.3.5",
-    "zx": "^7.2.3"
+    "zx": "^8.5.5"
   },
   "lint-staged": {
     "*": "eslint --flag unstable_ts_config --fix"
