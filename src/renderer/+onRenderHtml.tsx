@@ -27,13 +27,12 @@ export const onRenderHtml: OnRenderHtmlAsync = async (pageContext) => {
   return escapeInject`
     <!DOCTYPE html>
     <html>
-      <title>${config.settings.title}</title>
       <head>
+        <title>${config.settings.title}</title>
         <link rel="icon" href="/logo.svg" type="image/svg+xml" sizes="any">
         <link rel="apple-touch-icon" href="/favicon.ico">
       	<link rel="preconnect" href="https://fonts.googleapis.com">
 	      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,700;1,400;1,700&display=swap"
 		rel="stylesheet">
       </head>
