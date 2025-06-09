@@ -33,8 +33,23 @@ export async function handleSsr(env: Env, url: string, userAgent: string | null)
     const { statusCode: status, headers } = httpResponse
     const { earlyHints } = httpResponse
     const stream = httpResponse.getReadableWebStream()
-    const myHeaders = new Headers(headers)
-    myHeaders.set('link', earlyHints.map((e: EarlyHint) => e.earlyHintLink).join(', '))
-    return new Response(stream, { headers: myHeaders, status })
+
+    const newHeaders = new Headers(headers)
+    newHeaders.set('link', earlyHints.map((e: EarlyHint) => e.earlyHintLink).join(', '))
+    /*
+    X-Frame-Options header prevents click-jacking attacks.
+    @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options
+    */
+    newHeaders.set("X-Frame-Options", "DENY")
+    /*
+    X-Content-Type-Options header prevents MIME-sniffing.
+    @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Content-Type-Options
+    */
+    newHeaders.set("X-Content-Type-Options", "nosniff")
+    newHeaders.set("Referrer-Policy", "strict-origin-when-cross-origin")
+    newHeaders.set("Cross-Origin-Embedder-Policy", 'require-corp; report-to="default";')
+    newHeaders.set("Cross-Origin-Opener-Policy", 'same-site; report-to="default";')
+    newHeaders.set("Cross-Origin-Resource-Policy", "same-site")
+    return new Response(stream, { headers: newHeaders, status })
   }
 }
