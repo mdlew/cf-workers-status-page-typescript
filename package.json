@@ -3,20 +3,17 @@
   "type": "module",
   "scripts": {
     "dev": "tsx ./dev-server",
-    "public:assets": "tsx ./scripts/public-assets.ts",
-    "build": "pnpm run wrangler:types && tsc && pnpm run public:assets && vike build",
+    "build": "pnpm run wrangler:types && tsc && vike build",
     "preview": "pnpm run build && wrangler dev",
     "preview:production": "pnpm run build && wrangler dev --env production",
     "deploy": "pnpm run build && wrangler deploy --env production",
     "prepare": "husky install",
     "lint": "eslint --flag unstable_ts_config .",
     "lint:fix": "eslint --flag unstable_ts_config .",
-    "wrangler:types": "wrangler types",
-    "postinstall": "pnpm run public:assets"
+    "wrangler:types": "wrangler types"
   },
   "dependencies": {
     "@brillout/json-serializer": "^0.5.15",
-    "@cloudflare/kv-asset-handler": "^0.3.4",
     "@cloudflare/vite-plugin": "latest",
     "@floating-ui/react": "^0.27.12",
     "@vitejs/plugin-react": "^4.5.1",
