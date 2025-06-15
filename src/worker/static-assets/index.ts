@@ -3,6 +3,8 @@
 // ********************************************
 
 import { getAssetFromKV } from '@cloudflare/kv-asset-handler'
+// eslint-disable-next-line ts/ban-ts-comment
+// @ts-expect-error
 import manifestJSON from '__STATIC_CONTENT_MANIFEST'
 
 import type { Options } from '@cloudflare/kv-asset-handler'
