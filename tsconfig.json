@@ -10,6 +10,7 @@
     },
     "types": [
       "./worker-configuration.d.ts",
+      "./static-content-manifest.d.ts",
       "@types/node",
       "vite/client"
     ], // "@cloudflare/workers-types"
@@ -21,6 +22,7 @@
   "exclude": ["node_modules", "dist", "test"],
   "include": [
     "worker-configuration.d.ts",
+    "static-content-manifest.d.ts",
     "src/**/*.ts"
   ],
   "ts-node": {
