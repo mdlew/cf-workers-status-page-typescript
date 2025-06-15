@@ -7,8 +7,13 @@ workers_dev = true
 # npx --no -- wrangler kv:namespace create cf-worker-status-page-typescript
 kv_namespaces = [ { binding = "KV_STORE", id = "f2e1bb2e72db49dab3020ba686faf442" }, ]
 
-[site]
-bucket = "./public"
+# [site]
+# bucket = "./public"
+
+# [assets]
+# directory = "./public/"
+# binding = "ASSETS"
+# not_found_handling = "single-page-application"
 
 [dev]
 port = 3000
