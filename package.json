@@ -17,6 +17,7 @@
   "dependencies": {
     "@brillout/json-serializer": "^0.5.15",
     "@cloudflare/kv-asset-handler": "^0.3.4",
+    "@cloudflare/vite-plugin": "latest",
     "@floating-ui/react": "^0.27.12",
     "@vitejs/plugin-react": "^4.5.1",
     "node-fetch": "^2.7.0",
@@ -26,7 +27,6 @@
     "react-streaming": "^0.3.50",
     "tagged-classnames-free": "^0.1.1",
     "vike": "^0.4.231",
-    "vike-cloudflare": "latest",
     "wrangler": "latest"
   },
   "devDependencies": {
