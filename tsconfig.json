@@ -8,13 +8,23 @@
     "paths": {
       "#src/*": ["./src/*"]
     },
-    "types": ["./worker-configuration.d.ts", "@types/node", "vite/client"], // "@cloudflare/workers-types"
+    "types": [
+      "./worker-configuration.d.ts",
+      "./static-content-manifest.d.ts",
+      "@types/node",
+      "vite/client"
+    ], // "@cloudflare/workers-types"
     "strict": true,
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true
   },
   "exclude": ["node_modules", "dist", "test"],
+  "include": [
+    "worker-configuration.d.ts",
+    "static-content-manifest.d.ts",
+    "src/**/*.ts"
+  ],
   "ts-node": {
     "compilerOptions": {
       "module": "es2015",
