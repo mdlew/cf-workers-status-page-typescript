@@ -1,14 +1,14 @@
 # account_id = ""
 name = "cf-worker-status-page-typescript"
 main = "./src/worker/index.ts"
-# compatibility_flags = [ "streams_enable_constructors" ]
-compatibility_date = "2025-06-14"
+compatibility_flags = [ "streams_enable_constructors" ]
+compatibility_date = "2021-09-29"
 workers_dev = true
 # npx --no -- wrangler kv:namespace create cf-worker-status-page-typescript
 kv_namespaces = [ { binding = "KV_STORE", id = "f2e1bb2e72db49dab3020ba686faf442" }, ]
 
-# [site]
-# bucket = "./dist/client"
+[site]
+bucket = "./dist/client"
 
 [dev]
 port = 3000
