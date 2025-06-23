@@ -39,8 +39,8 @@ importers:
         specifier: ^0.1.1
         version: 0.1.1(clsx@2.1.0)(tailwind-merge@1.14.0)
       vike:
-        specifier: ^0.4.232
-        version: 0.4.232(react-streaming@0.3.50(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(tsx@4.20.3)(yaml@2.7.1))
+        specifier: ^0.4.235
+        version: 0.4.235(react-streaming@0.3.50(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(tsx@4.20.3)(yaml@2.7.1))
       wrangler:
         specifier: latest
         version: 4.20.5(@cloudflare/workers-types@4.20250620.0)
@@ -4251,8 +4251,8 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
-  vike@0.4.232:
-    resolution: {integrity: sha512-p5nE5QkTt8DysoGGL9eAnlT7gH9hNZTeyRVAy0boxM7acnmjqw0bQMfUtcAdUA0BnVkmD3H4DiguklkeegAMaA==}
+  vike@0.4.235:
+    resolution: {integrity: sha512-wbx9wCF7E8IpaDhyhrsIOiLUl7hE/7e8vJy2bmFMjKjhIs7BhHiLLymTHe0i5qmbATmMhMLE0ur+vK4QH+nesw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     peerDependencies:
@@ -8959,7 +8959,7 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vike@0.4.232(react-streaming@0.3.50(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(tsx@4.20.3)(yaml@2.7.1)):
+  vike@0.4.235(react-streaming@0.3.50(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(tsx@4.20.3)(yaml@2.7.1)):
     dependencies:
       '@brillout/import': 0.2.6
       '@brillout/json-serializer': 0.5.15
