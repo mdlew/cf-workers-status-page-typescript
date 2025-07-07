@@ -40,7 +40,7 @@
     "@jannajs/lint": "^3.0.0-next.18",
     "@types/compression": "^1.8.1",
     "@types/express": "^5.0.3",
-    "@types/node": "^24.0.7",
+    "@types/node": "^24.0.10",
     "@types/node-fetch": "^2.6.11",
     "@types/papaparse": "^5.3.16",
     "@types/react": "^18.3.23",
