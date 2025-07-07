@@ -25,7 +25,4 @@ export default {
       '#src': path.resolve(__dirname, 'src'),
     },
   },
-  html: {
-    cspNonce: nonce(), // Use the nonce value for Content Security Policy
-  },
 } as UserConfig
