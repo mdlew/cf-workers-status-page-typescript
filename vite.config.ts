@@ -4,8 +4,6 @@ import react from '@vitejs/plugin-react'
 import vike from 'vike/plugin'
 //import polishTaggedTemplates from 'unplugin-polish-tagged-templates/vite'
 import autoImport from 'unplugin-auto-import/vite'
-import { nonce } from './src/worker/_helpers/nonce'
-// This nonce is used for Content Security Policy (CSP) in the HTML template
 
 import type { UserConfig } from 'vite'
 
