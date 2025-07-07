@@ -15,7 +15,7 @@
     "postinstall": "pnpm run public:assets"
   },
   "dependencies": {
-    "@brillout/json-serializer": "^0.5.15",
+    "@brillout/json-serializer": "^0.5.16",
     "@cloudflare/kv-asset-handler": "^0.3.4",
     "@floating-ui/react": "^0.27.13",
     "@vitejs/plugin-react": "^4.6.0",
@@ -40,7 +40,7 @@
     "@jannajs/lint": "^3.0.0-next.18",
     "@types/compression": "^1.8.1",
     "@types/express": "^5.0.3",
-    "@types/node": "^24.0.7",
+    "@types/node": "^24.0.10",
     "@types/node-fetch": "^2.6.11",
     "@types/papaparse": "^5.3.16",
     "@types/react": "^18.3.23",
