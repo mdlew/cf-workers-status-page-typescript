@@ -47,9 +47,9 @@ export async function handleSsr(env: Env, url: string, userAgent: string | null)
     */
     newHeaders.set("X-Content-Type-Options", "nosniff")
     newHeaders.set("Referrer-Policy", "strict-origin-when-cross-origin")
-    newHeaders.set("Cross-Origin-Embedder-Policy", 'require-corp; report-to="default";')
-    newHeaders.set("Cross-Origin-Opener-Policy", 'same-site; report-to="default";')
+    newHeaders.set("Cross-Origin-Opener-Policy", 'same-origin')
     newHeaders.set("Cross-Origin-Resource-Policy", "same-site")
+    newHeaders.set("Cross-Origin-Embedder-Policy", 'require-corp')
     return new Response(stream, { headers: newHeaders, status })
   }
 }

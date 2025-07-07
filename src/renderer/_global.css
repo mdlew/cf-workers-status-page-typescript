@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Source Sans 3";
+  src: local("Source Sans 3"), local("Source Sans Pro"),
+    url("/SourceSans3-Regular.otf.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Source Sans 3";
+  src: local("Source Sans 3 Bold"), local("Source Sans Pro Bold"),
+    url("/SourceSans3-Bold.otf.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   @apply bg-slate-50 dark:bg-slate-800 text-slate-950 dark:text-slate-50;
 }
