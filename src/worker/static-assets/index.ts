@@ -58,6 +58,8 @@ export const handleStaticAssets: FetchHandler = async (request, env, ctx) => {
     response.headers.set('Referrer-Policy', 'unsafe-url')
     response.headers.set('Feature-Policy', 'none')
 
+    response.headers.set('Cache-Control', 'public, max-age=2592000')
+
     return response
   } catch (e) {
     // if an error is thrown try to serve the asset at 404.html
