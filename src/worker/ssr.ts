@@ -6,7 +6,7 @@ export interface CustomPageContext {
   // ref: https://vike.dev/cloudflare-workers#universal-fetch
   fetch: typeof fetch;
   userAgent: string | null;
-  cspNonce?: string; // Optional nonce for Content Security Policy (CSP)
+  nonce?: string; // Optional nonce for Content Security Policy (CSP)
 }
 
 type EarlyHint = {
@@ -38,13 +38,13 @@ export async function handleSsr(
 ) {
   const array = new Uint8Array(16);
   crypto.getRandomValues(array);
-  const cspNonce = btoa(String.fromCharCode(...array));
+  const nonce = btoa(String.fromCharCode(...array));
   const pageContextInit: CustomPageContext = {
-    env,
+    env: env,
     urlOriginal: url,
     fetch: (...args: Parameters<typeof fetch>) => fetch(...args),
-    userAgent,
-    cspNonce, // Include the nonce in the page context
+    userAgent: userAgent,
+    nonce: nonce, // Include the nonce in the page context
   };
   const pageContext = await renderPage(pageContextInit);
   const { httpResponse } = pageContext;
