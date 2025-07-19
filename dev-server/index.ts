@@ -4,7 +4,6 @@ import express from 'express'
 import { renderPage } from 'vike/server'
 import { createServer } from 'vite'
 import fetch from 'node-fetch'
-import compression from 'compression'
 
 import type { CustomPageContext } from '#src/worker/ssr'
 
@@ -12,10 +11,6 @@ const PORT = 3000
 
 async function startServer() {
   const app = express()
-
-  // We don't need gzip compression for dev. We use compression just to show
-  // that it's properly handled by Vike and react-streaming.
-  app.use(compression())
 
   const viteDevMiddleware = (
     await createServer({
