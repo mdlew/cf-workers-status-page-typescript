@@ -32,7 +32,7 @@
     "@iconify-json/svg-spinners": "^1.2.2",
     "@types/compression": "^1.8.1",
     "@types/express": "^5.0.3",
-    "@types/node": "^24.0.13",
+    "@types/node": "^24.0.15",
     "@types/node-fetch": "^2.6.11",
     "@types/papaparse": "^5.3.16",
     "@types/react": "^18.3.23",
