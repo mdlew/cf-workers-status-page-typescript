@@ -23,7 +23,7 @@
     "react-dom": "^18.3.1",
     "react-streaming": "^0.3.50",
     "tagged-classnames-free": "^0.1.1",
-    "vike": "^0.4.235",
+    "vike": "^0.4.236",
     "wrangler": "latest"
   },
   "devDependencies": {
