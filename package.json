@@ -27,7 +27,7 @@
     "wrangler": "latest"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20250712.0",
+    "@cloudflare/workers-types": "^4.20250719.0",
     "@iconify-json/ic": "^1.2.2",
     "@iconify-json/svg-spinners": "^1.2.2",
     "@types/compression": "^1.8.1",
