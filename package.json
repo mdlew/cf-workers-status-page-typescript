@@ -16,7 +16,7 @@
     "@brillout/json-serializer": "^0.5.16",
     "@cloudflare/kv-asset-handler": "^0.3.4",
     "@floating-ui/react": "^0.27.13",
-    "@vitejs/plugin-react": "^4.6.0",
+    "@vitejs/plugin-react": "^4.7.0",
     "node-fetch": "^3.3.2",
     "papaparse": "^5.5.3",
     "react": "^18.3.1",
