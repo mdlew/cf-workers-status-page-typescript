@@ -8,6 +8,8 @@ import tailwindcss from '@tailwindcss/vite'
 
 import type { UserConfig } from 'vite'
 
+import { nonce } from './src/worker/ssr'
+
 export default {
   plugins: [
     react(),
@@ -24,5 +26,8 @@ export default {
     alias: {
       '#src': path.resolve(__dirname, 'src'),
     },
+  },
+  html: {
+    cspNonce: nonce, // Use the global nonce variable for CSP
   },
 } as UserConfig

@@ -9,6 +9,8 @@ export interface CustomPageContext {
   nonce?: string; // Optional nonce for Content Security Policy (CSP)
 }
 
+export var nonce: string | null = null; // Global nonce variable
+
 type EarlyHint = {
   earlyHintLink: string; // Early hint value
   assetType:
@@ -38,7 +40,8 @@ export async function handleSsr(
 ) {
   const array = new Uint8Array(16);
   crypto.getRandomValues(array);
-  const nonce = btoa(String.fromCharCode(...array));
+  nonce = btoa(String.fromCharCode(...array));
+  
   const pageContextInit: CustomPageContext = {
     env: env,
     urlOriginal: url,
