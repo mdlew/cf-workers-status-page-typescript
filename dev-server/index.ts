@@ -27,6 +27,7 @@ async function startServer() {
       urlOriginal: req.originalUrl,
       fetch: fetch as any,
       userAgent,
+      cspNonce: '', // Nonce will be set in the ssr.ts file
     }
     const pageContext = await renderPage(pageContextInit)
     const { httpResponse } = pageContext
