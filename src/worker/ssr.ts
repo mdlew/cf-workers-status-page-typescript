@@ -65,10 +65,10 @@ export async function handleSsr(
     );
     // Set the CSP nonce in the headers
     if (nonce) {
-      newHeaders.set(
-        "Content-Security-Policy",
-        `script-src 'self' 'nonce-${nonce}'; style-src 'self' 'nonce-${nonce}'`
-      );
+      // newHeaders.set(
+      //   "Content-Security-Policy",
+      //   `script-src 'self' 'nonce-${nonce}'; style-src 'self' 'nonce-${nonce}'`
+      // );
       // for testing
       newHeaders.set(
         "Content-Security-Policy-Report-Only",
