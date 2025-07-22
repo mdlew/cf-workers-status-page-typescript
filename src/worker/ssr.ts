@@ -6,10 +6,10 @@ export interface CustomPageContext {
   // ref: https://vike.dev/cloudflare-workers#universal-fetch
   fetch: typeof fetch;
   userAgent: string | null;
-  cspNonce?: string; // Optional nonce for Content Security Policy (CSP)
+  cspNonce: string; // nonce for Content Security Policy (CSP)
 }
 
-export var nonce: string | null = null; // Global nonce variable
+export var nonce: string = ""; // Global nonce variable
 
 type EarlyHint = {
   earlyHintLink: string; // Early hint value
@@ -41,7 +41,7 @@ export async function handleSsr(
   const array = new Uint8Array(16);
   crypto.getRandomValues(array);
   nonce = btoa(String.fromCharCode(...array));
-  
+
   const pageContextInit: CustomPageContext = {
     env: env,
     urlOriginal: url,
@@ -65,9 +65,15 @@ export async function handleSsr(
     );
     // Set the CSP nonce in the headers
     if (nonce) {
-      newHeaders.set("Content-Security-Policy", `script-src 'self' 'nonce-${nonce}'; style-src 'self' 'nonce-${nonce}'`);
+      newHeaders.set(
+        "Content-Security-Policy",
+        `script-src 'self' 'nonce-${nonce}'; style-src 'self' 'nonce-${nonce}'`
+      );
       // for testing
-      newHeaders.set("Content-Security-Policy-Report-Only", `script-src 'self' 'nonce-${nonce}'; style-src 'self' 'nonce-${nonce}'`);
+      newHeaders.set(
+        "Content-Security-Policy-Report-Only",
+        `script-src 'self' 'nonce-${nonce}'; style-src 'self' 'nonce-${nonce}'`
+      );
     }
     /*
     X-Frame-Options header prevents click-jacking attacks.

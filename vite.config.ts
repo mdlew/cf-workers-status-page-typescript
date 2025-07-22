@@ -1,14 +1,14 @@
-import path from 'node:path'
+import path from "node:path";
 
-import react from '@vitejs/plugin-react'
-import vike from 'vike/plugin'
+import react from "@vitejs/plugin-react";
+import vike from "vike/plugin";
 //import polishTaggedTemplates from 'unplugin-polish-tagged-templates/vite'
-import autoImport from 'unplugin-auto-import/vite'
-import tailwindcss from '@tailwindcss/vite'
+import autoImport from "unplugin-auto-import/vite";
+import tailwindcss from "@tailwindcss/vite";
 
-import type { UserConfig } from 'vite'
+import type { UserConfig } from "vite";
 
-import { nonce } from './src/worker/ssr'
+import { nonce } from "./src/worker/ssr";
 
 export default {
   plugins: [
@@ -19,15 +19,15 @@ export default {
     //   clsTags: ['cls'],
     // }),
     autoImport({
-      imports: ['react', 'react-router-dom'],
+      imports: ["react", "react-router-dom"],
     }),
   ],
   resolve: {
     alias: {
-      '#src': path.resolve(__dirname, 'src'),
+      "#src": path.resolve(__dirname, "src"),
     },
   },
   html: {
     cspNonce: nonce, // Use the global nonce variable for CSP
   },
-} satisfies UserConfig
+} satisfies UserConfig;
