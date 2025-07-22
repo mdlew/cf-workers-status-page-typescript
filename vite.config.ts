@@ -30,4 +30,4 @@ export default {
   html: {
     cspNonce: nonce, // Use the global nonce variable for CSP
   },
-} as UserConfig
+} satisfies UserConfig

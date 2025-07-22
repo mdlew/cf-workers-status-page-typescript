@@ -6,7 +6,7 @@ export interface CustomPageContext {
   // ref: https://vike.dev/cloudflare-workers#universal-fetch
   fetch: typeof fetch;
   userAgent: string | null;
-  nonce?: string; // Optional nonce for Content Security Policy (CSP)
+  cspNonce?: string; // Optional nonce for Content Security Policy (CSP)
 }
 
 export var nonce: string | null = null; // Global nonce variable
@@ -47,7 +47,7 @@ export async function handleSsr(
     urlOriginal: url,
     fetch: (...args: Parameters<typeof fetch>) => fetch(...args),
     userAgent: userAgent,
-    nonce: nonce, // Include the nonce in the page context
+    cspNonce: nonce, // Include the nonce in the page context
   };
   const pageContext = await renderPage(pageContextInit);
   const { httpResponse } = pageContext;
@@ -63,6 +63,12 @@ export async function handleSsr(
       "link",
       earlyHints.map((e: EarlyHint) => e.earlyHintLink).join(", ")
     );
+    // Set the CSP nonce in the headers
+    if (nonce) {
+      newHeaders.set("Content-Security-Policy", `script-src 'self' 'nonce-${nonce}'; style-src 'self' 'nonce-${nonce}'`);
+      // for testing
+      newHeaders.set("Content-Security-Policy-Report-Only", `script-src 'self' 'nonce-${nonce}'; style-src 'self' 'nonce-${nonce}'`);
+    }
     /*
     X-Frame-Options header prevents click-jacking attacks.
     @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options
