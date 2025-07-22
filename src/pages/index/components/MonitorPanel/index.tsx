@@ -48,7 +48,7 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
     <div {...restDivProps}>
       <div
         className={cls`
-          flex items-center justify-between rounded border px-4 py-2 text-lg font-bold shadow-md
+          flex items-center justify-between rounded-sm border px-4 py-2 text-lg font-bold shadow-md
           ${titleCls}
         `}
         onDoubleClick={() => {
@@ -239,7 +239,7 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                       >
                         <span
                           className={cls`
-                            rounded transition-all hover:opacity-70
+                            rounded-sm transition-all hover:opacity-70
                             ${color} block
                           `}
                           style={{
@@ -248,7 +248,7 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                         />
                       </TooltipTrigger>
                       <TooltipContent className={cls`
-                        whitespace-pre rounded p-2 text-center text-sm
+                        whitespace-pre rounded-sm p-2 text-center text-sm
                         shadow-lg backdrop-blur-lg
                       `}
                       >

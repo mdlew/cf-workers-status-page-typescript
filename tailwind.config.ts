@@ -10,13 +10,6 @@ const config = {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-      },
-    },
     extend: {
       fontFamily: {
         sans: ['"Source Sans 3"', ...defaultTheme.fontFamily.sans],

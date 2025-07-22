@@ -76,7 +76,7 @@ export default function Page() {
               setInputFocused(false)
             }}
             className={cls`
-              h-10 rounded-full border px-4 shadow outline-none
+              h-10 rounded-full border px-4 shadow-sm outline-hidden
               transition-all dark:bg-slate-700 focus:border-cyan-400
             `}
             placeholder='Type "/" to search'
