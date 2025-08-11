@@ -100,8 +100,8 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@4.1.11)
       tailwindcss-plugin-iconify:
-        specifier: ^1.5.2
-        version: 1.5.2(tailwindcss@4.1.11)
+        specifier: ^2.0.0
+        version: 2.0.0(tailwindcss@4.1.11)
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@24.0.15)(typescript@5.9.2)
@@ -1420,8 +1420,8 @@ packages:
     resolution: {integrity: sha512-/t88Ty3d5JWQbWYgaOGCCYfXRwV1+be02WqYYlL6h0lEiUAMPM8o8qKGO01YIkOHzka2up08wvgYD0mDiI+q3Q==}
     engines: {node: '>= 0.8'}
 
-  follow-redirects@1.15.9:
-    resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
+  follow-redirects@1.15.11:
+    resolution: {integrity: sha512-deG2P0JfjrTxl50XGCDyfI97ZGVCxIpfKYmfyrQ54n5FO/0gfIES8C/Psl6kWVDolizcaaxZJnTS0QSMxvnsBQ==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -1448,8 +1448,8 @@ packages:
     resolution: {integrity: sha512-Rx/WycZ60HOaqLKAi6cHRKKI7zxWbJ31MhntmtwMoaTeF7XFH9hhBp8vITaMidfljRQ6eYWCKkaTK+ykVJHP2A==}
     engines: {node: '>= 0.8'}
 
-  fs-extra@11.3.0:
-    resolution: {integrity: sha512-Z4XaCL6dUDHfP/jT25jJKMmtxvuwbkrD1vNSMFlo9lNLY2c5FHYSQgHPRZUjAB26TpDEoW9HCOgplrdbaPV/ew==}
+  fs-extra@11.3.1:
+    resolution: {integrity: sha512-eXvGGwZ5CL17ZSwHWd3bbgk7UUpF6IFHtP57NYYakPvHOs8GDgDe5KJI36jIJzDkJ6eJjuzRA8eBQb6SkKue0g==}
     engines: {node: '>=14.14'}
 
   fs-minipass@2.1.0:
@@ -2018,8 +2018,8 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
 
-  tailwindcss-plugin-iconify@1.5.2:
-    resolution: {integrity: sha512-4w81eCZbM67MydOgShWF46i8AYXeDWvzPVb86HirILP1Xeb3Tym1++3u3eGekkjBgDcd0wCzZ84AC/4er6jiNA==}
+  tailwindcss-plugin-iconify@2.0.0:
+    resolution: {integrity: sha512-P/JKiGV5zy24mb9E1SmVQjKdLscdGTEiwGgryXYWZv0iX9TMlj76CyvwjBY4gbGaLr1A1MzfRQUK/kt5ibTbvA==}
     peerDependencies:
       tailwindcss: '>=3'
 
@@ -3100,7 +3100,7 @@ snapshots:
 
   axios@1.11.0:
     dependencies:
-      follow-redirects: 1.15.9
+      follow-redirects: 1.15.11
       form-data: 4.0.4
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -3480,7 +3480,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  follow-redirects@1.15.9: {}
+  follow-redirects@1.15.11: {}
 
   form-data@4.0.4:
     dependencies:
@@ -3500,7 +3500,7 @@ snapshots:
 
   fresh@2.0.0: {}
 
-  fs-extra@11.3.0:
+  fs-extra@11.3.1:
     dependencies:
       graceful-fs: 4.2.11
       jsonfile: 6.1.0
@@ -4082,14 +4082,14 @@ snapshots:
     dependencies:
       tailwindcss: 4.1.11
 
-  tailwindcss-plugin-iconify@1.5.2(tailwindcss@4.1.11):
+  tailwindcss-plugin-iconify@2.0.0(tailwindcss@4.1.11):
     dependencies:
       '@iconify/tools': 4.1.2
       '@iconify/types': 2.0.0
       '@iconify/utils': 2.3.0
       consola: 3.4.2
       cross-fetch: 4.1.0
-      fs-extra: 11.3.0
+      fs-extra: 11.3.1
       pathe: 1.1.2
       tailwindcss: 4.1.11
     transitivePeerDependencies:
