@@ -94,14 +94,14 @@ importers:
         specifier: ^8.5.6
         version: 8.5.6
       tailwindcss:
-        specifier: ^4.1.11
-        version: 4.1.11
+        specifier: ^4.1.12
+        version: 4.1.12
       tailwindcss-animate:
         specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@4.1.11)
+        version: 1.0.7(tailwindcss@4.1.12)
       tailwindcss-plugin-iconify:
         specifier: ^2.0.0
-        version: 2.0.0(tailwindcss@4.1.11)
+        version: 2.0.0(tailwindcss@4.1.12)
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@24.2.1)(typescript@5.9.2)
@@ -2198,6 +2198,9 @@ packages:
 
   tailwindcss@4.1.11:
     resolution: {integrity: sha512-2E9TBm6MDD/xKYe+dvJZAmg3yxIEDNRc0jwlNyDg/4Fil2QcSLjFKGVff0lAf1jjeaArlG/M75Ey/EYr/OJtBA==}
+
+  tailwindcss@4.1.12:
+    resolution: {integrity: sha512-DzFtxOi+7NsFf7DBtI3BJsynR+0Yp6etH+nRPTbpWnS2pZBaSksv/JGctNwSWzbFjp0vxSqknaUylseZqMDGrA==}
 
   tapable@2.2.2:
     resolution: {integrity: sha512-Re10+NauLTMCudc7T5WLFLAwDhQ0JWdrMK+9B2M8zR5hRExKmsRDCBA7/aV/pNJFltmBFO5BAMlQFi/vq3nKOg==}
@@ -4369,11 +4372,11 @@ snapshots:
 
   tailwind-merge@3.3.1: {}
 
-  tailwindcss-animate@1.0.7(tailwindcss@4.1.11):
+  tailwindcss-animate@1.0.7(tailwindcss@4.1.12):
     dependencies:
-      tailwindcss: 4.1.11
+      tailwindcss: 4.1.12
 
-  tailwindcss-plugin-iconify@2.0.0(tailwindcss@4.1.11):
+  tailwindcss-plugin-iconify@2.0.0(tailwindcss@4.1.12):
     dependencies:
       '@iconify/tools': 4.1.2
       '@iconify/types': 2.0.0
@@ -4382,13 +4385,15 @@ snapshots:
       cross-fetch: 4.1.0
       fs-extra: 11.3.1
       pathe: 1.1.2
-      tailwindcss: 4.1.11
+      tailwindcss: 4.1.12
     transitivePeerDependencies:
       - debug
       - encoding
       - supports-color
 
   tailwindcss@4.1.11: {}
+
+  tailwindcss@4.1.12: {}
 
   tapable@2.2.2: {}
 
