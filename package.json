@@ -15,7 +15,7 @@
   "dependencies": {
     "@cloudflare/kv-asset-handler": "^0.3.4",
     "@floating-ui/react": "^0.27.16",
-    "@vitejs/plugin-react": "^5.0.0",
+    "@vitejs/plugin-react": "^5.0.1",
     "node-fetch": "^3.3.2",
     "papaparse": "^5.5.3",
     "react": "^18.3.1",
