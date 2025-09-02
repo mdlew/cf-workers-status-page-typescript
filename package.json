@@ -22,7 +22,7 @@
     "react-dom": "^18.3.1",
     "react-streaming": "^0.3.50",
     "tagged-classnames-free": "^0.1.1",
-    "vike": "^0.4.237",
+    "vike": "^0.4.238",
     "wrangler": "latest"
   },
   "devDependencies": {
@@ -51,6 +51,6 @@
     "type-fest": "^4.41.0",
     "typescript": "latest",
     "unplugin-auto-import": "^20.0.0",
-    "vite": "^7.1.3"
+    "vite": "^7.1.4"
   }
 }
