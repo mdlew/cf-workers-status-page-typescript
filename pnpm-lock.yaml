@@ -36,11 +36,11 @@ importers:
         specifier: ^0.1.1
         version: 0.1.1(clsx@2.1.1)(tailwind-merge@3.3.1)
       vike:
-        specifier: ^0.4.239
-        version: 0.4.239(react-streaming@0.3.50(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@7.1.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)(tsx@4.20.5))
+        specifier: ^0.4.240
+        version: 0.4.240(react-streaming@0.3.50(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@7.1.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)(tsx@4.20.5))
       wrangler:
         specifier: latest
-        version: 4.36.0(@cloudflare/workers-types@4.20250906.0)
+        version: 4.37.0(@cloudflare/workers-types@4.20250906.0)
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20250906.0
@@ -226,8 +226,8 @@ packages:
   '@brillout/json-serializer@0.5.17':
     resolution: {integrity: sha512-QDe1kMDj9qq+f/bmZKnKAeuVtqdqT1nc1nVrXotfJtUhh7Sqb369d/BKmHG7J/qOyQ87Y8P0Cl+GoZrhj9wQ6Q==}
 
-  '@brillout/json-serializer@0.5.20':
-    resolution: {integrity: sha512-RjRm7siy3VEB248gYudtWB4FZyoIL4kuA/HF3mM4ViAd1LT6Tl9eZsp5n0/hB5uM/C9JKICCNsJ6slNGgjdetA==}
+  '@brillout/json-serializer@0.5.21':
+    resolution: {integrity: sha512-pzzT4U4A9rk7eZpFjloRoMrGG2jnptwNGAhPIH7ZVjCMHd6TaJ29hrERPaY6Bp3Xdzu8JWlHI1o3x7PysxkaHQ==}
 
   '@brillout/picocolors@1.0.28':
     resolution: {integrity: sha512-FBsirUdUlmjmeUlEuqfnUoKAZUt+d0VfMVBYUsFQrDFEV9Rm/QDyG69PSQtQbI6SZQNiZuAWuyhE5USflzx6iQ==}
@@ -235,8 +235,8 @@ packages:
   '@brillout/require-shim@0.1.2':
     resolution: {integrity: sha512-3I4LRHnVZXoSAsEoni5mosq9l6eiJED58d9V954W4CIZ88AUfYBanWGBGbJG3NztaRTpFHEA6wB3Hn93BmmJdg==}
 
-  '@brillout/vite-plugin-server-entry@0.7.14':
-    resolution: {integrity: sha512-VSbiBAykItiXLK/CS9B9XZ1hmRkfgJ3nMJXOZt+mjeumhH4Vct17zQYG/Wcp/HDY1xEtxIxSOanxyM5upwaf8A==}
+  '@brillout/vite-plugin-server-entry@0.7.15':
+    resolution: {integrity: sha512-0ClgcmjkhJoHbI6KhbjZlXMeA9qn/EPLXEVssjCE6IVYnVb4bTYuq635c44n7jV3GkjcgFHCQWBmNw0OAGiUvQ==}
 
   '@cloudflare/kv-asset-handler@0.3.4':
     resolution: {integrity: sha512-YLPHc8yASwjNkmcDMQMY35yiWjoKAKnhUbPRszBRS0YgH+IXtsMp61j+yTcnCE3oO2DgP0U3iejLC8FTtKDC8Q==}
@@ -885,8 +885,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@sindresorhus/is@7.0.2':
-    resolution: {integrity: sha512-d9xRovfKNz1SKieM0qJdO+PQonjnnIfSNWfHYnBSJ9hkjm0ZPw6HlxscDXYstp3z+7V2GOFHc+J0CYrYTjqCJw==}
+  '@sindresorhus/is@7.1.0':
+    resolution: {integrity: sha512-7F/yz2IphV39hiS2zB4QYVkivrptHHh0K8qJJd9HhuWSdvf8AN7NpebW3CcDZDBQsUPMoDKWsY2WWgW7bqOcfA==}
     engines: {node: '>=18'}
 
   '@speed-highlight/core@1.2.7':
@@ -1303,6 +1303,10 @@ packages:
 
   detect-libc@2.0.4:
     resolution: {integrity: sha512-3UDv+G9CsCKO1WKMGw9fwq/SWJYbI0c5Y7LU1AXYoDdbhE2AHQ6N6Nb34sG8Fj7T5APy8qXDCKuuIHd1BR0tVA==}
+    engines: {node: '>=8'}
+
+  detect-libc@2.1.0:
+    resolution: {integrity: sha512-vEtk+OcP7VBRtQZ1EJ3bdgzSfBjgnEalLTp5zjJrS+2Z1w2KZly4SBdac/WDU3hhsNAZ9E8SC96ME4Ey8MZ7cg==}
     engines: {node: '>=8'}
 
   diff@4.0.2:
@@ -1722,8 +1726,8 @@ packages:
     engines: {node: '>=10.0.0'}
     hasBin: true
 
-  miniflare@4.20250906.1:
-    resolution: {integrity: sha512-yuPHog7j+GKHtRaKKF3Mpwvb5SVtvmkQpY/f9Ue0xhG/fYQcaxTKVO6RAB1pUN1jSyvmDOxVEAFFVoni8GYl3g==}
+  miniflare@4.20250906.2:
+    resolution: {integrity: sha512-SXGv8Rdd91b6UXZ5eW3rde/gSJM6WVLItMNFV7u9axUVhACvpT4CB5p80OBfi2OOsGfOuFQ6M6s8tMxJbzioVw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -2186,13 +2190,13 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
-  vike@0.4.239:
-    resolution: {integrity: sha512-/rxBqxVtQION6ZyDauqKcsktOiZgwXj7qZ62KwxuRq/PoipglhSvupEP7BHrPocNQ2WbXgGSXeLw3d2X4dd9ow==}
+  vike@0.4.240:
+    resolution: {integrity: sha512-gWkLipuVjpKrNFmsXyoVJdS/gnCEZjdYLQFnv5NH9Pv9AcXVtUEcndi0PaKenH4wqmRlbftdMtfUqa9MlBtZ6g==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
       react-streaming: '>=0.3.42'
-      vite: '>=6.0.0'
+      vite: '>=6.3.0'
     peerDependenciesMeta:
       react-streaming:
         optional: true
@@ -2265,8 +2269,8 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  wrangler@4.36.0:
-    resolution: {integrity: sha512-J1sZh7ePy7BtzvIyt9ufiL6aQOW6OE0VEi9YJiyXOuaXDKrR7V5HJBTsraNdFDqXgi30mYGGBVs0mgZHGRhTBA==}
+  wrangler@4.37.0:
+    resolution: {integrity: sha512-W8IbQohQbUHFn4Hz2kh8gi0SdyFV/jyi9Uus+WrTz0F0Dc9W5qKPCjLbxibeE53+YPHyoI25l65O7nSlwX+Z6Q==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     peerDependencies:
@@ -2448,13 +2452,13 @@ snapshots:
 
   '@brillout/json-serializer@0.5.17': {}
 
-  '@brillout/json-serializer@0.5.20': {}
+  '@brillout/json-serializer@0.5.21': {}
 
   '@brillout/picocolors@1.0.28': {}
 
   '@brillout/require-shim@0.1.2': {}
 
-  '@brillout/vite-plugin-server-entry@0.7.14':
+  '@brillout/vite-plugin-server-entry@0.7.15':
     dependencies:
       '@brillout/import': 0.2.6
       '@brillout/picocolors': 1.0.28
@@ -2829,7 +2833,7 @@ snapshots:
   '@poppinss/dumper@0.6.4':
     dependencies:
       '@poppinss/colors': 4.1.5
-      '@sindresorhus/is': 7.0.2
+      '@sindresorhus/is': 7.1.0
       supports-color: 10.2.2
 
   '@poppinss/exception@1.2.2': {}
@@ -2899,7 +2903,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.50.1':
     optional: true
 
-  '@sindresorhus/is@7.0.2': {}
+  '@sindresorhus/is@7.1.0': {}
 
   '@speed-highlight/core@1.2.7': {}
 
@@ -3318,6 +3322,8 @@ snapshots:
   depd@2.0.0: {}
 
   detect-libc@2.0.4: {}
+
+  detect-libc@2.1.0: {}
 
   diff@4.0.2: {}
 
@@ -3759,7 +3765,7 @@ snapshots:
 
   mime@3.0.0: {}
 
-  miniflare@4.20250906.1:
+  miniflare@4.20250906.2:
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       acorn: 8.14.0
@@ -4038,7 +4044,7 @@ snapshots:
   sharp@0.33.5:
     dependencies:
       color: 4.2.3
-      detect-libc: 2.0.4
+      detect-libc: 2.1.0
       semver: 7.7.2
     optionalDependencies:
       '@img/sharp-darwin-arm64': 0.33.5
@@ -4310,13 +4316,13 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vike@0.4.239(react-streaming@0.3.50(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@7.1.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)(tsx@4.20.5)):
+  vike@0.4.240(react-streaming@0.3.50(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@7.1.5(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)(tsx@4.20.5)):
     dependencies:
       '@brillout/import': 0.2.6
-      '@brillout/json-serializer': 0.5.20
+      '@brillout/json-serializer': 0.5.21
       '@brillout/picocolors': 1.0.28
       '@brillout/require-shim': 0.1.2
-      '@brillout/vite-plugin-server-entry': 0.7.14
+      '@brillout/vite-plugin-server-entry': 0.7.15
       acorn: 8.15.0
       cac: 6.7.14
       es-module-lexer: 1.7.0
@@ -4372,13 +4378,13 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20250906.0
       '@cloudflare/workerd-windows-64': 1.20250906.0
 
-  wrangler@4.36.0(@cloudflare/workers-types@4.20250906.0):
+  wrangler@4.37.0(@cloudflare/workers-types@4.20250906.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.4.0
       '@cloudflare/unenv-preset': 2.7.3(unenv@2.0.0-rc.21)(workerd@1.20250906.0)
       blake3-wasm: 2.1.5
       esbuild: 0.25.4
-      miniflare: 4.20250906.1
+      miniflare: 4.20250906.2
       path-to-regexp: 6.3.0
       unenv: 2.0.0-rc.21
       workerd: 1.20250906.0
