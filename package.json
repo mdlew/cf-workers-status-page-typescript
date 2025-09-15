@@ -13,7 +13,7 @@
     "postinstall": "pnpm run public:assets"
   },
   "dependencies": {
-    "@cloudflare/kv-asset-handler": "^0.3.4",
+    "@cloudflare/kv-asset-handler": "^0.4.0",
     "@floating-ui/react": "^0.27.16",
     "@vitejs/plugin-react": "^5.0.2",
     "node-fetch": "^3.3.2",
