@@ -20,7 +20,7 @@
     "papaparse": "^5.5.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-streaming": "^0.4.3",
+    "react-streaming": "^0.4.4",
     "tagged-classnames-free": "^0.1.1",
     "vike": "^0.4.240",
     "wrangler": "latest"
