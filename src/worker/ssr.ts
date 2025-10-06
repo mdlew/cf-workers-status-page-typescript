@@ -67,7 +67,7 @@ export async function handleSsr(
     if (nonce) {
       newHeaders.set(
         "Content-Security-Policy",
-        `img-src 'self' 'unsafe-inline'; script-src 'nonce-${nonce}' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; upgrade-insecure-requests;`
+        `script-src 'nonce-${nonce}' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; upgrade-insecure-requests;`
       );
     }
     /*
