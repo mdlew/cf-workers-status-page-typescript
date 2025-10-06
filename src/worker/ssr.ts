@@ -65,14 +65,9 @@ export async function handleSsr(
     );
     // Set the CSP nonce in the headers
     if (nonce) {
-      // newHeaders.set(
-      //   "Content-Security-Policy",
-      //   `script-src 'self' 'nonce-${nonce}'; style-src 'self' 'nonce-${nonce}'`
-      // );
-      // for testing
       newHeaders.set(
-        "Content-Security-Policy-Report-Only",
-        `script-src 'self' 'nonce-${nonce}'; style-src 'self' 'nonce-${nonce}'`
+        "Content-Security-Policy",
+        `img-src 'self'; script-src 'nonce-${nonce}' 'strict-dynamic'; style-src 'nonce-${nonce}'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; upgrade-insecure-requests;`
       );
     }
     /*
