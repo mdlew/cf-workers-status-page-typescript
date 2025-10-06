@@ -38,6 +38,7 @@ export async function handleSsr(
   url: string,
   userAgent: string | null
 ) {
+  // Generate a nonce per-request and store it in the module-global variable
   const array = new Uint8Array(16);
   crypto.getRandomValues(array);
   nonce = btoa(String.fromCharCode(...array));
@@ -47,7 +48,7 @@ export async function handleSsr(
     urlOriginal: url,
     fetch: (...args: Parameters<typeof fetch>) => fetch(...args),
     userAgent: userAgent,
-    cspNonce: nonce, // Include the nonce in the page context
+    cspNonce: nonce, // Include the nonce in the page context so page templates can use it
   };
   const pageContext = await renderPage(pageContextInit);
   const { httpResponse } = pageContext;
@@ -59,31 +60,55 @@ export async function handleSsr(
     const stream = httpResponse.getReadableWebStream();
 
     const newHeaders = new Headers(headers);
-    newHeaders.set(
-      "link",
-      earlyHints.map((e: EarlyHint) => e.earlyHintLink).join(", ")
-    );
-    // Set the CSP nonce in the headers
+
+    // Build Link header from early hints (unchanged behavior)
+    if (earlyHints && earlyHints.length) {
+      newHeaders.set(
+        "link",
+        earlyHints.map((e: EarlyHint) => e.earlyHintLink).join(", ")
+      );
+    }
+
+    // Set the CSP header using the generated nonce so inline scripts/styles with the nonce are allowed
     if (nonce) {
       newHeaders.set(
         "Content-Security-Policy",
         `img-src 'self'; script-src 'nonce-${nonce}' 'strict-dynamic'; style-src 'nonce-${nonce}'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; upgrade-insecure-requests;`
       );
     }
-    /*
-    X-Frame-Options header prevents click-jacking attacks.
-    @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options
-    */
+
+    // Additional security headers
     newHeaders.set("X-Frame-Options", "DENY");
-    /*
-    X-Content-Type-Options header prevents MIME-sniffing.
-    @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Content-Type-Options
-    */
     newHeaders.set("X-Content-Type-Options", "nosniff");
     newHeaders.set("Referrer-Policy", "strict-origin-when-cross-origin");
     newHeaders.set("Cross-Origin-Opener-Policy", "same-origin");
     newHeaders.set("Cross-Origin-Resource-Policy", "same-site");
     newHeaders.set("Cross-Origin-Embedder-Policy", "require-corp");
-    return new Response(stream, { headers: newHeaders, status });
+
+    /*
+      Ensure that the CSP nonce is added to all stylesheet link elements in the HTML.
+
+      We do this at response time with HTMLRewriter so any <link rel="stylesheet" ...>
+      produced by the renderer (or by templates) will have the nonce attribute added.
+
+      This is robust and does not rely on templates remembering to include the nonce.
+    */
+    let responseBodyStream = stream;
+
+    if (nonce) {
+      // HTMLRewriter is available in the Cloudflare Workers runtime and will
+      // operate on the ReadableStream from the SSR renderer.
+      // Add nonce attribute to all <link rel="stylesheet"> elements.
+      responseBodyStream = new HTMLRewriter()
+        .on('link[rel="stylesheet"]', {
+          element(el) {
+            // Set or overwrite the nonce attribute on each stylesheet link
+            el.setAttribute("nonce", nonce);
+          },
+        })
+        .transform(stream);
+    }
+
+    return new Response(responseBodyStream, { headers: newHeaders, status });
   }
 }
