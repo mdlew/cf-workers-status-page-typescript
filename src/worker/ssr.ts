@@ -94,7 +94,7 @@ export async function handleSsr(
       This is robust and does not rely on templates remembering to include the nonce.
     */
     if (nonce) {
-      const transformed = new HTMLRewriter()
+      const response = new HTMLRewriter()
         .on('link[rel="stylesheet"]', {
           element(el) {
             el.setAttribute("nonce", nonce);
@@ -102,8 +102,10 @@ export async function handleSsr(
         })
         .transform(stream);
 
-      // HTMLRewriter.transform returns a Response; use its body (a ReadableStream) as the Response body
-      return new Response(transformed.body, { headers: newHeaders, status });
+      // Set headers and status on the response directly
+      newHeaders.forEach((value, key) => response.headers.set(key, value));
+      Object.defineProperty(response, "status", { value: status });
+      return response;
     }
 
     return new Response(stream, { headers: newHeaders, status });
