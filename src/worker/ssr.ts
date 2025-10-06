@@ -93,22 +93,19 @@ export async function handleSsr(
 
       This is robust and does not rely on templates remembering to include the nonce.
     */
-    let responseBodyStream = stream;
-
     if (nonce) {
-      // HTMLRewriter is available in the Cloudflare Workers runtime and will
-      // operate on the ReadableStream from the SSR renderer.
-      // Add nonce attribute to all <link rel="stylesheet"> elements.
-      responseBodyStream = new HTMLRewriter()
+      const transformed = new HTMLRewriter()
         .on('link[rel="stylesheet"]', {
           element(el) {
-            // Set or overwrite the nonce attribute on each stylesheet link
             el.setAttribute("nonce", nonce);
           },
         })
         .transform(stream);
+
+      // HTMLRewriter.transform returns a Response; use its body (a ReadableStream) as the Response body
+      return new Response(transformed.body, { headers: newHeaders, status });
     }
 
-    return new Response(responseBodyStream, { headers: newHeaders, status });
+    return new Response(stream, { headers: newHeaders, status });
   }
 }
