@@ -21,7 +21,7 @@
     "react-dom": "^19.1.1",
     "react-streaming": "^0.4.4",
     "tagged-classnames-free": "^0.1.1",
-    "vike": "^0.4.241"
+    "vike": "^0.4.242"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250927.0",
