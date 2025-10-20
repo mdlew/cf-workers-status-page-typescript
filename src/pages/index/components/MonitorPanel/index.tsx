@@ -164,7 +164,7 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                       {info.map((item) => {
                         return (
                           <li key={item.key}>
-                            <span className={clsx('font-semibold after:content-[\':\\_\']')}>
+                            <span className={clsx('font-semibold after:content-[\':_\']')}>
                               {item.key}
                             </span>
                             <span>
@@ -259,7 +259,7 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                             const stat = targetDateChecksItem.stats[item]
                             return (
                               <div key={item}>
-                                <span className={clsx('after:content-[\':\\_\']')}>
+                                <span className={clsx('after:content-[\':_\']')}>
                                   {parseLocation(item)}
                                 </span>
                                 <span>
