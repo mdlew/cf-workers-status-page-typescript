@@ -1,4 +1,4 @@
-import { cls } from 'tagged-classnames-free'
+import { clsx } from 'clsx'
 import React from 'react'
 
 import Empty from './Empty'
@@ -43,14 +43,14 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
   const monitorIds = (Object.keys(data.monitorHistoryData) || [])
   const allOperational = data.lastUpdate?.checks.allOperational
 
-  const titleCls = allOperational ? cls`border-green-500 bg-green-300 text-green-800 dark:bg-green-800 dark:text-green-300` : cls`border-red-500 bg-red-300 text-red-800 dark:bg-red-800 dark:text-red-300`
+  const titleCls = allOperational ? clsx('border-green-500 bg-green-300 text-green-800 dark:bg-green-800 dark:text-green-300') : clsx('border-red-500 bg-red-300 text-red-800 dark:bg-red-800 dark:text-red-300')
   return (
     <div {...restDivProps}>
       <div
-        className={cls`
-          flex items-center justify-between rounded-sm border px-4 py-2 text-lg font-bold shadow-md
-          ${titleCls}
-        `}
+        className={clsx(
+          'flex items-center justify-between rounded-sm border px-4 py-2 text-lg font-bold shadow-md',
+          titleCls
+        )}
         onDoubleClick={() => {
           // eslint-disable-next-line no-console
           console.log('allMonitors', allMonitors)
@@ -75,9 +75,7 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
           </div>
         )}
       </div>
-      <ul className={cls`
-        mt-4 flex flex-col gap-y-2
-      `}
+      <ul className={clsx('mt-4 flex flex-col gap-y-2')}
       >
         {monitorIds.filter((item) => {
           const targetMonitor = allMonitors.find((monitorItem) => monitorItem.id === item)
@@ -146,27 +144,27 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
           }[]
 
           return (
-            <li key={item} className={cls`[&:not(:last-child)]:mb-2`}>
+            <li key={item} className={clsx('[&:not(:last-child)]:mb-2')}>
               <div className='mb-1 flex items-center gap-2'>
               <h2 className='text-slate-950 dark:text-slate-50'>
                   {title}
                 </h2>
                 {!!info.length && (
                   <Tooltip>
-                    <TooltipTrigger className={cls` size-5 text-slate-500 dark:text-slate-400`}>
-                      <span className={cls`i-ic--outline-info size-full`} />
+                    <TooltipTrigger className={clsx('size-5 text-slate-500 dark:text-slate-400')}>
+                      <span className={clsx('i-ic--outline-info size-full')} />
                     </TooltipTrigger>
                     <TooltipContent
                       as='ul'
-                      className={cls`
-                        list-none whitespace-pre rounded p-2
-                        shadow-lg backdrop-blur-lg
-                      `}
+                      className={clsx(
+                        'list-none whitespace-pre rounded p-2',
+                        'shadow-lg backdrop-blur-lg'
+                      )}
                     >
                       {info.map((item) => {
                         return (
                           <li key={item.key}>
-                            <span className={cls`font-semibold after:content-[':_']`}>
+                            <span className={clsx('font-semibold after:content-[\':\\_\']')}>
                               {item.key}
                             </span>
                             <span>
@@ -197,29 +195,29 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                   const targetDateChecksItem = monitorData ? getTargetDateChecksItem(monitorData, dateItem) : undefined
                   const renderStatus = monitorData ? getChecksItemRenderStatus(monitorData, dateItem) : undefined
 
-                  let color = cls`bg-gray-300 dark:bg-gray-700`
-                  let textColor = cls`text-gray-300 dark:text-gray-700`
+                  let color = clsx('bg-gray-300 dark:bg-gray-700')
+                  let textColor = clsx('text-gray-300 dark:text-gray-700')
                   let statusStr: React.ReactNode = null
 
                   switch (renderStatus) {
                     case 'all-good':
-                      color = cls`bg-green-500 dark:bg-green-700`
-                      textColor = cls`text-green-500 dark:text-green-700`
+                      color = clsx('bg-green-500 dark:bg-green-700')
+                      textColor = clsx('text-green-500 dark:text-green-700')
                       statusStr = 'All good'
                       break
                     case 'all-incidents':
-                      color = cls`bg-red-700`
-                      textColor = cls`text-red-700`
+                      color = clsx('bg-red-700')
+                      textColor = clsx('text-red-700')
                       statusStr = `${targetDateChecksItem!.fails} incident(s)`
                       break
                     case 'latest-incident':
-                      color = cls`bg-red-500 dark:bg-red-700`
-                      textColor = cls`text-red-500 dark:text-red-700`
+                      color = clsx('bg-red-500 dark:bg-red-700')
+                      textColor = clsx('text-red-500 dark:text-red-700')
                       statusStr = `${targetDateChecksItem!.fails} incident(s)`
                       break
                     case 'has-incident':
-                      color = cls`bg-yellow-500 dark:bg-yellow-700`
-                      textColor = cls`text-yellow-500 dark:text-yellow-700`
+                      color = clsx('bg-yellow-500 dark:bg-yellow-700')
+                      textColor = clsx('text-yellow-500 dark:text-yellow-700')
                       statusStr = `${targetDateChecksItem!.fails} incident(s)`
                       break
                     default:
@@ -238,29 +236,30 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                         }}
                       >
                         <span
-                          className={cls`
-                            rounded-sm transition-all hover:opacity-70
-                            ${color} block
-                          `}
+                          className={clsx(
+                            'rounded-sm transition-all hover:opacity-70',
+                            color,
+                            'block'
+                          )}
                           style={{
                             height: 28,
                           }}
                         />
                       </TooltipTrigger>
-                      <TooltipContent className={cls`
-                        whitespace-pre rounded-sm p-2 text-center text-sm
-                        shadow-lg backdrop-blur-lg
-                      `}
+                      <TooltipContent className={clsx(
+                        'whitespace-pre rounded-sm p-2 text-center text-sm',
+                        'shadow-lg backdrop-blur-lg'
+                      )}
                       >
                         <div className='font-semibold'>{dateItem}</div>
-                        {statusStr && <div className={cls`${textColor} font-semibold`}>{statusStr}</div>}
+                        {statusStr && <div className={clsx(textColor, 'font-semibold')}>{statusStr}</div>}
                         <div />
                         {targetDateChecksItem
                           ? Object.keys(targetDateChecksItem.stats).map((item) => {
                             const stat = targetDateChecksItem.stats[item]
                             return (
                               <div key={item}>
-                                <span className={cls`after:content-[':_']`}>
+                                <span className={clsx('after:content-[\':\\_\']')}>
                                   {parseLocation(item)}
                                 </span>
                                 <span>
