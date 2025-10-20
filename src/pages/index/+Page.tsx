@@ -1,4 +1,4 @@
-import { cls } from 'tagged-classnames-free'
+import { clsx } from 'clsx'
 
 import MonitorPanel from './components/MonitorPanel'
 
@@ -75,10 +75,10 @@ export default function Page() {
             onBlur={() => {
               setInputFocused(false)
             }}
-            className={cls`
-              h-10 rounded-full border px-4 shadow-sm outline-hidden
-              transition-all dark:bg-slate-700 focus:border-cyan-400
-            `}
+            className={clsx(
+              'h-10 rounded-full border px-4 shadow-sm outline-hidden',
+              'transition-all dark:bg-slate-700 focus:border-cyan-400'
+            )}
             placeholder='Type "/" to search'
           />
         </div>
@@ -87,7 +87,7 @@ export default function Page() {
         <MonitorPanel
           allMonitors={allMonitors}
           data={kvData}
-          className={cls`mt-4`}
+          className={clsx('mt-4')}
           search={deferredSearch}
         />
       </main>
