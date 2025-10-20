@@ -1,4 +1,4 @@
-import type fetch from "node-fetch";
+// import type fetch from "node-fetch";
 
 type Page = (pageProps: PageProps) => React.ReactElement;
 export type PageProps = Record<string, unknown>;

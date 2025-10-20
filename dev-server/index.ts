@@ -3,7 +3,7 @@
 import express from 'express'
 import { renderPage } from 'vike/server'
 import { createServer } from 'vite'
-import fetch from 'node-fetch'
+// import fetch from 'node-fetch'
 
 import type { CustomPageContext } from '#src/worker/ssr'
 
