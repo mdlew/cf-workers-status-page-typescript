@@ -38,7 +38,7 @@ jobs:
         env:
           SECRET_DISCORD_WEBHOOK_URL: ${{ secrets.SECRET_DISCORD_WEBHOOK_URL }}
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: build
           path: |
