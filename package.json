@@ -27,7 +27,7 @@
     "@iconify-json/ic": "^1.2.4",
     "@iconify-json/svg-spinners": "^1.2.4",
     "@tailwindcss/postcss": "^4.1.13",
-    "@tailwindcss/vite": "^4.1.14",
+    "@tailwindcss/vite": "^4.1.16",
     "@types/express": "^5.0.4",
     "@types/node": "^24.8.1",
     "@types/papaparse": "^5.3.16",
