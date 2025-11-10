@@ -82,14 +82,14 @@ importers:
         specifier: ^8.5.6
         version: 8.5.6
       tailwindcss:
-        specifier: ^4.1.16
-        version: 4.1.16
+        specifier: ^4.1.17
+        version: 4.1.17
       tailwindcss-animate:
         specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@4.1.16)
+        version: 1.0.7(tailwindcss@4.1.17)
       tailwindcss-plugin-iconify:
         specifier: ^2.0.0
-        version: 2.0.0(tailwindcss@4.1.16)
+        version: 2.0.0(tailwindcss@4.1.17)
       tsx:
         specifier: latest
         version: 4.20.6
@@ -4611,11 +4611,11 @@ snapshots:
 
   tabbable@6.2.0: {}
 
-  tailwindcss-animate@1.0.7(tailwindcss@4.1.16):
+  tailwindcss-animate@1.0.7(tailwindcss@4.1.17):
     dependencies:
-      tailwindcss: 4.1.16
+      tailwindcss: 4.1.17
 
-  tailwindcss-plugin-iconify@2.0.0(tailwindcss@4.1.16):
+  tailwindcss-plugin-iconify@2.0.0(tailwindcss@4.1.17):
     dependencies:
       '@iconify/tools': 4.1.4
       '@iconify/types': 2.0.0
@@ -4624,7 +4624,7 @@ snapshots:
       cross-fetch: 4.1.0
       fs-extra: 11.3.2
       pathe: 1.1.2
-      tailwindcss: 4.1.16
+      tailwindcss: 4.1.17
     transitivePeerDependencies:
       - debug
       - encoding
