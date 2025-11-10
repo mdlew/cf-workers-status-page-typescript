@@ -30,7 +30,7 @@
     "@tailwindcss/vite": "^4.1.16",
     "@types/express": "^5.0.5",
     "@types/node": "^24.10.0",
-    "@types/papaparse": "^5.3.16",
+    "@types/papaparse": "^5.5.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.1.0",
