@@ -30,8 +30,8 @@ importers:
         specifier: ^0.4.12
         version: 0.4.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       vike:
-        specifier: ^0.4.245
-        version: 0.4.245(react-streaming@0.4.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(vite@7.1.12(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6))
+        specifier: ^0.4.247
+        version: 0.4.247(react-streaming@0.4.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(vite@7.1.12(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6))
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20251109.0
@@ -2385,8 +2385,8 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
-  vike@0.4.245:
-    resolution: {integrity: sha512-WqqVBO3y+1JHpFcie97MmuJ/Te22uRHyup5yFzTSSdNGA2p/TrGWuIMP5a60oVaQcxZ0t+5XnVcWQlQ87cc8gg==}
+  vike@0.4.247:
+    resolution: {integrity: sha512-rEVYi2cPtCGN92aChkGjV72jLfm9yLl/fx+jCgW7l905vxa4JV6ZTaThOKSbh+1+EsRE9sbDFhBc2KCikSJaog==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
@@ -4588,7 +4588,7 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vike@0.4.245(react-streaming@0.4.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(vite@7.1.12(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)):
+  vike@0.4.247(react-streaming@0.4.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(vite@7.1.12(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)):
     dependencies:
       '@brillout/import': 0.2.6
       '@brillout/json-serializer': 0.5.21
