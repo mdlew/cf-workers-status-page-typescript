@@ -27,11 +27,11 @@ importers:
         specifier: ^19.1.1
         version: 19.2.0(react@19.2.1)
       react-streaming:
-        specifier: ^0.4.13
-        version: 0.4.13(react-dom@19.2.0(react@19.2.1))(react@19.2.1)
+        specifier: ^0.4.12
+        version: 0.4.12(react-dom@19.2.0(react@19.2.1))(react@19.2.1)
       vike:
         specifier: ^0.4.247
-        version: 0.4.247(react-streaming@0.4.13(react-dom@19.2.0(react@19.2.1))(react@19.2.1))(vite@7.2.7(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0))
+        version: 0.4.247(react-streaming@0.4.12(react-dom@19.2.0(react@19.2.1))(react@19.2.1))(vite@7.2.7(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0))
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20251121.0
@@ -1820,8 +1820,8 @@ packages:
     resolution: {integrity: sha512-QgT5//D3jfjJb6Gsjxv0Slpj23ip+HtOpnNgnb2S5zU3CB26G/IDPGoy4RJB42wzFE46DRsstbW6tKHoKbhAxw==}
     engines: {node: '>=0.10.0'}
 
-  react-streaming@0.4.13:
-    resolution: {integrity: sha512-LNwxjglFKYDHxkt2N0rLPzqJiR/mWec94VVdi683t/Ha2VXxB8BXxni+TKdWt12v6fM1ygNgJYtzQrxFaTBFgw==}
+  react-streaming@0.4.12:
+    resolution: {integrity: sha512-OvIKK8MooiQ15KdCjmiNxpNP26k3oq5HmI8a0r4pPZAndyfh9MRbebP+0z2x1UCDO4bbjVzgD2A8+I85xJaNhA==}
     peerDependencies:
       react: '>=19'
       react-dom: '>=19'
@@ -3717,7 +3717,7 @@ snapshots:
 
   react-refresh@0.18.0: {}
 
-  react-streaming@0.4.13(react-dom@19.2.0(react@19.2.1))(react@19.2.1):
+  react-streaming@0.4.12(react-dom@19.2.0(react@19.2.1))(react@19.2.1):
     dependencies:
       '@brillout/import': 0.2.6
       '@brillout/json-serializer': 0.5.21
@@ -4031,7 +4031,7 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vike@0.4.247(react-streaming@0.4.13(react-dom@19.2.0(react@19.2.1))(react@19.2.1))(vite@7.2.7(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)):
+  vike@0.4.247(react-streaming@0.4.12(react-dom@19.2.0(react@19.2.1))(react@19.2.1))(vite@7.2.7(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)):
     dependencies:
       '@brillout/import': 0.2.6
       '@brillout/json-serializer': 0.5.21
@@ -4050,7 +4050,7 @@ snapshots:
       source-map-support: 0.5.21
       tinyglobby: 0.2.15
     optionalDependencies:
-      react-streaming: 0.4.13(react-dom@19.2.0(react@19.2.1))(react@19.2.1)
+      react-streaming: 0.4.12(react-dom@19.2.0(react@19.2.1))(react@19.2.1)
       vite: 7.2.7(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)
 
   vite@7.2.7(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0):
