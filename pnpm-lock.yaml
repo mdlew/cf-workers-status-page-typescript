@@ -27,11 +27,11 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(react@19.2.3)
       react-streaming:
-        specifier: ^0.4.14
-        version: 0.4.14(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^0.4.15
+        version: 0.4.15(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       vike:
         specifier: ^0.4.250
-        version: 0.4.250(react-streaming@0.4.14(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0))
+        version: 0.4.250(react-streaming@0.4.15(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0))
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20251213.0
@@ -206,9 +206,6 @@ packages:
 
   '@brillout/json-serializer@0.5.21':
     resolution: {integrity: sha512-pzzT4U4A9rk7eZpFjloRoMrGG2jnptwNGAhPIH7ZVjCMHd6TaJ29hrERPaY6Bp3Xdzu8JWlHI1o3x7PysxkaHQ==}
-
-  '@brillout/picocolors@1.0.29':
-    resolution: {integrity: sha512-EKkqdFJD+CeP6GfpZNcWcCCXS5o0HFXhwISoN5JnHG/kplVE2MmF23eKtl4JRKU1rkR7s3kFIKiJf15aV/Uodg==}
 
   '@brillout/picocolors@1.0.30':
     resolution: {integrity: sha512-xJjdgyN1H0qh2nB2xlzazIipiDixuUd9oD5msh/Qv5bXJG9j8MSD/m4lREt6Z10ej6FF31b8vB4tdT7lDUbiyA==}
@@ -1962,8 +1959,8 @@ packages:
     resolution: {integrity: sha512-QgT5//D3jfjJb6Gsjxv0Slpj23ip+HtOpnNgnb2S5zU3CB26G/IDPGoy4RJB42wzFE46DRsstbW6tKHoKbhAxw==}
     engines: {node: '>=0.10.0'}
 
-  react-streaming@0.4.14:
-    resolution: {integrity: sha512-oAkpspUsjD6No7aEeraI/6dFf/8ELujppOvCpQLuMKVGEUB3EsjEmciVyar8kXcvMmeAyX/QRmTHlDw9RPputQ==}
+  react-streaming@0.4.15:
+    resolution: {integrity: sha512-3/olKmuCRYNLy0nFGXI54ErYKK1cfxJ3UoKn6pPZkknaHSn1APvJHE9MkKow/2s2CG94emxXoj/RMVpGF4Lxzg==}
     peerDependencies:
       react: '>=19'
       react-dom: '>=19'
@@ -2433,8 +2430,6 @@ snapshots:
   '@brillout/import@0.2.6': {}
 
   '@brillout/json-serializer@0.5.21': {}
-
-  '@brillout/picocolors@1.0.29': {}
 
   '@brillout/picocolors@1.0.30': {}
 
@@ -3941,11 +3936,11 @@ snapshots:
 
   react-refresh@0.18.0: {}
 
-  react-streaming@0.4.14(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  react-streaming@0.4.15(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       '@brillout/import': 0.2.6
       '@brillout/json-serializer': 0.5.21
-      '@brillout/picocolors': 1.0.29
+      '@brillout/picocolors': 1.0.30
       isbot-fast: 1.2.0
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
@@ -4249,7 +4244,7 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vike@0.4.250(react-streaming@0.4.14(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)):
+  vike@0.4.250(react-streaming@0.4.15(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)):
     dependencies:
       '@babel/core': 7.28.5
       '@babel/types': 7.28.5
@@ -4269,7 +4264,7 @@ snapshots:
       source-map-support: 0.5.21
       tinyglobby: 0.2.15
     optionalDependencies:
-      react-streaming: 0.4.14(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      react-streaming: 0.4.15(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       vite: 7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)
     transitivePeerDependencies:
       - supports-color
