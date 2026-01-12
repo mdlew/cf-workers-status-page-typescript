@@ -20,7 +20,7 @@
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-streaming": "^0.4.15",
-    "vike": "^0.4.250"
+    "vike": "^0.4.252"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260103.0",

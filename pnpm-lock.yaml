@@ -30,8 +30,8 @@ importers:
         specifier: ^0.4.15
         version: 0.4.15(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       vike:
-        specifier: ^0.4.250
-        version: 0.4.250(react-streaming@0.4.15(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(vite@7.3.1(@types/node@25.0.6)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0))
+        specifier: ^0.4.252
+        version: 0.4.252(react-streaming@0.4.15(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(vite@7.3.1(@types/node@25.0.6)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0))
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20260103.0
@@ -213,8 +213,8 @@ packages:
   '@brillout/require-shim@0.1.2':
     resolution: {integrity: sha512-3I4LRHnVZXoSAsEoni5mosq9l6eiJED58d9V954W4CIZ88AUfYBanWGBGbJG3NztaRTpFHEA6wB3Hn93BmmJdg==}
 
-  '@brillout/vite-plugin-server-entry@0.7.15':
-    resolution: {integrity: sha512-0ClgcmjkhJoHbI6KhbjZlXMeA9qn/EPLXEVssjCE6IVYnVb4bTYuq635c44n7jV3GkjcgFHCQWBmNw0OAGiUvQ==}
+  '@brillout/vite-plugin-server-entry@0.7.17':
+    resolution: {integrity: sha512-MfvSytYl51J2B+RrHvRXMdRNc1U2lHG/K9Gw05/jdPY2iYU2YQKdEzsPswfEWnt3fd1TrXF27h/fx5DIRn19jw==}
 
   '@cloudflare/kv-asset-handler@0.4.1':
     resolution: {integrity: sha512-Nu8ahitGFFJztxUml9oD/DLb7Z28C8cd8F46IVQ7y5Btz575pvMY8AqZsXkX7Gds29eCKdMgIHjIvzskHgPSFg==}
@@ -2040,8 +2040,8 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
-  vike@0.4.250:
-    resolution: {integrity: sha512-ZTsVEL3V4JT7hHqRbvjiQotoIGrwWTmh2RIzkbpNtUDhzbrMIVljcFuzLjzAvjpiL86gRL/bHSKS0DSnFPlmqw==}
+  vike@0.4.252:
+    resolution: {integrity: sha512-hH3q92yYupWth4fN6TYAK62JLmZELrWXUpna0+n20iEVFT+x917ah7q2zxR+oLhVq8eeDNPHn47OOMUCjUS9nw==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
@@ -2290,7 +2290,7 @@ snapshots:
 
   '@brillout/require-shim@0.1.2': {}
 
-  '@brillout/vite-plugin-server-entry@0.7.15':
+  '@brillout/vite-plugin-server-entry@0.7.17':
     dependencies:
       '@brillout/import': 0.2.6
       '@brillout/picocolors': 1.0.30
@@ -4004,7 +4004,7 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vike@0.4.250(react-streaming@0.4.15(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(vite@7.3.1(@types/node@25.0.6)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)):
+  vike@0.4.252(react-streaming@0.4.15(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(vite@7.3.1(@types/node@25.0.6)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)):
     dependencies:
       '@babel/core': 7.28.5
       '@babel/types': 7.28.5
@@ -4012,7 +4012,7 @@ snapshots:
       '@brillout/json-serializer': 0.5.21
       '@brillout/picocolors': 1.0.30
       '@brillout/require-shim': 0.1.2
-      '@brillout/vite-plugin-server-entry': 0.7.15
+      '@brillout/vite-plugin-server-entry': 0.7.17
       cac: 6.7.14
       es-module-lexer: 1.7.0
       esbuild: 0.27.2
