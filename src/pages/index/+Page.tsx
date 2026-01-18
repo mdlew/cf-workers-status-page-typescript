@@ -1,6 +1,7 @@
 import { clsx } from 'clsx'
 
 import MonitorPanel from './components/MonitorPanel'
+import Icon from '#src/components/Icon'
 
 import type { IndexPageData } from './+data'
 
@@ -111,7 +112,7 @@ export default function Page() {
           rel='noreferrer'
           className='flex items-center gap-1'
         >
-          <span className='i-ic--outline-star size-4 animate-bounce' />
+          <Icon name='star' className='size-4 animate-bounce' />
           Get your status page
         </a>
       </footer>

@@ -1,6 +1,5 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
 import animate from 'tailwindcss-animate'
-import { addDynamicIconSelectors } from 'tailwindcss-plugin-iconify'
 
 import type { Config } from 'tailwindcss'
 
@@ -18,13 +17,6 @@ const config = {
   },
   plugins: [
     animate,
-    addDynamicIconSelectors({
-      prefix: 'i',
-      preprocessSets: {
-        'ic': '*',
-        'svg-spinners': '*',
-      },
-    }),
   ],
 } satisfies Config
 

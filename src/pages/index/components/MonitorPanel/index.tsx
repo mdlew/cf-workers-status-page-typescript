@@ -10,6 +10,8 @@ import { getDisplayDays, getHistoryDates } from '#src/worker/_helpers/datetime'
 import { parseLocation } from '#src/helpers/locations'
 import { Tooltip, TooltipContent, TooltipTrigger } from '#src/components/Tooltip'
 import { getChecksItemRenderStatus, getTargetDateChecksItem } from '#src/helpers/checks'
+import Icon from '#src/components/Icon'
+import Spinner from '#src/components/Spinner'
 
 export interface IMonitorPanelProps extends React.HTMLAttributes<HTMLDivElement> {
   allMonitors: Monitor[]
@@ -31,7 +33,7 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
   if (!data || !data.monitorHistoryData || Object.keys(data).length === 0) {
     return (
       <Empty>
-        <span className='i-svg-spinners--ring-resize mr-1 size-5' />
+        <Spinner className='mr-1 size-5' />
         No Data (
         {allMonitors.length}
         {' '}
@@ -152,7 +154,7 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                 {!!info.length && (
                   <Tooltip>
                     <TooltipTrigger className={clsx('size-5 text-slate-500 dark:text-slate-400')}>
-                      <span className={clsx('i-ic--outline-info size-full')} />
+                        <Icon name='info' className={clsx('size-full')} />
                     </TooltipTrigger>
                     <TooltipContent
                       as='ul'
@@ -180,12 +182,13 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                 && (!monitorConfig.method || monitorConfig.method.toUpperCase() === 'GET')
                 && (
                   <a
-                    className='i-ic--outline-open-in-new size-5 text-slate-500 dark:text-slate-400 hover:text-slate-400'
+                    className='size-5 text-slate-500 dark:text-slate-400 hover:text-slate-400'
                     href={monitorConfig.url}
                     target='_blank'
                     rel='noreferrer'
                     title='Open in new tab'
                   >
+                    <Icon name='external-link' className='size-full' />
                     <span className='sr-only'>{title}</span>
                   </a>
                 )}
