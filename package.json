@@ -13,7 +13,7 @@
     "postinstall": "pnpm run public:assets"
   },
   "dependencies": {
-    "@cloudflare/kv-asset-handler": "^0.4.1",
+    "@cloudflare/kv-asset-handler": "^0.4.2",
     "@floating-ui/react": "^0.27.16",
     "clsx": "^2.1.1",
     "papaparse": "^5.5.3",
