@@ -2,3 +2,4 @@
 /dist/
 .wrangler
 src/worker/static-assets/public.ts
+worker-configuration.d.ts
