@@ -190,7 +190,8 @@ To verify your Dependabot configuration:
 
 1. **Check Configuration Syntax**
    - GitHub will show a validation error if syntax is wrong
-   - Visit: `https://github.com/YOUR_ORG/YOUR_REPO/network/updates`
+   - Visit: `https://github.com/[OWNER]/[REPO]/network/updates`
+   - Replace `[OWNER]` and `[REPO]` with your repository details
 
 2. **View Dependabot Status**
    - Go to: Repository → Insights → Dependency graph → Dependabot
