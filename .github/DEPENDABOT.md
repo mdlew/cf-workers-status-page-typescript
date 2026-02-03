@@ -24,8 +24,8 @@ This is the main configuration file that controls Dependabot's behavior:
 
 This workflow automates the merge process for safe dependency updates:
 
-- **Patch updates** (`1.0.0` → `1.0.1`): Auto-merged
-- **Minor updates** (`1.0.0` → `1.1.0`): Auto-merged
+- **Patch updates** (`1.0.0` → `1.0.1`): Commented for manual merge
+- **Minor updates** (`1.0.0` → `1.1.0`): Commented for manual merge
 - **Major updates** (`1.0.0` → `2.0.0`): Require manual review
 
 ## Key Features
@@ -69,9 +69,9 @@ This makes it easier to:
 
 The auto-merge workflow has three behaviors:
 
-**Auto-merge (patch & minor):**
+**Comment for review (patch & minor):**
 ```
-✅ Automatically merged after CI passes
+💬 Commented with guidance for manual review and merge
 ```
 
 **Manual review (major):**
@@ -106,8 +106,8 @@ Set to `auto` - Dependabot will automatically rebase PRs when the base branch ch
    - These are labeled with `security` by GitHub
    - Prioritize reviewing and merging security updates
 
-3. **Keep CI Green**
-   - Auto-merge only works if CI passes
+3. **Keep CI Green (Optional)**
+   - When CI checks are configured and marked as required, auto-merge only proceeds after they pass
    - Ensure your test suite covers critical paths
    - Fix failing tests promptly
 
@@ -129,7 +129,7 @@ Set to `auto` - Dependabot will automatically rebase PRs when the base branch ch
 3. **React Version Synchronization**
    - This project enforces matching `react` and `react-dom` versions
    - The preinstall hook will fail if versions don't match
-   - Dependabot is configured to handle this automatically
+   - Dependabot's `react` group configuration (see `.github/dependabot.yml`) ensures these packages are always updated together
 
 ## Troubleshooting
 

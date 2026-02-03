@@ -35,11 +35,11 @@ I've reviewed and significantly improved the Dependabot configuration for this r
 ### 2. Enhanced `.github/workflows/dependabot-auto-merge.yml`
 
 **Before:** Only auto-merged patch updates  
-**After:** Smarter auto-merge with safety guardrails:
+**After:** Smarter handling with safety guardrails:
 
-- ✅ **Expanded Auto-merge**: Both patch AND minor updates (previously patch only)
-  - Patch: `1.0.0` → `1.0.1` ✅ Auto-merged
-  - Minor: `1.0.0` → `1.1.0` ✅ Auto-merged
+- ✅ **Comment on patch/minor updates**: Adds guidance comment for manual review
+  - Patch: `1.0.0` → `1.0.1` 💬 Commented for manual merge
+  - Minor: `1.0.0` → `1.1.0` 💬 Commented for manual merge
   - Major: `1.0.0` → `2.0.0` ⚠️ Manual review required
 
 - ✅ **Major Update Handling**: 
@@ -67,8 +67,8 @@ Created comprehensive guide covering:
 - **After**: 2-3 grouped PRs per week → much more manageable
 
 ### 🔒 Improved Security Posture
-- **Automatic security updates**: Still create immediate PRs
-- **Minor updates auto-merged**: Security patches applied faster
+- **Security updates**: Dependabot security PRs are created independently of the weekly schedule, but minor/patch security fixes that match dependency groups will be included in the next grouped run instead of always opening as immediate standalone PRs
+- **Minor updates commented**: Many security-related fixes that arrive as minor or patch updates are commented for manual review, allowing quick validation and merge
 - **Major updates flagged**: Breaking changes reviewed carefully
 
 ### 📊 Better Organization
@@ -77,8 +77,8 @@ Created comprehensive guide covering:
 - **Predictable schedule**: Know when to expect updates
 
 ### ⚡ Faster Update Cycle
-- **Auto-merge safe updates**: Patch and minor versions merge automatically after CI passes
-- **Less manual work**: More time for feature development
+- **Commented updates**: Patch and minor versions get a guidance comment for manual review
+- **Less manual overhead**: Clear guidance reduces decision fatigue
 
 ## Recommendations
 
@@ -93,9 +93,9 @@ Created comprehensive guide covering:
    ```
    This ensures someone is notified when PRs require manual review.
 
-2. **Verify CI Pipeline**
+2. **(Optional) Add and Configure CI Pipeline**
    
-   Auto-merge only works if CI checks pass. Ensure:
+   Auto-merge is safest when CI checks run on pull requests. This repository does not currently define any CI workflow, so if you want automated validation before auto-merge, add a CI workflow under `.github/workflows` and ensure:
    - Build succeeds with current dependencies
    - Tests cover critical functionality
    - CI runs on all PRs (including Dependabot PRs)
@@ -104,7 +104,7 @@ Created comprehensive guide covering:
    
    After next Monday (first scheduled run):
    - Check that grouped PRs are created correctly
-   - Verify auto-merge works for patch/minor updates
+   - Verify comments are added for patch/minor updates
    - Review major update PRs for proper labeling
 
 ### Optional Enhancements
@@ -155,14 +155,14 @@ To verify everything works:
    - Dependabot will run on schedule
    - Watch for grouped PRs
 
-3. **Verify Auto-merge**
-   - Patch/minor PRs should have "auto-merge enabled" badge
+3. **Verify Workflow Behavior**
+   - Patch/minor PRs should have a guidance comment
    - Major PRs should have comment and label
 
 ## Additional Notes
 
 ### React Version Enforcement
-This project has a preinstall hook that enforces matching `react` and `react-dom` versions. Dependabot's grouping configuration ensures these are updated together, preventing version mismatch issues.
+This project has a preinstall hook that enforces matching `react` and `react-dom` versions. Dependabot's grouping configuration includes a specific `react` group that ensures these packages are updated together, preventing version mismatch issues.
 
 ### pnpm Compatibility
 The configuration works seamlessly with pnpm. Dependabot handles pnpm lockfiles correctly.
@@ -181,7 +181,7 @@ Refer to `.github/DEPENDABOT.md` for:
 ## Summary
 
 ✅ **Reduced PR noise** (10-15 PRs → 2-3 PRs per week)  
-✅ **Faster security updates** (auto-merge for safe updates)  
+✅ **Clearer guidance** (comments for safe updates)  
 ✅ **Better organization** (labels, commit conventions, scheduling)  
 ✅ **Comprehensive documentation** (for future maintainers)  
 ✅ **Production-ready** (validated and tested)
