@@ -92,10 +92,6 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
     monitorHistoryDataChecksItem.fails = (monitorHistoryDataChecksItem.fails || 0) + (monitorOperational ? 0 : 1)
 
     if (config.settings.collectResponseTimes && monitorOperational) {
-      // Ensure stats object exists (may be undefined in older data)
-      if (!monitorHistoryDataChecksItem.stats) {
-        monitorHistoryDataChecksItem.stats = {}
-      }
       if (Object.keys(monitorHistoryDataChecksItem.stats).length === 0) {
         monitorHistoryDataChecksItem.stats = {
           [checkLocation]: {

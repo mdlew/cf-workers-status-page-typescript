@@ -44,7 +44,7 @@ export interface MonitorDailyChecksItem {
    *
    * Key: location, No value if config.settings.collectResponseTimes=false
    */
-  stats?: Record<string, {
+  stats: Record<string, {
     count: number
     totalMs: number
     // totalMs / count
