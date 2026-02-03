@@ -21,7 +21,7 @@ export function getChecksItemStatus(checksItem?: MonitorDailyChecksItem) {
           status = 'has-incident'
         }
       } else {
-        // If stats is not available but there are failures, assume has-incident
+        // Stats not available; default to has-incident since we know fails > 0 from the outer condition
         status = 'has-incident'
       }
     }
