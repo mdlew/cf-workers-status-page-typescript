@@ -11,7 +11,7 @@ export interface CustomPageContext {
 
 export var nonce: string = ""; // Global nonce variable
 
-type EarlyHint = {
+interface EarlyHint {
   earlyHintLink: string; // Early hint value
   assetType:
     | "image"
@@ -31,7 +31,7 @@ type EarlyHint = {
   src: string; // Asset's URL
   isEntry: boolean; // true  ⇒ asset is an entry
   // false ⇒ asset is a dependency of an entry
-};
+}
 
 export async function handleSsr(
   env: Env,
@@ -43,10 +43,10 @@ export async function handleSsr(
   nonce = btoa(String.fromCharCode(...array));
 
   const pageContextInit: CustomPageContext = {
-    env: env,
+    env,
     urlOriginal: url,
     fetch: (...args: Parameters<typeof fetch>) => fetch(...args),
-    userAgent: userAgent,
+    userAgent,
     cspNonce: nonce, // Include the nonce in the page context
   };
   const pageContext = await renderPage(pageContextInit);

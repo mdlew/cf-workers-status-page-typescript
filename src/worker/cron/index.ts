@@ -1,14 +1,14 @@
 /* eslint-disable no-console */
-import { getCheckLocation } from '../_helpers/location'
-import { prepareData, upsertData } from '../_helpers/store'
-import { getNotificationCount, getNotifications } from '../_helpers/notifications'
+import type { MonitorDailyChecksItem, MonitorLastCheck } from '../_helpers/store'
+import { config } from '#src/config'
 import { getDate } from '../_helpers/datetime'
+import { getCheckLocation } from '../_helpers/location'
+
+import { getNotificationCount, getNotifications } from '../_helpers/notifications'
+
+import { prepareData, upsertData } from '../_helpers/store'
 
 import { Subrequests } from './Subrequests'
-
-import type { MonitorDailyChecksItem, MonitorLastCheck } from '../_helpers/store'
-
-import { config } from '#src/config'
 
 const defaultSubrequestsLimit = 50
 

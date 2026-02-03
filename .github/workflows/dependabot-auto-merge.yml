@@ -56,6 +56,8 @@ jobs:
       - name: Label Dependabot PRs
         # Add helpful labels based on update type
         # Only runs when UPDATE_TYPE matches one of the expected semver types
+        # Continue on error if labels don't exist in the repository
+        continue-on-error: true
         if: |
           steps.metadata.outputs.update-type == 'version-update:semver-major' ||
           steps.metadata.outputs.update-type == 'version-update:semver-minor' ||

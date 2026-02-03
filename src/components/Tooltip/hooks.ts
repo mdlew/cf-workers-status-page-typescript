@@ -1,4 +1,4 @@
-import * as React from 'react'
+import type { Placement } from '@floating-ui/react'
 import {
   autoUpdate,
   flip,
@@ -12,7 +12,7 @@ import {
   useRole,
 } from '@floating-ui/react'
 
-import type { Placement } from '@floating-ui/react'
+import * as React from 'react'
 
 export interface TooltipOptions {
   initialOpen?: boolean

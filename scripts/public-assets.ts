@@ -1,7 +1,7 @@
-import { fileURLToPath } from 'node:url'
+import type { Dirent } from 'node:fs'
 import * as fs from 'node:fs/promises'
-import { Dirent } from 'node:fs'
 import * as path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import dedent from 'dedent'
 
 const __filename = fileURLToPath(import.meta.url)

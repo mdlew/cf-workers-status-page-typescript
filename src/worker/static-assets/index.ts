@@ -2,13 +2,13 @@
 // This code was provided by Cloudflare Workers
 // ********************************************
 
+import type { FetchHandler } from '#src/types'
+import type { Options } from '@cloudflare/kv-asset-handler'
+
 import { getAssetFromKV } from '@cloudflare/kv-asset-handler'
 // eslint-disable-next-line ts/ban-ts-comment
 // @ts-expect-error
 import manifestJSON from '__STATIC_CONTENT_MANIFEST'
-
-import type { Options } from '@cloudflare/kv-asset-handler'
-import type { FetchHandler } from '#src/types'
 
 const assetManifest = JSON.parse(manifestJSON)
 

@@ -4,8 +4,8 @@
  * It should be run as a preinstall hook to prevent version mismatches.
  */
 
-const { readFileSync } = require('fs');
-const { join } = require('path');
+const { readFileSync } = require('node:fs');
+const { join } = require('node:path');
 
 try {
   const packageJsonPath = join(process.cwd(), 'package.json');

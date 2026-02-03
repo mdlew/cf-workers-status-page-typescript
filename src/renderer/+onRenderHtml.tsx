@@ -1,14 +1,14 @@
+import type { OnRenderHtmlAsync } from 'vike/types'
+import { config } from '#src/config'
 // https://vike.dev/onRenderHtml
-import React from 'react'
+import * as React from 'react'
+
 import { renderToStream } from 'react-streaming/server'
 import { escapeInject } from 'vike/server'
 
 import { PageLayout } from './PageLayout'
+
 import './_global.css'
-
-import type { OnRenderHtmlAsync } from 'vike/types'
-
-import { config } from '#src/config'
 
 export const onRenderHtml: OnRenderHtmlAsync = async (pageContext) => {
   const { Page, pageProps } = pageContext

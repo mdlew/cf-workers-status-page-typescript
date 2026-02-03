@@ -1,10 +1,11 @@
-import * as React from 'react'
+import type {TooltipOptions} from './hooks';
 import {
   FloatingPortal,
   useMergeRefs,
 } from '@floating-ui/react'
 
-import { TooltipContext, type TooltipOptions, useTooltip, useTooltipContext } from './hooks'
+import * as React from 'react'
+import { TooltipContext,  useTooltip, useTooltipContext } from './hooks'
 
 // Reusable tooltip component ref: https://floating-ui.com/docs/tooltip#examples
 export function Tooltip({

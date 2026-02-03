@@ -1,7 +1,7 @@
-import defaultTheme from 'tailwindcss/defaultTheme'
+import type { Config } from 'tailwindcss'
 import animate from 'tailwindcss-animate'
 
-import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 const config = {
   //darkMode: ['class'],
