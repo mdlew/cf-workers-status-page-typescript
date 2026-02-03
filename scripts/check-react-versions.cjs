@@ -32,10 +32,10 @@ try {
 
   console.log(`✓ React versions are synchronized (${reactVersion})`);
 } catch (error) {
-  if (error.code === 'ENOENT') {
-    console.error('Error: package.json not found in current directory');
-  } else if (error instanceof SyntaxError) {
+  if (error instanceof SyntaxError) {
     console.error('Error: package.json contains invalid JSON');
+  } else if (error.code === 'ENOENT') {
+    console.error('Error: package.json not found in current directory');
   } else {
     console.error('Error reading package.json:', error.message);
   }
