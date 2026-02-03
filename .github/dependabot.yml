@@ -1,19 +1,108 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+# Dependabot configuration for automated dependency updates and security patches
+# Documentation: https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
 version: 2
 updates:
-  # Enable version updates for npm
+  # NPM Dependencies - Production and Development packages
   - package-ecosystem: "npm"
-    # Look for `package.json` and `lock` files in the `root` directory
     directory: "/"
-    # Check the npm registry for updates every day (weekdays)
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    
+    # PR Management - Limit number of open PRs to avoid overwhelming maintainers
+    open-pull-requests-limit: 10
+    
+    # Grouping Strategy - Reduce PR noise by grouping related updates
+    groups:
+      # Group all development dependencies together (patch & minor updates)
+      development-dependencies:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
+      
+      # Group production dependencies by update type
+      production-dependencies-minor:
+        dependency-type: "production"
+        update-types:
+          - "minor"
+          - "patch"
+      
+      # Keep major updates separate for careful review
+      # (Major updates are not grouped and will create individual PRs)
+    
+    # Commit Message Configuration - Consistent commit messages
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(deps-dev)"
+      include: "scope"
+    
+    # Labels - Add labels for easier PR filtering and automation
+    labels:
+      - "dependencies"
+      - "npm"
+    
+    # Reviewers - Optional: uncomment and add GitHub usernames for automatic review requests
+    reviewers:
+      - "mdlew"
+    
+    # Assignees - Optional: uncomment and add GitHub usernames for automatic assignment
+    assignees:
+      - "mdlew"
+    
+    # Rebase Strategy - Keep PRs up to date with base branch
+    rebase-strategy: "auto"
+    
+    # Version Requirements - Allow both updates to manifest and lockfile
+    versioning-strategy: "auto"
+    
+    # Target Branch - Explicitly set to 'master' (this repository's default branch)
+    # Note: Remove this line to auto-detect the default branch if it changes
+    target-branch: "master"
+    
+    # Ignore specific dependencies or versions if needed
+    # ignore:
+    #   - dependency-name: "package-name"
+    #     versions: ["1.x", "2.x"]
+
+  # GitHub Actions - Keep workflow actions up to date
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      # Check for updates to GitHub Actions every week
       interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    
+    # PR Management
+    open-pull-requests-limit: 5
+    
+    # Grouping - Group all GitHub Actions updates together
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    
+    # Commit Message Configuration
+    commit-message:
+      prefix: "chore(ci)"
+      include: "scope"
+    
+    # Labels
+    labels:
+      - "dependencies"
+      - "github-actions"
+    
+    # Reviewers - Optional
+    reviewers:
+      - "mdlew"
+    
+    # Assignees - Optional
+    assignees:
+      - "mdlew"
+    
+    # Rebase Strategy
+    rebase-strategy: "auto"

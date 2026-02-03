@@ -1,5 +1,10 @@
 name: Dependabot auto-merge
-on: pull_request
+
+# Trigger on pull request events (opened, synchronized, reopened)
+# This allows auto-merge to be re-evaluated when PRs are updated
+on: 
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
@@ -8,6 +13,7 @@ permissions:
 jobs:
   dependabot:
     runs-on: ubuntu-latest
+    # Only run for Dependabot PRs
     if: github.actor == 'dependabot[bot]'
     steps:
       - name: Dependabot metadata
@@ -15,9 +21,43 @@ jobs:
         uses: dependabot/fetch-metadata@v2
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
-      - name: Enable auto-merge for Dependabot PRs
-        if: steps.metadata.outputs.update-type == 'version-update:semver-patch'
+      
+      - name: Enable auto-merge for patch and minor updates
+        # Auto-merge patch and minor version updates (safer updates)
+        # Major updates require manual review due to potential breaking changes
+        if: |
+          steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+          steps.metadata.outputs.update-type == 'version-update:semver-minor'
         run: gh pr merge --auto --squash "$PR_URL"
         env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Comment on major version updates
+        # Add a comment on major version updates to remind about manual review
+        if: steps.metadata.outputs.update-type == 'version-update:semver-major'
+        run: |
+          gh pr comment "$PR_URL" --body "🔍 **Major version update detected**
+
+          This PR contains a major version update which may include breaking changes.
+          Please review the changelog and test thoroughly before merging.
+
+          To merge this PR, manually review and approve it."
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Label Dependabot PRs
+        # Add helpful labels based on update type
+        run: |
+          if [[ "$UPDATE_TYPE" == "version-update:semver-major" ]]; then
+            gh pr edit "$PR_URL" --add-label "major-update"
+          elif [[ "$UPDATE_TYPE" == "version-update:semver-minor" ]]; then
+            gh pr edit "$PR_URL" --add-label "minor-update"
+          else
+            gh pr edit "$PR_URL" --add-label "patch-update"
+          fi
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          UPDATE_TYPE: ${{ steps.metadata.outputs.update-type }}
