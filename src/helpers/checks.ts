@@ -9,7 +9,7 @@ export function getChecksItemStatus(checksItem?: MonitorDailyChecksItem) {
   if (checksItem) {
     if (checksItem.fails === 0) {
       status = 'all-good'
-    } else {
+    } else if (checksItem.stats) {
       const checksTotalCount = Object.values(checksItem.stats).reduce((previous, current) => {
         return previous + current.count
       }, 0)
