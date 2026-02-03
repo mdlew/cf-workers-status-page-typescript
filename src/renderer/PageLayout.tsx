@@ -1,6 +1,6 @@
-import { PageContextProvider } from './usePageContext'
-
 import type { PageContext } from 'vike/types'
+
+import { PageContextProvider } from './usePageContext'
 
 export interface PageLayoutProps {
   pageContext: PageContext

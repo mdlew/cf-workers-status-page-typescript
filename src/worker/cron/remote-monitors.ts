@@ -1,6 +1,6 @@
-import { upsertRemoteMonitors } from '../_helpers/store'
-
 import getRemoteMonitors from '#src/helpers/monitors'
+
+import { upsertRemoteMonitors } from '../_helpers/store'
 
 // Use cron task to update remote monitors to reduce SSR CPU time,
 // it fetch and parse CSV data to JSON, the task seems not easy with limited CPU time.

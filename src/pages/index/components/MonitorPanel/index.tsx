@@ -1,17 +1,17 @@
-import { clsx } from 'clsx'
-import React from 'react'
-
-import Empty from './Empty'
-
-import type { DataV1, MonitorAllData } from '#src/worker/_helpers/store'
 import type { Monitor } from '#src/types'
+import type { DataV1, MonitorAllData } from '#src/worker/_helpers/store'
 
-import { getDisplayDays, getHistoryDates } from '#src/worker/_helpers/datetime'
-import { parseLocation } from '#src/helpers/locations'
-import { Tooltip, TooltipContent, TooltipTrigger } from '#src/components/Tooltip'
-import { getChecksItemRenderStatus, getTargetDateChecksItem } from '#src/helpers/checks'
 import Icon from '#src/components/Icon'
+
 import Spinner from '#src/components/Spinner'
+import { Tooltip, TooltipContent, TooltipTrigger } from '#src/components/Tooltip'
+
+import { getChecksItemRenderStatus, getTargetDateChecksItem } from '#src/helpers/checks'
+import { parseLocation } from '#src/helpers/locations'
+import { getDisplayDays, getHistoryDates } from '#src/worker/_helpers/datetime'
+import { clsx } from 'clsx'
+import * as React from 'react'
+import Empty from './Empty'
 
 export interface IMonitorPanelProps extends React.HTMLAttributes<HTMLDivElement> {
   allMonitors: Monitor[]

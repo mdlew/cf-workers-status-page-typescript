@@ -1,8 +1,8 @@
-import Papa from 'papaparse'
-
 import type { Monitor } from '#src/types'
 
 import { config } from '#src/config'
+
+import Papa from 'papaparse'
 
 export const fetchFailedMsg = 'Fetch failed'
 

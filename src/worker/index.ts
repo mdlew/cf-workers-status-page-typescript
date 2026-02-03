@@ -1,11 +1,10 @@
-import { handleSsr } from './ssr'
-import { handleStaticAssets } from './static-assets'
-import { isAssetUrl } from './static-assets/helpers'
+import type { FetchHandler } from '#src/types'
 import { handleFetchError } from './_helpers'
 import { handleCronTrigger } from './cron'
-import { handleRemoteMonitors } from './cron/remote-monitors'
+import { handleSsr } from './ssr'
+import { handleStaticAssets } from './static-assets'
 
-import type { FetchHandler } from '#src/types'
+import { isAssetUrl } from './static-assets/helpers'
 
 const handleFetchEvent: FetchHandler = async (request, env, context) => {
   const { url } = request

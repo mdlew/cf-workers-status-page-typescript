@@ -1,10 +1,11 @@
-import * as React from 'react'
+import type {TooltipOptions} from './hooks';
 import {
   FloatingPortal,
   useMergeRefs,
 } from '@floating-ui/react'
 
-import { TooltipContext, type TooltipOptions, useTooltip, useTooltipContext } from './hooks'
+import * as React from 'react'
+import { TooltipContext,  useTooltip, useTooltipContext } from './hooks'
 
 // Reusable tooltip component ref: https://floating-ui.com/docs/tooltip#examples
 export function Tooltip({
@@ -15,16 +16,13 @@ export function Tooltip({
   // or other positioning options.
   const tooltip = useTooltip(options)
   return (
-    <TooltipContext.Provider value={tooltip}>
+    <TooltipContext value={tooltip}>
       {children}
-    </TooltipContext.Provider>
+    </TooltipContext>
   )
 }
 
-export const TooltipTrigger = React.forwardRef<
-  HTMLElement,
-  React.HTMLProps<HTMLElement> & { asChild?: boolean }
->(({ children, asChild = false, ...props }, propRef) => {
+export const TooltipTrigger = ({ ref: propRef, children, asChild = false, ...props }: React.HTMLProps<HTMLElement> & { asChild?: boolean } & { ref?: React.RefObject<HTMLElement | null> }) => {
   const context = useTooltipContext()
   const childrenRef = (children as any).ref
   const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef])
@@ -54,14 +52,11 @@ export const TooltipTrigger = React.forwardRef<
       {children}
     </button>
   )
-})
+}
 
 TooltipTrigger.displayName = 'TooltipTrigger'
 
-export const TooltipContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLProps<HTMLDivElement>
->(({ style, ...props }, propRef) => {
+export const TooltipContent = ({ ref: propRef, style, ...props }: React.HTMLProps<HTMLDivElement> & { ref?: React.RefObject<HTMLDivElement | null> }) => {
   const context = useTooltipContext()
   const ref = useMergeRefs([context.refs.setFloating, propRef])
 
@@ -81,6 +76,6 @@ export const TooltipContent = React.forwardRef<
       />
     </FloatingPortal>
   )
-})
+}
 
 TooltipContent.displayName = 'TooltipContent'

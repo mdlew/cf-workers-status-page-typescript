@@ -1,14 +1,14 @@
-import { useState, useEffect, useRef, useDeferredValue } from 'react'
-import { clsx } from 'clsx'
-
-import MonitorPanel from './components/MonitorPanel'
+import type { IndexPageData } from './+data'
 import Icon from '#src/components/Icon'
 
-import type { IndexPageData } from './+data'
-
-import { usePageContext } from '#src/renderer/usePageContext'
 import { config } from '#src/config'
 import { useMounted } from '#src/hooks/mounted'
+
+import { usePageContext } from '#src/renderer/usePageContext'
+
+import { clsx } from 'clsx'
+import { useDeferredValue, useEffect, useRef, useState } from 'react'
+import MonitorPanel from './components/MonitorPanel'
 
 export default function Page() {
   const { data: { allMonitors, kvData, filter } } = usePageContext<IndexPageData>()

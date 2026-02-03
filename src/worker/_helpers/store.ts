@@ -1,10 +1,10 @@
-import { getHistoryDates } from './datetime'
-
 import type { Monitor } from '#src/types'
 
 import { config } from '#src/config'
+
 import { aMiB, memorySizeOf } from '#src/helpers/memory'
 import { ensureWorkerEnv } from '#src/worker/_helpers'
+import { getHistoryDates } from './datetime'
 
 export const DATA_KEY = 'data-v1'
 export const REMOTE_MONITORS_KEY = 'remote-monitors-v1'

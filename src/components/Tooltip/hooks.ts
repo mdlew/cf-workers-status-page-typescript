@@ -1,4 +1,4 @@
-import * as React from 'react'
+import type { Placement } from '@floating-ui/react'
 import {
   autoUpdate,
   flip,
@@ -12,7 +12,7 @@ import {
   useRole,
 } from '@floating-ui/react'
 
-import type { Placement } from '@floating-ui/react'
+import * as React from 'react'
 
 export interface TooltipOptions {
   initialOpen?: boolean
@@ -78,7 +78,7 @@ export type ContextType = ReturnType<typeof useTooltip> | null
 export const TooltipContext = React.createContext<ContextType>(null)
 
 export function useTooltipContext() {
-  const context = React.useContext(TooltipContext)
+  const context = React.use(TooltipContext)
 
   if (context == null) {
     throw new Error('Tooltip components must be wrapped in <Tooltip />')
