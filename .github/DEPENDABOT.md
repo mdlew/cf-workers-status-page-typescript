@@ -129,7 +129,7 @@ Set to `auto` - Dependabot will automatically rebase PRs when the base branch ch
 3. **React Version Synchronization**
    - This project enforces matching `react` and `react-dom` versions
    - The preinstall hook will fail if versions don't match
-   - When reviewing Dependabot PRs, ensure `react` and `react-dom` remain on the same version (or configure Dependabot groups in `.github/dependabot.yml` to update them together)
+   - Dependabot's `react` group configuration (see `.github/dependabot.yml`) ensures these packages are always updated together
 
 ## Troubleshooting
 
