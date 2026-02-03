@@ -257,9 +257,9 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                         <div className='font-semibold'>{dateItem}</div>
                         {statusStr && <div className={clsx(textColor, 'font-semibold')}>{statusStr}</div>}
                         <div />
-                        {targetDateChecksItem
+                        {targetDateChecksItem && targetDateChecksItem.stats
                           ? Object.keys(targetDateChecksItem.stats).map((item) => {
-                            const stat = targetDateChecksItem.stats[item]
+                            const stat = targetDateChecksItem.stats![item]
                             return (
                               <div key={item}>
                                 <span className={clsx(`after:content-[':_']`)}>
