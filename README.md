@@ -205,6 +205,10 @@ Use [crontab.guru](https://crontab.guru/) to create custom schedules.
 - **Build required** - Changes require a full build to be reflected
 - **No hot reload** - Manual rebuild and restart needed for changes
 
+### Dependency Management
+
+**React Version Synchronization**: This project enforces that `react` and `react-dom` versions must always match. A preinstall hook automatically validates this before package installation to prevent version mismatches that could cause build or runtime issues.
+
 ### Project Structure
 
 ```
