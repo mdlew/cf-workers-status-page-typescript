@@ -16,13 +16,16 @@ export function Tooltip({
   // or other positioning options.
   const tooltip = useTooltip(options)
   return (
-    <TooltipContext value={tooltip}>
+    <TooltipContext.Provider value={tooltip}>
       {children}
-    </TooltipContext>
+    </TooltipContext.Provider>
   )
 }
 
-export const TooltipTrigger = ({ ref: propRef, children, asChild = false, ...props }: React.HTMLProps<HTMLElement> & { asChild?: boolean } & { ref?: React.RefObject<HTMLElement | null> }) => {
+export const TooltipTrigger = React.forwardRef<
+  HTMLElement,
+  React.HTMLProps<HTMLElement> & { asChild?: boolean }
+>(({ children, asChild = false, ...props }, propRef) => {
   const context = useTooltipContext()
   const childrenRef = (children as any).ref
   const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef])
@@ -52,11 +55,14 @@ export const TooltipTrigger = ({ ref: propRef, children, asChild = false, ...pro
       {children}
     </button>
   )
-}
+})
 
 TooltipTrigger.displayName = 'TooltipTrigger'
 
-export const TooltipContent = ({ ref: propRef, style, ...props }: React.HTMLProps<HTMLDivElement> & { ref?: React.RefObject<HTMLDivElement | null> }) => {
+export const TooltipContent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLProps<HTMLDivElement>
+>(({ style, ...props }, propRef) => {
   const context = useTooltipContext()
   const ref = useMergeRefs([context.refs.setFloating, propRef])
 
@@ -76,6 +82,6 @@ export const TooltipContent = ({ ref: propRef, style, ...props }: React.HTMLProp
       />
     </FloatingPortal>
   )
-}
+})
 
 TooltipContent.displayName = 'TooltipContent'
