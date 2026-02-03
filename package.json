@@ -10,6 +10,7 @@
     "deploy": "pnpm run build && wrangler deploy --env production",
     "prepare": "husky",
     "wrangler:types": "wrangler types",
+    "preinstall": "node ./scripts/check-react-versions.cjs",
     "postinstall": "pnpm run public:assets"
   },
   "dependencies": {

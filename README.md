@@ -204,6 +204,7 @@ Use [crontab.guru](https://crontab.guru/) to create custom schedules.
 - **✅ Use `pnpm run preview` instead** - This uses Wrangler dev mode which is fully functional
 - **Build required** - Changes require a full build to be reflected
 - **No hot reload** - Manual rebuild and restart needed for changes
+- **React version sync** - `react` and `react-dom` versions must always match. A preinstall hook validates this automatically.
 
 ### Project Structure
 
