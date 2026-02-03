@@ -107,7 +107,7 @@ Set to `auto` - Dependabot will automatically rebase PRs when the base branch ch
    - Prioritize reviewing and merging security updates
 
 3. **Keep CI Green (Optional)**
-   - When CI checks are configured and marked as required, auto-merge only proceeds after they pass
+   - When CI checks are configured and marked as required, they help validate Dependabot PRs before you manually merge them
    - Ensure your test suite covers critical paths
    - Fix failing tests promptly
 

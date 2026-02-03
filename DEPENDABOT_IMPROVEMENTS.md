@@ -95,7 +95,7 @@ Created comprehensive guide covering:
 
 2. **(Optional) Add and Configure CI Pipeline**
    
-   Auto-merge is safest when CI checks run on pull requests. This repository does not currently define any CI workflow, so if you want automated validation before auto-merge, add a CI workflow under `.github/workflows` and ensure:
+   The current Dependabot workflow only adds guidance comments for manual review and does not auto-merge pull requests. CI checks on pull requests are still highly recommended—if you want automated validation before you manually merge Dependabot updates, add a CI workflow under `.github/workflows` and ensure:
    - Build succeeds with current dependencies
    - Tests cover critical functionality
    - CI runs on all PRs (including Dependabot PRs)
