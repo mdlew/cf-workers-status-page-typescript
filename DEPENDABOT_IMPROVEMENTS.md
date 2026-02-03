@@ -35,7 +35,7 @@ I've reviewed and significantly improved the Dependabot configuration for this r
 ### 2. Enhanced `.github/workflows/dependabot-auto-merge.yml`
 
 **Before:** Only auto-merged patch updates  
-**After:** Smarter handling with safety guardrails:
+**After:** Adds guidance comments instead of auto-merging:
 
 - ✅ **Comment on patch/minor updates**: Adds guidance comment for manual review
   - Patch: `1.0.0` → `1.0.1` 💬 Commented for manual merge
@@ -95,7 +95,7 @@ Created comprehensive guide covering:
 
 2. **(Optional) Add and Configure CI Pipeline**
    
-   Auto-merge is safest when CI checks run on pull requests. This repository does not currently define any CI workflow, so if you want automated validation before auto-merge, add a CI workflow under `.github/workflows` and ensure:
+   The current Dependabot workflow only adds guidance comments for manual review and does not auto-merge pull requests. CI checks on pull requests are still highly recommended—if you want automated validation before you manually merge Dependabot updates, add a CI workflow under `.github/workflows` and ensure:
    - Build succeeds with current dependencies
    - Tests cover critical functionality
    - CI runs on all PRs (including Dependabot PRs)
@@ -136,7 +136,7 @@ Created comprehensive guide covering:
    - Don't let major update PRs sit open for weeks
 
 2. **Keep Dependencies Current**
-   - Merge minor/patch updates regularly (or let auto-merge handle it)
+   - Merge minor/patch updates regularly after reviewing guidance comments
    - Don't disable Dependabot due to temporary issues
 
 3. **Monitor Security Alerts**

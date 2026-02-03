@@ -8,7 +8,7 @@ Dependabot is configured to automatically:
 - Check for dependency updates weekly (every Monday at 09:00 UTC)
 - Create pull requests for outdated dependencies
 - Group related updates to reduce PR noise
-- Auto-merge safe updates (patch and minor versions)
+- Add guidance comments on safe updates (patch and minor versions) for manual review
 - Flag major updates for manual review
 
 ## Configuration Files
@@ -107,7 +107,7 @@ Set to `auto` - Dependabot will automatically rebase PRs when the base branch ch
    - Prioritize reviewing and merging security updates
 
 3. **Keep CI Green (Optional)**
-   - When CI checks are configured and marked as required, auto-merge only proceeds after they pass
+   - When CI checks are configured and marked as required, they help validate Dependabot PRs before you manually merge them
    - Ensure your test suite covers critical paths
    - Fix failing tests promptly
 
@@ -133,13 +133,12 @@ Set to `auto` - Dependabot will automatically rebase PRs when the base branch ch
 
 ## Troubleshooting
 
-### Dependabot PRs Not Auto-Merging
+### Dependabot PRs Requiring Action
 
-**Possible causes:**
-1. CI checks are failing
-2. Conflicts with base branch
-3. Major version update (requires manual review)
-4. PR was manually modified (disables auto-merge)
+**Common scenarios:**
+1. Conflicts with base branch
+2. Major version update (requires manual review)
+3. Security vulnerabilities that need immediate attention
 
 **Solution:** Review the PR checks and merge manually if appropriate.
 
@@ -197,16 +196,16 @@ To verify your Dependabot configuration:
    - Go to: Repository → Insights → Dependency graph → Dependabot
    - See last check time and any errors
 
-3. **Test Auto-Merge**
+3. **Verify Workflow Behavior**
    - Wait for next Dependabot PR
-   - Verify it has auto-merge enabled (if patch/minor)
+   - Verify guidance comments are added (for patch/minor updates)
    - Check that labels are applied correctly
 
 ## Summary
 
 This Dependabot configuration balances automation with safety:
 
-✅ **Automated**: Routine patch and minor updates  
+✅ **Guided**: Routine patch and minor updates receive guidance comments for manual review  
 🔍 **Manual Review**: Major version updates and breaking changes  
 📦 **Organized**: Grouped PRs reduce noise  
 🔒 **Secure**: Immediate security update PRs  
