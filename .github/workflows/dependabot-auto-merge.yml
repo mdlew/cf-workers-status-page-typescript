@@ -22,13 +22,19 @@ jobs:
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
       
-      - name: Enable auto-merge for patch and minor updates
-        # Auto-merge patch and minor version updates (safer updates)
-        # Major updates require manual review due to potential breaking changes
+      - name: Comment on patch and minor updates
+        # For patch and minor version updates, add a comment to guide manual review and merge
+        # This avoids unsafe auto-merging when no CI checks are configured on pull requests
         if: |
           steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
           steps.metadata.outputs.update-type == 'version-update:semver-minor'
-        run: gh pr merge --auto --squash "$PR_URL"
+        run: |
+          gh pr comment "$PR_URL" --body "✅ **Dependabot patch/minor update detected**
+
+          This PR updates dependencies with a patch or minor version change.
+
+          Please ensure that all relevant CI checks (if configured) have passed and that the
+          application still builds and runs as expected before merging this PR manually."
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -49,6 +55,11 @@ jobs:
       
       - name: Label Dependabot PRs
         # Add helpful labels based on update type
+        # Only runs when UPDATE_TYPE matches one of the expected semver types
+        if: |
+          steps.metadata.outputs.update-type == 'version-update:semver-major' ||
+          steps.metadata.outputs.update-type == 'version-update:semver-minor' ||
+          steps.metadata.outputs.update-type == 'version-update:semver-patch'
         run: |
           if [[ "$UPDATE_TYPE" == "version-update:semver-major" ]]; then
             gh pr edit "$PR_URL" --add-label "major-update"

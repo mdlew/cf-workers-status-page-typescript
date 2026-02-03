@@ -24,12 +24,19 @@ updates:
           - "minor"
           - "patch"
       
-      # Group production dependencies by update type
-      production-dependencies-minor:
+      # Group production dependencies (patch & minor updates)
+      production-dependencies:
         dependency-type: "production"
         update-types:
           - "minor"
           - "patch"
+      
+      # Ensure react and react-dom are always updated together
+      # This prevents version mismatch issues with the preinstall hook
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
       
       # Keep major updates separate for careful review
       # (Major updates are not grouped and will create individual PRs)
