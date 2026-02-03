@@ -47,11 +47,11 @@ updates:
     
     # Reviewers - Optional: uncomment and add GitHub usernames for automatic review requests
     # reviewers:
-    #   - "mdlew"
+      - "mdlew"
     
     # Assignees - Optional: uncomment and add GitHub usernames for automatic assignment
     # assignees:
-    #   - "mdlew"
+      - "mdlew"
     
     # Rebase Strategy - Keep PRs up to date with base branch
     rebase-strategy: "auto"
@@ -98,11 +98,11 @@ updates:
     
     # Reviewers - Optional
     # reviewers:
-    #   - "mdlew"
+      - "mdlew"
     
     # Assignees - Optional
     # assignees:
-    #   - "mdlew"
+      - "mdlew"
     
     # Rebase Strategy
     rebase-strategy: "auto"
