@@ -9,13 +9,19 @@ export function getChecksItemStatus(checksItem?: MonitorDailyChecksItem) {
   if (checksItem) {
     if (checksItem.fails === 0) {
       status = 'all-good'
-    } else if (checksItem.stats) {
-      const checksTotalCount = Object.values(checksItem.stats).reduce((previous, current) => {
-        return previous + current.count
-      }, 0)
-      if (checksItem.fails === checksTotalCount) {
-        status = 'all-incidents'
+    } else {
+      // If stats is available, determine the specific status
+      if (checksItem.stats) {
+        const checksTotalCount = Object.values(checksItem.stats).reduce((previous, current) => {
+          return previous + current.count
+        }, 0)
+        if (checksItem.fails === checksTotalCount) {
+          status = 'all-incidents'
+        } else {
+          status = 'has-incident'
+        }
       } else {
+        // If stats is not available but there are failures, assume has-incident
         status = 'has-incident'
       }
     }
