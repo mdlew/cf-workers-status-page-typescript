@@ -35,7 +35,7 @@ I've reviewed and significantly improved the Dependabot configuration for this r
 ### 2. Enhanced `.github/workflows/dependabot-auto-merge.yml`
 
 **Before:** Only auto-merged patch updates  
-**After:** Smarter handling with safety guardrails:
+**After:** Adds guidance comments instead of auto-merging:
 
 - ✅ **Comment on patch/minor updates**: Adds guidance comment for manual review
   - Patch: `1.0.0` → `1.0.1` 💬 Commented for manual merge
@@ -136,7 +136,7 @@ Created comprehensive guide covering:
    - Don't let major update PRs sit open for weeks
 
 2. **Keep Dependencies Current**
-   - Merge minor/patch updates regularly (or let auto-merge handle it)
+   - Merge minor/patch updates regularly after reviewing guidance comments
    - Don't disable Dependabot due to temporary issues
 
 3. **Monitor Security Alerts**
