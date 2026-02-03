@@ -136,10 +136,9 @@ Set to `auto` - Dependabot will automatically rebase PRs when the base branch ch
 ### Dependabot PRs Requiring Action
 
 **Common scenarios:**
-1. CI checks are failing (if configured)
-2. Conflicts with base branch
-3. Major version update (requires manual review)
-4. Security vulnerabilities that need immediate attention
+1. Conflicts with base branch
+2. Major version update (requires manual review)
+3. Security vulnerabilities that need immediate attention
 
 **Solution:** Review the PR checks and merge manually if appropriate.
 
