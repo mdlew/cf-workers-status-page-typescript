@@ -59,7 +59,8 @@ updates:
     # Version Requirements - Allow both updates to manifest and lockfile
     versioning-strategy: "auto"
     
-    # Target Branch - Specify target branch for PRs (defaults to repository default branch)
+    # Target Branch - Explicitly set to 'master' (this repository's default branch)
+    # Note: Remove this line to auto-detect the default branch if it changes
     target-branch: "master"
     
     # Ignore specific dependencies or versions if needed
