@@ -12,10 +12,13 @@ const { join } = require('node:path');
 const process = require('node:process');
 
 // Detect if running in Dependabot context
-// Dependabot sets DEPENDABOT environment variable during updates
+// Dependabot sets DEPENDABOT environment variable during updates, or runs as dependabot[bot] actor
+// We also check for the Dependabot updater working directory pattern
 const isDependabot = process.env.DEPENDABOT === 'true' || 
                      process.env.GITHUB_ACTOR === 'dependabot[bot]' ||
-                     process.env.CI && process.argv.includes('--ignore-scripts');
+                     (process.env.CI && process.argv.includes('--ignore-scripts')) ||
+                     // Check if running in Dependabot updater container (has /home/dependabot in path)
+                     (process.env.HOME && process.env.HOME.includes('dependabot'));
 
 if (isDependabot) {
   console.log('ℹ️  Dependabot environment detected - skipping React version check');
