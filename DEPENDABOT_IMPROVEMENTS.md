@@ -161,9 +161,6 @@ To verify everything works:
 
 ## Additional Notes
 
-### React Version Enforcement
-This project has a preinstall hook that enforces matching `react` and `react-dom` versions. Dependabot's grouping configuration includes a specific `react` group that ensures these packages are updated together, preventing version mismatch issues.
-
 ### pnpm Compatibility
 The configuration works seamlessly with pnpm. Dependabot handles pnpm lockfiles correctly.
 
