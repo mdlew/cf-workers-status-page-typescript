@@ -2,10 +2,28 @@
 /**
  * This script ensures that react and react-dom versions remain identical.
  * It should be run as a preinstall hook to prevent version mismatches.
+ * 
+ * During Dependabot updates, this check is skipped to allow temporary
+ * version mismatches that occur during the dependency update process.
  */
 
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
+const process = require('node:process');
+
+// Detect if running in Dependabot context
+// Dependabot sets DEPENDABOT environment variable during updates, or runs as dependabot[bot] actor
+// We also check for the Dependabot updater home directory pattern via the HOME environment variable
+const isDependabot = process.env.DEPENDABOT === 'true' || 
+                     process.env.GITHUB_ACTOR === 'dependabot[bot]' ||
+                     (process.env.CI && process.env.npm_config_ignore_scripts === 'true') ||
+                     // Check if running in Dependabot updater container (HOME path includes /home/dependabot)
+                     (process.env.HOME && process.env.HOME.includes('dependabot'));
+
+if (isDependabot) {
+  console.log('ℹ️  Dependabot environment detected - skipping React version check');
+  process.exit(0);
+}
 
 try {
   const packageJsonPath = join(process.cwd(), 'package.json');
