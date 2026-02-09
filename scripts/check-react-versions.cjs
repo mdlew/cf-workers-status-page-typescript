@@ -13,11 +13,11 @@ const process = require('node:process');
 
 // Detect if running in Dependabot context
 // Dependabot sets DEPENDABOT environment variable during updates, or runs as dependabot[bot] actor
-// We also check for the Dependabot updater working directory pattern
+// We also check for the Dependabot updater home directory pattern via the HOME environment variable
 const isDependabot = process.env.DEPENDABOT === 'true' || 
                      process.env.GITHUB_ACTOR === 'dependabot[bot]' ||
-                     (process.env.CI && process.argv.includes('--ignore-scripts')) ||
-                     // Check if running in Dependabot updater container (has /home/dependabot in path)
+                     (process.env.CI && process.env.npm_config_ignore_scripts === 'true') ||
+                     // Check if running in Dependabot updater container (HOME path includes /home/dependabot)
                      (process.env.HOME && process.env.HOME.includes('dependabot'));
 
 if (isDependabot) {
