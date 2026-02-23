@@ -17,6 +17,10 @@ export interface Monitor {
   expectStatus?: number
   /** Should fetch follow redirects, default=false */
   followRedirect?: boolean
+  /** Max polling retries if 202 is returned, default=5 */
+  pollingMaxRetries?: number
+  /** Initial delay in ms for exponential backoff polling, default=100 */
+  pollingInitialDelayMs?: number
 }
 
 export interface Settings {

@@ -11,6 +11,8 @@ import { prepareData, upsertData } from '../_helpers/store'
 import { Subrequests } from './Subrequests'
 
 const defaultSubrequestsLimit = 50
+const defaultMaxPollingRetries = 5
+const defaultPollingInitialDelayMs = 100
 
 export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
   const subrequests = new Subrequests()
@@ -28,8 +30,9 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
 
   for (const monitor of uncheckMonitors) {
     const notificationCount = getNotificationCount()
+    const monitorPollingMaxRetries = monitor.pollingMaxRetries ?? defaultMaxPollingRetries
     const restSubrequestCount = (config.settings.subrequestsLimit || defaultSubrequestsLimit) - subrequests.total
-    const monitorMaxRequiredSubrequestCount = 1 + notificationCount
+    const monitorMaxRequiredSubrequestCount = 1 + monitorPollingMaxRetries + notificationCount
 
     // Including a kv write subrequest
     if (restSubrequestCount < monitorMaxRequiredSubrequestCount + 1) {
@@ -38,6 +41,7 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
 
     console.log(`Checking ${monitor.name || monitor.id} ...`)
 
+    const requestStartTime = Date.now()
     const fetchUrl = new URL(monitor.url)
     fetchUrl.searchParams.append('_from-status-page', Date.now().toFixed(0))
     const fetchOptions: RequestInit = {
@@ -47,20 +51,25 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
         'User-Agent': 'cf-worker-status-page-typescript',
       },
     }
-    let requestStartTime = Date.now()
     let checkResponse = await fetch(fetchUrl.href, fetchOptions)
 
     // If 202 Accepted (intermediate response), keep polling with exponential backoff until a final response is received
-    const maxPollingRetries = 5
     let pollingCount = 0
-    let pollingDelay = 100
-    while (checkResponse.status === 202 && pollingCount < maxPollingRetries) {
+    let pollingDelay = monitor.pollingInitialDelayMs ?? defaultPollingInitialDelayMs
+    while (checkResponse.status === 202 && pollingCount < monitorPollingMaxRetries) {
       await new Promise<void>(resolve => setTimeout(resolve, pollingDelay))
       pollingDelay *= 2
-      requestStartTime = Date.now()
-      checkResponse = await fetch(fetchUrl.href, fetchOptions)
-      subrequests.checked()
+      try {
+        checkResponse = await fetch(fetchUrl.href, fetchOptions)
+      }
+      catch (err) {
+        console.warn(`${monitor.name || monitor.id} polling fetch failed:`, err)
+        break
+      }
       pollingCount++
+    }
+    if (checkResponse.status === 202 && pollingCount === monitorPollingMaxRetries) {
+      console.warn(`${monitor.name || monitor.id} reached max polling retries (${monitorPollingMaxRetries}) and is still returning 202 Accepted`)
     }
 
     const requestTime = Math.round(Date.now() - requestStartTime)
@@ -82,7 +91,7 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
       ctx.waitUntil(Promise.allSettled(notifications.map((item) => item())))
     }
 
-    subrequests.checked()
+    subrequests.checked(1 + pollingCount)
     checkedIds.push(monitor.id)
     if (!monitorOperational) {
       allOperational = false
