@@ -29,7 +29,6 @@
     "@cloudflare/workers-types": "^4.20260302.0",
     "@commitlint/config-conventional": "^20.4.2",
     "@eslint-react/eslint-plugin": "^2.13.0",
-    "@jannajs/lint": "^3.1.4",
     "@prettier/plugin-xml": "^3.4.2",
     "@tailwindcss/vite": "^4.2.0",
     "@types/express": "^5.0.6",
@@ -54,5 +53,10 @@
     "typescript": "latest",
     "vite": "^7.3.1",
     "wrangler": "latest"
+  },
+  "pnpm": {
+    "overrides": {
+      "minimatch": "^10.2.2"
+    }
   }
 }
