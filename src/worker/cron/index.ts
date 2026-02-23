@@ -38,16 +38,31 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
 
     console.log(`Checking ${monitor.name || monitor.id} ...`)
 
-    const requestStartTime = Date.now()
     const fetchUrl = new URL(monitor.url)
     fetchUrl.searchParams.append('_from-status-page', Date.now().toFixed(0))
-    const checkResponse = await fetch(fetchUrl.href, {
+    const fetchOptions: RequestInit = {
       method: monitor.method || 'GET',
       redirect: monitor.followRedirect ? 'follow' : 'manual',
       headers: {
         'User-Agent': 'cf-worker-status-page-typescript',
       },
-    })
+    }
+    let requestStartTime = Date.now()
+    let checkResponse = await fetch(fetchUrl.href, fetchOptions)
+
+    // If 202 Accepted (intermediate response), keep polling with exponential backoff until a final response is received
+    const maxPollingRetries = 5
+    let pollingCount = 0
+    let pollingDelay = 100
+    while (checkResponse.status === 202 && pollingCount < maxPollingRetries) {
+      await new Promise<void>(resolve => setTimeout(resolve, pollingDelay))
+      pollingDelay *= 2
+      requestStartTime = Date.now()
+      checkResponse = await fetch(fetchUrl.href, fetchOptions)
+      subrequests.checked()
+      pollingCount++
+    }
+
     const requestTime = Math.round(Date.now() - requestStartTime)
 
     // Determine whether operational and status changed
