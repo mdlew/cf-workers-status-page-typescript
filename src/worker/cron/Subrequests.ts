@@ -8,8 +8,8 @@ export class Subrequests {
     this.total += count
   }
 
-  checked() {
-    this.total += 1
+  checked(count = 1) {
+    this.total += count
   }
 
   notified() {
