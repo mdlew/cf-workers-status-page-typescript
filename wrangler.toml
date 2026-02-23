@@ -15,7 +15,10 @@ port = 3000
 
 [observability]
 enabled = true
-head_sampling_rate = 0.1 # 10% of requests are logged
+head_sampling_rate = 1 # optional. default = 1.
+
+[observability.logs]
+invocation_logs = true
 
 [env.production]
 kv_namespaces = [ { binding = "KV_STORE", id = "f2e1bb2e72db49dab3020ba686faf442" }, ]
