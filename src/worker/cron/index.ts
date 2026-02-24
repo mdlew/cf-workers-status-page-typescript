@@ -17,8 +17,8 @@ import { prepareData, upsertData } from "../_helpers/store";
 import { Subrequests } from "./Subrequests";
 
 const defaultSubrequestsLimit = 50;
-const defaultMaxPollingRetries = 5;
-const defaultPollingInitialDelayMs = 100;
+const defaultMaxPollingRetries = 2;
+const defaultPollingInitialDelayMs = 250;
 
 export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
   const subrequests = new Subrequests();
@@ -112,7 +112,7 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
         }
         text += decoder.decode();
         console.log(
-          `${monitor.name || monitor.id} scanning response body for polling URL: ${text.slice(0, 200)}`,
+          `${monitor.name || monitor.id} scanning response (Content-Type ${contentType}) for polling URL: ${text.slice(0, 200)}`,
         );
 
         const raw = text.match(/https?:\/\/[^\s"'<>]+/)?.[0];
@@ -149,7 +149,7 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
         );
       } else {
         console.warn(
-          `${monitor.name || monitor.id} no URL found in response body, polling will retry the original URL`,
+          `${monitor.name || monitor.id} no URL found in response body, polling will retry the original URL: ${pollingUrl}`,
         );
       }
     }
@@ -230,7 +230,7 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
 
     const targetMonitorHistoryDataChecksItem = kvData.monitorHistoryData?.[
       monitor.id
-    ]?.checks.find((item) => {
+    ]?.checks.find((item: MonitorDailyChecksItem) => {
       return item.date === checkDay;
     });
 
@@ -277,7 +277,7 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
     kvData.monitorHistoryData[monitor.id] = {
       checks: [
         ...(kvData.monitorHistoryData[monitor.id]?.checks || []).filter(
-          (item) => {
+          (item: MonitorDailyChecksItem) => {
             return item.date !== monitorHistoryDataChecksItem.date;
           },
         ),
