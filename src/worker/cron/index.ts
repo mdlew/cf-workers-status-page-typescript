@@ -68,7 +68,25 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
         return base
       }
     }
+    // If a 202 has no Location header, scan the response body for a usable URL
+    const extractUrlFromBody = async (response: Response): Promise<string | null> => {
+      try {
+        const text = await response.text()
+        const raw = text.match(/https?:\/\/[^\s"'<>]+/)?.[0]
+        if (raw) {
+          const candidate = raw.replace(/[.,;:!?)\]]+$/, '')
+          return new URL(candidate).href // validates and normalises; throws if not a valid URL
+        }
+      }
+      catch {}
+      return null
+    }
     let pollingUrl = resolveLocation(checkResponse.headers.get('Location'), fetchUrl.href)
+    if (checkResponse.status === 202 && !checkResponse.headers.get('Location')) {
+      const bodyUrl = await extractUrlFromBody(checkResponse)
+      if (bodyUrl)
+        pollingUrl = bodyUrl
+    }
     while (checkResponse.status === 202 && pollingCount < monitorPollingMaxRetries) {
       await new Promise<void>(resolve => setTimeout(resolve, pollingDelay))
       pollingDelay *= 2
@@ -76,7 +94,13 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
         checkResponse = await fetch(pollingUrl, fetchOptions)
         // Update polling URL only on continued 202 responses
         if (checkResponse.status === 202) {
-          pollingUrl = resolveLocation(checkResponse.headers.get('Location'), pollingUrl)
+          const locationHeader = checkResponse.headers.get('Location')
+          pollingUrl = resolveLocation(locationHeader, pollingUrl)
+          if (!locationHeader) {
+            const bodyUrl = await extractUrlFromBody(checkResponse)
+            if (bodyUrl)
+              pollingUrl = bodyUrl
+          }
         }
       }
       catch (err) {
