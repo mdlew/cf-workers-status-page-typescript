@@ -1,6 +1,4 @@
-// eslint-disable-next-line ts/ban-ts-comment
-// @ts-expect-error
-export const isWorkerEnv = typeof importScripts === 'function'
+export const isWorkerEnv = typeof navigator !== 'undefined' && navigator.userAgent === 'Cloudflare-Workers'
 
 export function ensureWorkerEnv() {
   if (isWorkerEnv) {
