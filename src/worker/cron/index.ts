@@ -70,15 +70,47 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
     }
     // If a 202 has no Location header, scan the response body for a usable URL
     const extractUrlFromBody = async (response: Response): Promise<string | null> => {
+      // Skip clearly non-text responses to avoid wasting work on binary bodies
+      const contentType = response.headers.get('Content-Type') ?? ''
+      if (!/text|json|xml|javascript|html|x-www-form-urlencoded/i.test(contentType))
+        return null
+
+      const stream = response.body
+      if (!stream)
+        return null
+
+      // Read only a bounded prefix to avoid buffering large payloads in memory
+      const MAX_BYTES = 16 * 1024
+      const reader = stream.getReader()
+      const decoder = new TextDecoder()
+      let received = 0
+      let text = ''
+
       try {
-        const text = await response.text()
+        while (received < MAX_BYTES) {
+          const { done, value } = await reader.read()
+          if (done || !value)
+            break
+          received += value.byteLength
+          text += decoder.decode(value, { stream: true })
+        }
+        text += decoder.decode()
+
         const raw = text.match(/https?:\/\/[^\s"'<>]+/)?.[0]
         if (raw) {
           const candidate = raw.replace(/[.,;:!?)\]]+$/, '')
           return new URL(candidate).href // validates and normalises; throws if not a valid URL
         }
       }
-      catch {}
+      catch (err) {
+        console.warn(
+          `${monitor.name || monitor.id} failed to extract polling URL from response body`,
+          err,
+        )
+      }
+      finally {
+        reader.releaseLock()
+      }
       return null
     }
     let pollingUrl = resolveLocation(checkResponse.headers.get('Location'), fetchUrl.href)
