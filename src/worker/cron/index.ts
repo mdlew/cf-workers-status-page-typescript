@@ -56,11 +56,28 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
     // If 202 Accepted (intermediate response), keep polling with exponential backoff until a final response is received
     let pollingCount = 0
     let pollingDelay = monitor.pollingInitialDelayMs ?? defaultPollingInitialDelayMs
+    // Follow Location header from 202 responses, just like a browser would
+    const resolveLocation = (location: string | null, base: string) => {
+      if (!location)
+        return base
+      try {
+        return new URL(location, base).href
+      }
+      catch {
+        console.warn(`${monitor.name || monitor.id} invalid Location header URL: ${location}`)
+        return base
+      }
+    }
+    let pollingUrl = resolveLocation(checkResponse.headers.get('Location'), fetchUrl.href)
     while (checkResponse.status === 202 && pollingCount < monitorPollingMaxRetries) {
       await new Promise<void>(resolve => setTimeout(resolve, pollingDelay))
       pollingDelay *= 2
       try {
-        checkResponse = await fetch(fetchUrl.href, fetchOptions)
+        checkResponse = await fetch(pollingUrl, fetchOptions)
+        // Update polling URL only on continued 202 responses
+        if (checkResponse.status === 202) {
+          pollingUrl = resolveLocation(checkResponse.headers.get('Location'), pollingUrl)
+        }
       }
       catch (err) {
         console.warn(`${monitor.name || monitor.id} polling fetch failed:`, err)
