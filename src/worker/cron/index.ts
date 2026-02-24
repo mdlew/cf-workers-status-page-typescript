@@ -160,14 +160,29 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
       await new Promise<void>((resolve) => setTimeout(resolve, pollingDelay));
       pollingDelay *= 2;
       try {
+        console.log(
+          `${monitor.name || monitor.id} polling attempt #${pollingCount + 1} to ${pollingUrl} ...`,
+        );
         checkResponse = await fetch(pollingUrl, fetchOptions);
         // Update polling URL only on continued 202 responses
         if (checkResponse.status === 202) {
           const locationHeader = checkResponse.headers.get("Location");
           pollingUrl = resolveLocation(locationHeader, pollingUrl);
           if (!locationHeader) {
+            console.log(
+              `${monitor.name || monitor.id} returned 202 Accepted without Location header, attempting to extract polling URL from response body`,
+            );
             const bodyUrl = await extractUrlFromBody(checkResponse);
-            if (bodyUrl) pollingUrl = bodyUrl;
+            if (bodyUrl) {
+              pollingUrl = bodyUrl;
+              console.log(
+                `${monitor.name || monitor.id} extracted polling URL from response body: ${pollingUrl}`,
+              );
+            } else {
+              console.warn(
+                `${monitor.name || monitor.id} no URL found in response body, polling will retry the original URL`,
+              );
+            }
           }
         }
       } catch (err) {
