@@ -10,7 +10,7 @@ declare global {
     interface PageContext {
       Page: Page;
       pageProps?: PageProps;
-      userAgent?: string;
+      userAgent?: string | null;
       fetch?: typeof fetch;
       nonce?: string; // Optional nonce for Content Security Policy (CSP)
     }
