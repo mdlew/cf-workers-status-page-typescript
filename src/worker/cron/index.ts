@@ -142,6 +142,7 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
         `${monitor.name || monitor.id} returned 202 Accepted without Location header, attempting to extract polling URL from response body`,
       );
       const bodyUrl = await extractUrlFromBody(checkResponse);
+      checkResponse.body?.cancel();
       if (bodyUrl) {
         pollingUrl = bodyUrl;
         console.log(
@@ -152,6 +153,8 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
           `${monitor.name || monitor.id} no URL found in response body, polling will retry the original URL: ${pollingUrl}`,
         );
       }
+    } else {
+      checkResponse.body?.cancel();
     }
     while (
       checkResponse.status === 202 &&
@@ -173,6 +176,7 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
               `${monitor.name || monitor.id} returned 202 Accepted without Location header, attempting to extract polling URL from response body`,
             );
             const bodyUrl = await extractUrlFromBody(checkResponse);
+            checkResponse.body?.cancel();
             if (bodyUrl) {
               pollingUrl = bodyUrl;
               console.log(
@@ -183,7 +187,11 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
                 `${monitor.name || monitor.id} no URL found in response body, polling will retry the original URL`,
               );
             }
+          } else {
+            checkResponse.body?.cancel();
           }
+        } else {
+          checkResponse.body?.cancel();
         }
       } catch (err) {
         console.warn(
