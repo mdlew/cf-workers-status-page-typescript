@@ -24,10 +24,13 @@ kv_namespaces = [ { binding = "KV_STORE", id = "f2e1bb2e72db49dab3020ba686faf442
 
 [env.production.triggers]
 crons = [
-  # https://crontab.guru/#*/2_*_*_*_*
+  # https://crontab.guru/#*/30_*_*_*_*
   # Check monitors
   "*/30 * * * *",
   # https://crontab.guru/#*/10_*_*_*_*
   # Update remote csv monitors
   #"*/10 * * * *",
+  # https://crontab.guru/#5_4_*_*_0
+  # Clear old data in KV
+  "5 4 * * 0",
 ]

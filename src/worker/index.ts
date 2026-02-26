@@ -1,33 +1,34 @@
-import type { FetchHandler } from '#src/types'
-import { handleFetchError } from './_helpers'
-import { handleCronTrigger } from './cron'
-import { handleSsr } from './ssr'
-import { handleStaticAssets } from './static-assets'
+import type { FetchHandler } from "#src/types";
+import { handleFetchError } from "./_helpers";
+import { handleCronTrigger } from "./cron";
+import { cleanKVstore } from "./cron/clean-kv";
+import { handleSsr } from "./ssr";
+import { handleStaticAssets } from "./static-assets";
 
-import { isAssetUrl } from './static-assets/helpers'
+import { isAssetUrl } from "./static-assets/helpers";
 
 const handleFetchEvent: FetchHandler = async (request, env, context) => {
-  const { url } = request
-  const userAgent = request.headers.get('User-Agent')
+  const { url } = request;
+  const userAgent = request.headers.get("User-Agent");
 
   if (!isAssetUrl(url)) {
-    const response = await handleSsr(env, url, userAgent)
+    const response = await handleSsr(env, url, userAgent);
     if (response !== null) {
-      return response
+      return response;
     }
   }
-  const response = await handleStaticAssets(request, env, context)
-  return response
-}
+  const response = await handleStaticAssets(request, env, context);
+  return response;
+};
 
 const handler: ExportedHandler<Env> = {
   // Worker startup time limit: 400ms
   // ref: https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time
   fetch: async (request, env, ctx) => {
     try {
-      return await handleFetchEvent(request, env, ctx)
+      return await handleFetchEvent(request, env, ctx);
     } catch (err) {
-      return handleFetchError(err)
+      return handleFetchError(err);
     }
   },
   // Time limit:
@@ -35,17 +36,23 @@ const handler: ExportedHandler<Env> = {
   // When the schedule interval is more than 1 hour, a scheduled Worker may run for up to 15 minutes.
   // ref: https://developers.cloudflare.com/workers/platform/limits/#cpu-time Note block
   scheduled: async (controller, env, ctx) => {
-//    switch (controller.cron) {
-//      case '*/2 * * * *':
+    switch (controller.cron) {
+      case "*/30 * * * *":
         // Every two minutes
-        await handleCronTrigger(env, ctx)
-//        break
-//      case '*/10 * * * *':
-        // Every ten minutes
-//        await handleRemoteMonitors(env)
- //       break
-//    }
+        await handleCronTrigger(env, ctx);
+        break;
+      //      case '*/10 * * * *':
+      // Every ten minutes
+      //        await handleRemoteMonitors(env)
+      //       break
+      case "5 4 * * 0":
+        // At 04:05 every Sunday
+        await cleanKVstore(env, ctx);
+        break;
+      default:
+        console.warn(`No handler for cron: ${controller.cron}`);
+    }
   },
-}
+};
 
-export default handler
+export default handler;
