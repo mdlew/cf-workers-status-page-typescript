@@ -30,7 +30,7 @@ crons = [
   # https://crontab.guru/#*/10_*_*_*_*
   # Update remote csv monitors
   #"*/10 * * * *",
-  # https://crontab.guru/#5_4_*_*_0
+  # https://crontab.guru/#5_4_*/7_*_*
   # Clear old data in KV
-  "5 4 * * 0",
+  "5 4 */7 * *",
 ]
