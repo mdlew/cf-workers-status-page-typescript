@@ -11,6 +11,35 @@ const handleFetchEvent: FetchHandler = async (request, env, context) => {
   const { url } = request;
   const userAgent = request.headers.get("User-Agent");
 
+  // Check if the request is secure (HTTPS) and TLS version is 1.2 or higher, return 403 if not
+  if (
+    typeof request.cf?.tlsVersion !== "string" ||
+    !(
+      request.cf.tlsVersion.toUpperCase().includes("TLSV1.2") ||
+      request.cf.tlsVersion.toUpperCase().includes("TLSV1.3")
+    )
+  ) {
+    console.log({
+      error: `TLS version error: "${request.cf?.tlsVersion}"`,
+    });
+    return new Response("Please use TLS version 1.2 or higher.", {
+      status: 403,
+      statusText: "Forbidden",
+    });
+  }
+
+  // Only GET requests work with this proxy.
+  if (request.method !== "GET") {
+    console.log({ error: `Method ${request.method} not allowed` });
+    return new Response(`Method ${request.method} not allowed.`, {
+      status: 405,
+      statusText: "Method Not Allowed",
+      headers: {
+        Allow: "GET",
+      },
+    });
+  }
+
   if (!isAssetUrl(url)) {
     const response = await handleSsr(env, url, userAgent);
     if (response !== null) {
