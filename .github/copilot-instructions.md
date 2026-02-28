@@ -41,7 +41,7 @@ This is a TypeScript-based status page application that runs on Cloudflare Worke
 
 ### Configuration Files
 - `src/config.ts` - **MOST IMPORTANT**: Main configuration defining monitors, title, URL, display settings
-- `wrangler.toml` - Cloudflare Worker configuration including KV namespaces and cron schedules
+- `wrangler.jsonc` - Cloudflare Worker configuration including KV namespaces and cron schedules
 - `package.json` - Build scripts and dependencies
 - `tsconfig.json` - TypeScript configuration with custom path mapping (#src/*)
 
@@ -86,8 +86,8 @@ This is a TypeScript-based status page application that runs on Cloudflare Worke
 3. Build and test with wrangler preview mode
 
 ### Deployment Configuration
-1. **KV Namespace Setup**: Ensure `wrangler.toml` has correct KV namespace IDs
-2. **Cron Schedule**: Modify cron triggers in `wrangler.toml` (default: every 30 minutes)
+1. **KV Namespace Setup**: Ensure `wrangler.jsonc` has correct KV namespace IDs
+2. **Cron Schedule**: Modify cron triggers in `wrangler.jsonc` (default: every 30 minutes)
 3. **Environment Variables**: Set secrets in Cloudflare Workers dashboard or GitHub repository
 
 ## Known Issues and Workarounds
@@ -99,7 +99,7 @@ This is a TypeScript-based status page application that runs on Cloudflare Worke
 
 ### Cloudflare Workers Limitations
 - **Build Size**: Watch for bundle size when adding dependencies
-- **KV Storage**: Free tier has limits - adjust cron frequency if needed (see `wrangler.toml`)
+- **KV Storage**: Free tier has limits - adjust cron frequency if needed (see `wrangler.jsonc`)
 - **Network Access**: Some external APIs may not be accessible from worker environment
 
 ### First-Time Setup Requirements

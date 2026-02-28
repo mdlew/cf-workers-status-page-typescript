@@ -1,0 +1,81 @@
+{
+  // Cloudflare account ID - uncomment and set for deployment
+  // "account_id": "",
+
+  // Worker name
+  "name": "cf-worker-status-page-typescript",
+
+  // Entry point for the Worker
+  "main": "./src/worker/index.ts",
+
+  // Compatibility date for Cloudflare Workers runtime
+  "compatibility_date": "2026-02-28",
+
+  // Enable workers.dev subdomain for development
+  "workers_dev": false,
+
+  "routes": [
+    {
+      "pattern": "status.matthewlew.info",
+      "custom_domain": true
+    },
+    {
+      "pattern": "status.lewlab.com",
+      "custom_domain": true
+    }
+  ],
+
+  // KV namespace bindings
+  "kv_namespaces": [
+    {
+      "binding": "KV_STORE",
+      "id": "f2e1bb2e72db49dab3020ba686faf442"
+    }
+  ],
+
+  // Static assets configuration
+  "site": {
+    "bucket": "./dist/client"
+  },
+
+  // Development server settings
+  "dev": {
+    "port": 3000
+  },
+
+  // Observability and logging configuration
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1,
+    "logs": {
+      "invocation_logs": true
+    }
+  },
+
+  // Production environment configuration
+  "env": {
+    "production": {
+      "kv_namespaces": [
+        {
+          "binding": "KV_STORE",
+          "id": "f2e1bb2e72db49dab3020ba686faf442"
+        }
+      ],
+      "triggers": {
+        "crons": [
+          // Check monitors every 30 minutes
+          // https://crontab.guru/#*/30_*_*_*_*
+          "*/30 * * * *",
+
+          // Update remote csv monitors every 10 minutes (disabled)
+          // https://crontab.guru/#*/10_*_*_*_*
+          // "*/10 * * * *",
+
+          // Clear old data in KV every Sunday at 4:05 AM
+          // https://crontab.guru/#5_4_*_*_sun
+          "5 4 * * sun"
+        ]
+      }
+    }
+  }
+}

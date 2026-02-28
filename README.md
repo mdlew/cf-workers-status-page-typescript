@@ -66,9 +66,12 @@ Create a KV namespace in your Cloudflare account:
 2. Click **"Create a namespace"**
 3. Name it `KV_STORE` (or any name you prefer)
 4. Copy the namespace ID
-5. Update [wrangler.toml](./wrangler.toml):
-   ```toml
-   kv_namespaces = [ { binding = "KV_STORE", id = "your-namespace-id-here" } ]
+5. Update [wrangler.jsonc](./wrangler.jsonc):
+   ```jsonc
+   "kv_namespaces": [{
+     "binding": "KV_STORE",
+     "id": "your-namespace-id-here"
+   }]
    ```
 
 ### 3. Configure GitHub Secrets
@@ -149,13 +152,18 @@ Each monitor in [src/config.ts](./src/config.ts) supports the following options:
 
 ### CRON Schedule
 
-Edit the cron schedule in [wrangler.toml](./wrangler.toml):
+Edit the cron schedule in [wrangler.jsonc](./wrangler.jsonc):
 
-```toml
-[env.production.triggers]
-crons = [
-  "*/30 * * * *",  # Check every 30 minutes
-]
+```jsonc
+"env": {
+  "production": {
+    "triggers": {
+      "crons": [
+        "*/30 * * * *"  // Check every 30 minutes
+      ]
+    }
+  }
+}
 ```
 
 Use [crontab.guru](https://crontab.guru/) to create custom schedules.
@@ -185,7 +193,7 @@ Use [crontab.guru](https://crontab.guru/) to create custom schedules.
    ```bash
    npx wrangler kv:namespace create KV_STORE
    ```
-   Copy the namespace ID to [wrangler.toml](./wrangler.toml).
+   Copy the namespace ID to [wrangler.jsonc](./wrangler.jsonc).
 
 ### Development Commands
 
@@ -221,7 +229,7 @@ cf-workers-status-page-typescript/
 │   │   └── ssr/               # Server-side rendering
 │   ├── pages/                 # React page components
 │   └── components/            # Reusable React components
-├── wrangler.toml              # Cloudflare Worker config
+├── wrangler.jsonc             # Cloudflare Worker config
 ├── package.json               # Dependencies and scripts
 └── tsconfig.json              # TypeScript configuration
 ```
@@ -244,7 +252,7 @@ pnpm run deploy
 
 Ensure you have the following configured:
 - Cloudflare authentication (via `wrangler login`)
-- Correct account ID in `wrangler.toml` or environment variables
+- Correct account ID in `wrangler.jsonc` or environment variables
 - KV namespace created and configured
 
 ## 🎯 Advanced Features
@@ -260,7 +268,7 @@ You can import monitor configurations from a remote CSV file (e.g., Google Sheet
    ```typescript
    monitorsCsvUrl: 'https://docs.google.com/spreadsheets/d/e/YOUR_SHEET_ID/pub?output=csv'
    ```
-5. Uncomment the CSV update cron trigger in [wrangler.toml](./wrangler.toml)
+5. Uncomment the CSV update cron trigger in [wrangler.jsonc](./wrangler.jsonc)
 
 ### Response Time Collection
 
@@ -292,9 +300,9 @@ The Cloudflare Workers Free plan includes limited KV operations:
 
 **For free tier users**, adjust the monitoring frequency:
 
-1. Edit [wrangler.toml](./wrangler.toml):
-   ```toml
-   crons = ["*/2 * * * *"]  # Check every 2 minutes instead of 30
+1. Edit [wrangler.jsonc](./wrangler.jsonc):
+   ```jsonc
+   "crons": ["*/2 * * * *"]  // Check every 2 minutes instead of 30
    ```
 
 2. Consider reducing the number of monitors or `displayDays` in config
