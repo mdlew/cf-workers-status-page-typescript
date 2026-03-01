@@ -18,7 +18,7 @@ function injectNonce(match: string, nonce: string): string {
  */
 function injectNoncesIntoStream(
   stream: ReadableStream<Uint8Array>,
-  nonce: string
+  nonce: string,
 ): ReadableStream<Uint8Array> {
   const decoder = new TextDecoder();
   const encoder = new TextEncoder();
@@ -32,7 +32,9 @@ function injectNoncesIntoStream(
 
         // Only defer the tail if it looks like the start of a <link> tag.
         // This avoids over-buffering on bare '<' in text/script content.
-        const partialLinkMatch = text.match(/<(?:l(?:i(?:n(?:k\b[^>]*)?)?)?)?$/i);
+        const partialLinkMatch = text.match(
+          /<(?:l(?:i(?:n(?:k\b[^>]*)?)?)?)?$/i,
+        );
         const safeEnd = partialLinkMatch
           ? text.length - partialLinkMatch[0].length
           : text.length;
@@ -44,9 +46,9 @@ function injectNoncesIntoStream(
           encoder.encode(
             safe.replace(
               /<link\s[^>]*\brel=["']modulepreload["'][^>]*>/gi,
-              (match) => injectNonce(match, nonce)
-            )
-          )
+              (match) => injectNonce(match, nonce),
+            ),
+          ),
         );
       },
       flush(controller) {
@@ -57,14 +59,14 @@ function injectNoncesIntoStream(
             encoder.encode(
               pending.replace(
                 /<link\s[^>]*\brel=["']modulepreload["'][^>]*>/gi,
-                (match) => injectNonce(match, nonce)
-              )
-            )
+                (match) => injectNonce(match, nonce),
+              ),
+            ),
           );
           pending = "";
         }
       },
-    })
+    }),
   );
 }
 
@@ -102,7 +104,7 @@ interface EarlyHint {
 export async function handleSsr(
   env: Env,
   url: string,
-  userAgent: string | null
+  userAgent: string | null,
 ) {
   const array = new Uint8Array(16);
   crypto.getRandomValues(array);
@@ -128,19 +130,19 @@ export async function handleSsr(
     // body via HTML_STREAM (react-streaming), so every chunk is processed.
     const stream = injectNoncesIntoStream(
       httpResponse.getReadableWebStream(),
-      nonce
+      nonce,
     );
 
     const newHeaders = new Headers(headers);
     newHeaders.set(
       "link",
-      earlyHints.map((e: EarlyHint) => e.earlyHintLink).join(", ")
+      earlyHints.map((e: EarlyHint) => e.earlyHintLink).join(", "),
     );
     // Set the CSP nonce in the headers
     if (nonce) {
       newHeaders.set(
         "Content-Security-Policy",
-        `script-src 'nonce-${nonce}' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; upgrade-insecure-requests;`
+        `script-src 'nonce-${nonce}' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; upgrade-insecure-requests; require-trusted-types-for 'script';`,
       );
     }
     /*

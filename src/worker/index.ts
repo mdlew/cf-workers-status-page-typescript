@@ -28,18 +28,15 @@ const handleFetchEvent: FetchHandler = async (request, env, context) => {
     });
   }
 
-  // Check if the request is secure (HTTPS) and TLS version is 1.2 or higher, return 403 if not
+  // Check if the request is secure (HTTPS) and TLS version is 1.3 or higher, return 403 if not
   if (
     typeof request.cf?.tlsVersion !== "string" ||
-    !(
-      request.cf.tlsVersion.toUpperCase().includes("TLSV1.2") ||
-      request.cf.tlsVersion.toUpperCase().includes("TLSV1.3")
-    )
+    !request.cf.tlsVersion.toUpperCase().includes("TLSV1.3")
   ) {
     console.log({
       error: `TLS version error: "${request.cf?.tlsVersion}"`,
     });
-    return new Response("Please use TLS version 1.2 or higher.", {
+    return new Response("Please use TLS version 1.3 or higher.", {
       status: 403,
       statusText: "Forbidden",
     });
