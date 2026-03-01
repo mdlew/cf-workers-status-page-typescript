@@ -12,7 +12,7 @@ declare global {
       pageProps?: PageProps;
       userAgent?: string | null;
       fetch?: typeof fetch;
-      nonce?: string; // Optional nonce for Content Security Policy (CSP)
+      cspNonce?: string; // Optional nonce for Content Security Policy (CSP)
     }
   }
 }
