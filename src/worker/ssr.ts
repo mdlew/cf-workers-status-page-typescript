@@ -1,10 +1,20 @@
 import { renderPage } from "vike/server";
 
+function injectNonce(match: string, nonce: string): string {
+  if (/\snonce=["']/.test(match)) return match; // already has nonce
+  return match.replace(/^<link\b/, `<link nonce="${nonce}"`);
+}
+
 /**
- * Pipes the SSR stream through a TransformStream that buffers content up to
- * </head>, injects the CSP nonce into every <link rel="modulepreload"> tag
- * in that section, then passes all subsequent chunks through unchanged.
- * This preserves React's Suspense streaming without buffering the full HTML.
+ * Pipes the SSR stream through a TransformStream that injects the CSP nonce
+ * into every <link rel="modulepreload"> tag in the stream. Vike may inject
+ * these tags either inside <head> or into the body via HTML_STREAM (when using
+ * react-streaming), so the transform is applied to every chunk.
+ *
+ * A small sliding buffer is carried forward to handle the edge case where a
+ * <link> tag straddles a chunk boundary. Only a potential partial <link
+ * sequence at the tail of each chunk is deferred; other '<' characters (e.g.
+ * in text content like "if (x < 5)") are emitted immediately.
  */
 function injectNoncesIntoStream(
   stream: ReadableStream<Uint8Array>,
@@ -12,36 +22,46 @@ function injectNoncesIntoStream(
 ): ReadableStream<Uint8Array> {
   const decoder = new TextDecoder();
   const encoder = new TextEncoder();
-  let buffer = "";
-  let headDone = false;
+  // Holds any partial <link…> tag tail that has not yet been closed with '>'.
+  let pending = "";
 
   return stream.pipeThrough(
     new TransformStream<Uint8Array, Uint8Array>({
       transform(chunk, controller) {
-        if (headDone) {
-          controller.enqueue(chunk);
-          return;
-        }
-        buffer += decoder.decode(chunk, { stream: true });
-        const headEnd = buffer.indexOf("</head>");
-        if (headEnd === -1) return; // keep buffering until </head> is found
+        const text = pending + decoder.decode(chunk, { stream: true });
 
-        headDone = true;
-        const processed = buffer.replace(
-          /<link\s[^>]*\brel=["']modulepreload["'][^>]*>/gi,
-          (match) => {
-            if (/\snonce=["']/.test(match)) return match; // already has nonce
-            return match.replace(/^<link\b/, `<link nonce="${nonce}"`);
-          }
+        // Only defer the tail if it looks like the start of a <link> tag.
+        // This avoids over-buffering on bare '<' in text/script content.
+        const partialLinkMatch = text.match(/<(?:l(?:i(?:n(?:k\b[^>]*)?)?)?)?$/i);
+        const safeEnd = partialLinkMatch
+          ? text.length - partialLinkMatch[0].length
+          : text.length;
+
+        const safe = text.slice(0, safeEnd);
+        pending = text.slice(safeEnd);
+
+        controller.enqueue(
+          encoder.encode(
+            safe.replace(
+              /<link\s[^>]*\brel=["']modulepreload["'][^>]*>/gi,
+              (match) => injectNonce(match, nonce)
+            )
+          )
         );
-        buffer = "";
-        controller.enqueue(encoder.encode(processed));
       },
       flush(controller) {
-        if (buffer) {
-          // Emit any remaining buffered content (e.g. if </head> was never found)
-          controller.enqueue(encoder.encode(buffer));
-          buffer = "";
+        if (pending) {
+          // Emit any remaining buffered content (e.g. a partial tag at the
+          // very end of the stream, which should not occur in well-formed HTML).
+          controller.enqueue(
+            encoder.encode(
+              pending.replace(
+                /<link\s[^>]*\brel=["']modulepreload["'][^>]*>/gi,
+                (match) => injectNonce(match, nonce)
+              )
+            )
+          );
+          pending = "";
         }
       },
     })
@@ -104,8 +124,8 @@ export async function handleSsr(
     const { earlyHints } = httpResponse;
 
     // Pipe the SSR stream through a transformer that injects the CSP nonce into
-    // <link rel="modulepreload"> tags, which Vike's inferPreloadTag omits.
-    // Only the <head> section is buffered; React's Suspense streaming is preserved.
+    // <link rel="modulepreload"> tags. Vike may emit these in <head> or in the
+    // body via HTML_STREAM (react-streaming), so every chunk is processed.
     const stream = injectNoncesIntoStream(
       httpResponse.getReadableWebStream(),
       nonce
