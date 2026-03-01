@@ -59,10 +59,12 @@ export async function handleSsr(
     // which Vike's inferPreloadTag generates without nonce attributes.
     const rawHtml = await httpResponse.getBody();
     const html = rawHtml.replace(
-      /<link rel="modulepreload"([^>]*)>/g,
-      (match, attrs) => {
-        if (/\snonce="/.test(attrs)) return match; // already has nonce
-        return `<link nonce="${nonce}" rel="modulepreload"${attrs}>`;
+      /<link\s[^>]*\brel=["']modulepreload["'][^>]*>/gi,
+      (match) => {
+        // If a nonce is already present (single or double quotes), leave the tag unchanged.
+        if (/\snonce=(["'])/.test(match)) return match;
+        // Inject the nonce attribute immediately after <link, preserving existing attributes/order.
+        return match.replace(/^<link\b/, `<link nonce="${nonce}"`);
       }
     );
 
