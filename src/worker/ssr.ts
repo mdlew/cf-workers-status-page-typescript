@@ -1,5 +1,53 @@
 import { renderPage } from "vike/server";
 
+/**
+ * Pipes the SSR stream through a TransformStream that buffers content up to
+ * </head>, injects the CSP nonce into every <link rel="modulepreload"> tag
+ * in that section, then passes all subsequent chunks through unchanged.
+ * This preserves React's Suspense streaming without buffering the full HTML.
+ */
+function injectNoncesIntoStream(
+  stream: ReadableStream<Uint8Array>,
+  nonce: string
+): ReadableStream<Uint8Array> {
+  const decoder = new TextDecoder();
+  const encoder = new TextEncoder();
+  let buffer = "";
+  let headDone = false;
+
+  return stream.pipeThrough(
+    new TransformStream<Uint8Array, Uint8Array>({
+      transform(chunk, controller) {
+        if (headDone) {
+          controller.enqueue(chunk);
+          return;
+        }
+        buffer += decoder.decode(chunk, { stream: true });
+        const headEnd = buffer.indexOf("</head>");
+        if (headEnd === -1) return; // keep buffering until </head> is found
+
+        headDone = true;
+        const processed = buffer.replace(
+          /<link\s[^>]*\brel=["']modulepreload["'][^>]*>/gi,
+          (match) => {
+            if (/\snonce=["']/.test(match)) return match; // already has nonce
+            return match.replace(/^<link\b/, `<link nonce="${nonce}"`);
+          }
+        );
+        buffer = "";
+        controller.enqueue(encoder.encode(processed));
+      },
+      flush(controller) {
+        if (buffer) {
+          // Emit any remaining buffered content (e.g. if </head> was never found)
+          controller.enqueue(encoder.encode(buffer));
+          buffer = "";
+        }
+      },
+    })
+  );
+}
+
 export interface CustomPageContext {
   env: Env;
   urlOriginal: string;
@@ -55,17 +103,12 @@ export async function handleSsr(
     const { statusCode: status, headers } = httpResponse;
     const { earlyHints } = httpResponse;
 
-    // Buffer the HTML so we can inject nonces into <link rel="modulepreload"> tags,
-    // which Vike's inferPreloadTag generates without nonce attributes.
-    const rawHtml = await httpResponse.getBody();
-    const html = rawHtml.replace(
-      /<link\s[^>]*\brel=["']modulepreload["'][^>]*>/gi,
-      (match) => {
-        // If a nonce is already present (single or double quotes), leave the tag unchanged.
-        if (/\snonce=(["'])/.test(match)) return match;
-        // Inject the nonce attribute immediately after <link, preserving existing attributes/order.
-        return match.replace(/^<link\b/, `<link nonce="${nonce}"`);
-      }
+    // Pipe the SSR stream through a transformer that injects the CSP nonce into
+    // <link rel="modulepreload"> tags, which Vike's inferPreloadTag omits.
+    // Only the <head> section is buffered; React's Suspense streaming is preserved.
+    const stream = injectNoncesIntoStream(
+      httpResponse.getReadableWebStream(),
+      nonce
     );
 
     const newHeaders = new Headers(headers);
@@ -94,6 +137,6 @@ export async function handleSsr(
     newHeaders.set("Cross-Origin-Opener-Policy", "same-origin");
     newHeaders.set("Cross-Origin-Resource-Policy", "same-site");
     newHeaders.set("Cross-Origin-Embedder-Policy", "require-corp");
-    return new Response(html, { headers: newHeaders, status });
+    return new Response(stream, { headers: newHeaders, status });
   }
 }
