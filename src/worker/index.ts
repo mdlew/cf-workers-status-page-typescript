@@ -92,7 +92,7 @@ const handler: ExportedHandler<Env> = {
       // Every ten minutes
       //        await handleRemoteMonitors(env)
       //       break
-      case "5 4 * * sun":
+      case "17 15 * * sun":
         // At 04:05 on Sunday
         await cleanKVstore(env, ctx);
         break;

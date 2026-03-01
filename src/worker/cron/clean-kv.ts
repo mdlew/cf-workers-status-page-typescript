@@ -6,7 +6,7 @@ import { getDate } from "../_helpers/datetime";
 /**
  * Clean KV store by removing all monitor check entries older than 90 days.
  *
- * This function runs on a monthly cron trigger (5 4 1 * *) to optimize storage.
+ * This function runs on a monthly cron trigger to optimize storage.
  * It iterates through all monitor history data and filters out daily check records
  * that are older than 90 days, based on their ISO date string (YYYY-MM-DD).
  *

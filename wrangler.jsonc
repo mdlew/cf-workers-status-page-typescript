@@ -73,7 +73,7 @@
 
           // Clear old data in KV every Sunday at 4:05 AM
           // https://crontab.guru/#5_4_*_*_sun
-          "5 4 * * sun"
+          "17 15 * * sun"
         ]
       }
     }
