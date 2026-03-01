@@ -54,7 +54,17 @@ export async function handleSsr(
   } else {
     const { statusCode: status, headers } = httpResponse;
     const { earlyHints } = httpResponse;
-    const stream = httpResponse.getReadableWebStream();
+
+    // Buffer the HTML so we can inject nonces into <link rel="modulepreload"> tags,
+    // which Vike's inferPreloadTag generates without nonce attributes.
+    const rawHtml = await httpResponse.getBody();
+    const html = rawHtml.replace(
+      /<link rel="modulepreload"([^>]*)>/g,
+      (match, attrs) => {
+        if (/\snonce="/.test(attrs)) return match; // already has nonce
+        return `<link nonce="${nonce}" rel="modulepreload"${attrs}>`;
+      }
+    );
 
     const newHeaders = new Headers(headers);
     newHeaders.set(
@@ -82,6 +92,6 @@ export async function handleSsr(
     newHeaders.set("Cross-Origin-Opener-Policy", "same-origin");
     newHeaders.set("Cross-Origin-Resource-Policy", "same-site");
     newHeaders.set("Cross-Origin-Embedder-Policy", "require-corp");
-    return new Response(stream, { headers: newHeaders, status });
+    return new Response(html, { headers: newHeaders, status });
   }
 }
