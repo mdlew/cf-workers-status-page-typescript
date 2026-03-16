@@ -36,7 +36,7 @@
     "@types/papaparse": "^5.5.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.4",
+    "@vitejs/plugin-react": "^5.2.0",
     "commitlint": "^20.5.0",
     "dedent": "^1.7.2",
     "eslint": "^9.39.2",
