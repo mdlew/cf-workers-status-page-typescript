@@ -11,8 +11,6 @@
     "preview": "pnpm run build && wrangler dev",
     "preview:production": "pnpm run build && wrangler dev --env production",
     "deploy": "pnpm run build && wrangler deploy --env production",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "prepare": "husky",
     "wrangler:types": "wrangler types",
     "postinstall": "pnpm run public:assets"
@@ -28,10 +26,8 @@
     "vike": "^0.4.255"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^7.7.3",
     "@cloudflare/workers-types": "^4.20260329.1",
     "@commitlint/config-conventional": "^20.5.0",
-    "@eslint-react/eslint-plugin": "^2.13.0",
     "@prettier/plugin-xml": "^3.4.2",
     "@tailwindcss/vite": "^4.2.2",
     "@types/express": "^5.0.6",
@@ -42,13 +38,8 @@
     "@vitejs/plugin-react": "^5.2.0",
     "commitlint": "^20.5.0",
     "dedent": "^1.7.2",
-    "eslint": "^9.39.2",
-    "eslint-plugin-format": "^2.0.1",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
     "express": "^5.2.1",
     "husky": "^9.1.7",
-    "lint-staged": "^16.4.0",
     "prettier": "^3.8.1",
     "tailwindcss": "^4.2.2",
     "tailwindcss-animate": "^1.0.7",
