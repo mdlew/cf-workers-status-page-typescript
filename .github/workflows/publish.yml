@@ -8,6 +8,11 @@ on:
 permissions:
   contents: read
 
+env:
+  # Force all Node.js actions to use Node.js 24 (Node.js 20 actions are deprecated)
+  # See: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -33,7 +38,7 @@ jobs:
         run: pnpm run build
 
       - name: Deploy
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v3.14.1
         with:
           packageManager: pnpm
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
