@@ -208,10 +208,13 @@ Use [crontab.guru](https://crontab.guru/) to create custom schedules.
 
 ### Important Notes
 
-- **⚠️ Do not use `pnpm run dev`** - It has a known issue with path-to-regexp dependency
-- **✅ Use `pnpm run preview` instead** - This uses Wrangler dev mode which is fully functional
+- **✅ Use `pnpm run preview`** - This uses Wrangler dev mode which is fully functional
 - **Build required** - Changes require a full build to be reflected
 - **No hot reload** - Manual rebuild and restart needed for changes
+
+### Development Server Removed
+
+The Express-based local dev server (`dev-server/index.ts`) has been removed. It depended on the `express` devDependency, which had a reported security vulnerability, and was already non-functional due to an incompatibility with `path-to-regexp`. Use `pnpm run preview` (Wrangler dev mode) for local development.
 
 ### Dependency Management
 
@@ -322,11 +325,6 @@ The default 30-minute interval works well with the Bundled plan ($5/month).
 - **Issue**: Status page shows "No Data" immediately after deployment
 - **Cause**: CRON Triggers take a few minutes to initialize and run for the first time
 - **Solution**: Wait 2-5 minutes after deployment for first data collection
-
-### Development Server Issue
-- **Issue**: `pnpm run dev` fails with "TypeError: Missing parameter name at 1" from path-to-regexp
-- **Workaround**: Use `pnpm run preview` instead
-- **Status**: Known issue with dependency compatibility
 
 ## 🤝 Contributing
 
