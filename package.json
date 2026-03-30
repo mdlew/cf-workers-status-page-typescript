@@ -1,6 +1,9 @@
 {
   "name": "cf-worker-status-page-typescript",
   "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
   "scripts": {
     "dev": "tsx ./dev-server",
     "public:assets": "tsx ./scripts/public-assets.ts",
@@ -51,7 +54,7 @@
     "tailwindcss-animate": "^1.0.7",
     "tsx": "latest",
     "typescript": "latest",
-    "vite": "^7.3.1",
+    "vite": "^8.0.3",
     "wrangler": "latest"
   },
   "pnpm": {

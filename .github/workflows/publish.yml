@@ -24,6 +24,11 @@ jobs:
             - recursive: true
               args: [--force, --fix-lockfile, --no-frozen-lockfile]
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.12'
+
       - name: Build
         run: pnpm run build
 
