@@ -208,8 +208,7 @@ Use [crontab.guru](https://crontab.guru/) to create custom schedules.
 
 ### Important Notes
 
-- **⚠️ Do not use `pnpm run dev`** - It has a known issue with path-to-regexp dependency
-- **✅ Use `pnpm run preview` instead** - This uses Wrangler dev mode which is fully functional
+- **✅ Use `pnpm run preview`** - This uses Wrangler dev mode which is fully functional
 - **Build required** - Changes require a full build to be reflected
 - **No hot reload** - Manual rebuild and restart needed for changes
 
@@ -324,9 +323,8 @@ The default 30-minute interval works well with the Bundled plan ($5/month).
 - **Solution**: Wait 2-5 minutes after deployment for first data collection
 
 ### Development Server Issue
-- **Issue**: `pnpm run dev` fails with "TypeError: Missing parameter name at 1" from path-to-regexp
-- **Workaround**: Use `pnpm run preview` instead
-- **Status**: Known issue with dependency compatibility
+- **Issue**: The Express-based dev server has been removed due to a security vulnerability in the `express` dependency and an incompatibility with `path-to-regexp`
+- **Solution**: Use `pnpm run preview` instead, which uses Wrangler dev mode and is fully functional
 
 ## 🤝 Contributing
 
