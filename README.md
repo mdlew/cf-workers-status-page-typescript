@@ -212,6 +212,10 @@ Use [crontab.guru](https://crontab.guru/) to create custom schedules.
 - **Build required** - Changes require a full build to be reflected
 - **No hot reload** - Manual rebuild and restart needed for changes
 
+### Development Server Removed
+
+The Express-based local dev server (`dev-server/index.ts`) has been removed. It depended on the `express` devDependency, which had a reported security vulnerability, and was already non-functional due to an incompatibility with `path-to-regexp`. Use `pnpm run preview` (Wrangler dev mode) for local development.
+
 ### Dependency Management
 
 **React Version Synchronization**: This project enforces that `react` and `react-dom` versions must always match. A preinstall hook automatically validates this before package installation to prevent version mismatches that could cause build or runtime issues.
@@ -321,10 +325,6 @@ The default 30-minute interval works well with the Bundled plan ($5/month).
 - **Issue**: Status page shows "No Data" immediately after deployment
 - **Cause**: CRON Triggers take a few minutes to initialize and run for the first time
 - **Solution**: Wait 2-5 minutes after deployment for first data collection
-
-### Development Server Issue
-- **Issue**: The Express-based dev server has been removed due to a security vulnerability in the `express` dependency and an incompatibility with `path-to-regexp`
-- **Solution**: Use `pnpm run preview` instead, which uses Wrangler dev mode and is fully functional
 
 ## 🤝 Contributing
 
