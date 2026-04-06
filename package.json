@@ -21,8 +21,8 @@
     "papaparse": "^5.5.3",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-streaming": "^0.4.16",
-    "vike": "^0.4.255"
+    "react-streaming": "^0.4.17",
+    "vike": "^0.4.256"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260405.1",
