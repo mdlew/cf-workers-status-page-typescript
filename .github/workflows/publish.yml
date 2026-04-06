@@ -20,14 +20,15 @@ jobs:
         name: Install pnpm
         with:
           version: latest #10
-          run_install: |
-            - recursive: true
-              args: [--force, --fix-lockfile, --no-frozen-lockfile]
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '22.12'
+          node-version: 'lts/*'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --force --fix-lockfile --no-frozen-lockfile
 
       - name: Build
         run: pnpm run build
