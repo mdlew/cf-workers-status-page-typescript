@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - uses: pnpm/action-setup@v5
+      - uses: pnpm/action-setup@v6
         name: Install pnpm
         with:
           version: latest
@@ -28,10 +28,10 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --force --fix-lockfile --no-frozen-lockfile --config.strict-dep-builds=false
+        run: pnpm install --force --fix-lockfile --no-frozen-lockfile
 
       - name: Build
-        run: pnpm --config.verify-deps-before-run=never --config.strict-dep-builds=false run build
+        run: pnpm run build
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
