@@ -19,19 +19,19 @@ jobs:
       - uses: pnpm/action-setup@v5
         name: Install pnpm
         with:
-          version: latest
+          version: 11.0.0-rc.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 'lts/*'
+          node-version: '22.12.0'
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --force --fix-lockfile --no-frozen-lockfile --config.strict-dep-builds=false
+        run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm --config.verify-deps-before-run=never --config.strict-dep-builds=false run build
+        run: pnpm run build
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3

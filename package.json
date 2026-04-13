@@ -1,6 +1,7 @@
 {
   "name": "cf-worker-status-page-typescript",
   "type": "module",
+  "packageManager": "pnpm@11.0.0-rc.0",
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
