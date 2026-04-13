@@ -31,7 +31,7 @@ jobs:
         run: pnpm install --force --fix-lockfile --no-frozen-lockfile --config.strict-dep-builds=false
 
       - name: Build
-        run: pnpm --config.strict-dep-builds=false run build
+        run: pnpm --config.verify-deps-before-run=never --config.strict-dep-builds=false run build
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
