@@ -178,9 +178,6 @@ snapshots:
 
   pnpm@11.0.0-rc.0: {}
 
----
-lockfileVersion: '9.0'
-
 settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
