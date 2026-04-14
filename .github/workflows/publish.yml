@@ -16,19 +16,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - uses: pnpm/action-setup@v6
-        name: Install pnpm
-        with:
-          version: latest
-
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 'lts/*'
           cache: 'pnpm'
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: latest
+
       - name: Install dependencies
         run: pnpm install --force --fix-lockfile --no-frozen-lockfile
+
+      - name: Generate types
+        run: pnpm run generate-types
 
       - name: Build
         run: pnpm run build
