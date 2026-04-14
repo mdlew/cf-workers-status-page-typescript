@@ -30,9 +30,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --force --fix-lockfile --no-frozen-lockfile
 
-      - name: Generate types
-        run: pnpm run generate-types
-
       - name: Build
         run: pnpm run build
 
