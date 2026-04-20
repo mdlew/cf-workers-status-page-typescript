@@ -30,8 +30,8 @@ importers:
         specifier: ^0.4.17
         version: 0.4.17(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       vike:
-        specifier: ^0.4.257
-        version: 0.4.257(@cloudflare/workers-types@4.20260420.1)(react-streaming@0.4.17(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(srvx@0.11.15)(vite@8.0.9(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+        specifier: ^0.4.258
+        version: 0.4.258(@cloudflare/workers-types@4.20260420.1)(react-streaming@0.4.17(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(srvx@0.11.15)(vite@8.0.9(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20260420.1
@@ -1192,13 +1192,13 @@ packages:
   '@types/react@19.2.14':
     resolution: {integrity: sha512-ilcTH/UniCkMdtexkoCN0bI7pMcJDvmQFPvuPvmEaYA/NSfFTAgdUSLAoVjaRJm7+6PvcM+q1zYOwS4wTYMF9w==}
 
-  '@universal-deploy/netlify@0.2.1':
-    resolution: {integrity: sha512-z6xoW3wcJP93HUiYFXu2u1gwJOgYUr91IHEskFtWdyIksdcCGpu404j+QUkZkp8Vh4KJjHvwSDCwvI5eUfMTsw==}
+  '@universal-deploy/netlify@0.2.2':
+    resolution: {integrity: sha512-10JY+1z0aun66IegHhVdOBTgXioI0+hgA0IVc0zgZvm2C7g2eQWpv48wtqCZZsXyUxajKcIlxiYxIuhuRIdfrQ==}
     peerDependencies:
-      vite: ^8.0.0-beta.13
+      vite: '>=7.1'
 
-  '@universal-deploy/node@0.1.5':
-    resolution: {integrity: sha512-Zys7cnZSrhmy7iaXphIAC/CbdE92GY73BONtmXaLmVYk89AxKpsad4rNJ5a2v+/VnkVxdPme7dttsu610imRDQ==}
+  '@universal-deploy/node@0.1.6':
+    resolution: {integrity: sha512-VcYUNiE596Mbm0fCX1TWK6fAXgJgOz4Msa+PORxZCPZrTLw+qDABeE031XWSfQ8bAF9d/DXtGywIA/RAi8oCXg==}
     peerDependencies:
       vite: '>=7.1'
     peerDependenciesMeta:
@@ -1289,8 +1289,8 @@ packages:
   array-ify@1.0.0:
     resolution: {integrity: sha512-c5AMf34bKdvPhQ7tBGhqkgKNUzMr4WUs+WDtC2ZUGOUncbxKMTvqxYctiseW3+L4bA8ec+GcZ6/A/FW4m8ukng==}
 
-  baseline-browser-mapping@2.10.18:
-    resolution: {integrity: sha512-VSnGQAOLtP5mib/DPyg2/t+Tlv65NTBz83BJBJvmLVHHuKJVaDOBvJJykiT5TR++em5nfAySPccDZDa4oSrn8A==}
+  baseline-browser-mapping@2.10.20:
+    resolution: {integrity: sha512-1AaXxEPfXT+GvTBJFuy4yXVHWJBXa4OdbIebGN/wX5DlsIkU0+wzGnd2lOzokSk51d5LUmqjgBLRLlypLUqInQ==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -1313,8 +1313,8 @@ packages:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
 
-  caniuse-lite@1.0.30001787:
-    resolution: {integrity: sha512-mNcrMN9KeI68u7muanUpEejSLghOKlVhRqS/Za2IeyGllJ9I9otGpR9g3nsw7n4W378TE/LyIteA0+/FOZm4Kg==}
+  caniuse-lite@1.0.30001788:
+    resolution: {integrity: sha512-6q8HFp+lOQtcf7wBK+uEenxymVWkGKkjFpCvw5W25cmMwEDU45p1xQFBQv8JDlMMry7eNxyBaR+qxgmTUZkIRQ==}
 
   cliui@8.0.1:
     resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
@@ -1407,8 +1407,8 @@ packages:
     resolution: {integrity: sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==}
     engines: {node: '>=8'}
 
-  electron-to-chromium@1.5.335:
-    resolution: {integrity: sha512-q9n5T4BR4Xwa2cwbrwcsDJtHD/enpQ5S1xF1IAtdqf5AAgqDFmR/aakqH3ChFdqd/QXJhS3rnnXFtexU7rax6Q==}
+  electron-to-chromium@1.5.340:
+    resolution: {integrity: sha512-908qahOGocRMinT2nM3ajCEM99H4iPdv84eagPP3FfZy/1ZGeOy2CZYzjhms81ckOPCXPlW7LkY4XpxD8r1DrA==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -1871,8 +1871,8 @@ packages:
     peerDependencies:
       browserslist: '>= 4.21.0'
 
-  vike@0.4.257:
-    resolution: {integrity: sha512-B/RoeJfmhqlgP8cfAfNzBzy6eu0riWbL2XyDYhGcp57IW8w7H19gLwAUe0AsBZ1nxHXrhHeSFJkWJVHZw/Ua/g==}
+  vike@0.4.258:
+    resolution: {integrity: sha512-JfnVaVw4XT3uloZoehFbKSh+CIuDAypbvppdXLL7iYWWLy71/Mfz6AmijEfhoHtXkuJ8NRDybO6ABnyxMrIuiw==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
@@ -2823,17 +2823,17 @@ snapshots:
     dependencies:
       csstype: 3.2.3
 
-  '@universal-deploy/netlify@0.2.1(srvx@0.11.15)(vite@8.0.9(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))':
+  '@universal-deploy/netlify@0.2.2(srvx@0.11.15)(vite@8.0.9(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))':
     dependencies:
       '@universal-deploy/store': 0.2.1(srvx@0.11.15)
-      rou3: 0.8.1
       vite: 8.0.9(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)
     transitivePeerDependencies:
       - srvx
 
-  '@universal-deploy/node@0.1.5(vite@8.0.9(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))':
+  '@universal-deploy/node@0.1.6(vite@8.0.9(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))':
     dependencies:
       '@universal-deploy/store': 0.2.1(srvx@0.11.15)
+      magic-string: 0.30.21
       srvx: 0.11.15
     optionalDependencies:
       vite: 8.0.9(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)
@@ -2846,8 +2846,8 @@ snapshots:
 
   '@universal-deploy/vite@0.1.7(@cloudflare/workers-types@4.20260420.1)(srvx@0.11.15)(vite@8.0.9(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))':
     dependencies:
-      '@universal-deploy/netlify': 0.2.1(srvx@0.11.15)(vite@8.0.9(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
-      '@universal-deploy/node': 0.1.5(vite@8.0.9(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+      '@universal-deploy/netlify': 0.2.2(srvx@0.11.15)(vite@8.0.9(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+      '@universal-deploy/node': 0.1.6(vite@8.0.9(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
       '@universal-deploy/store': 0.2.1(srvx@0.11.15)
       '@universal-middleware/express': 0.4.26(@cloudflare/workers-types@4.20260420.1)(srvx@0.11.15)
       magic-string: 0.30.21
@@ -2924,15 +2924,15 @@ snapshots:
 
   array-ify@1.0.0: {}
 
-  baseline-browser-mapping@2.10.18: {}
+  baseline-browser-mapping@2.10.20: {}
 
   blake3-wasm@2.1.5: {}
 
   browserslist@4.28.2:
     dependencies:
-      baseline-browser-mapping: 2.10.18
-      caniuse-lite: 1.0.30001787
-      electron-to-chromium: 1.5.335
+      baseline-browser-mapping: 2.10.20
+      caniuse-lite: 1.0.30001788
+      electron-to-chromium: 1.5.340
       node-releases: 2.0.37
       update-browserslist-db: 1.2.3(browserslist@4.28.2)
 
@@ -2942,7 +2942,7 @@ snapshots:
 
   callsites@3.1.0: {}
 
-  caniuse-lite@1.0.30001787: {}
+  caniuse-lite@1.0.30001788: {}
 
   cliui@8.0.1:
     dependencies:
@@ -3022,7 +3022,7 @@ snapshots:
     dependencies:
       is-obj: 2.0.0
 
-  electron-to-chromium@1.5.335: {}
+  electron-to-chromium@1.5.340: {}
 
   emoji-regex@8.0.0: {}
 
@@ -3496,7 +3496,7 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
-  vike@0.4.257(@cloudflare/workers-types@4.20260420.1)(react-streaming@0.4.17(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(srvx@0.11.15)(vite@8.0.9(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)):
+  vike@0.4.258(@cloudflare/workers-types@4.20260420.1)(react-streaming@0.4.17(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(srvx@0.11.15)(vite@8.0.9(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)):
     dependencies:
       '@babel/core': 7.29.0
       '@babel/types': 7.29.0
