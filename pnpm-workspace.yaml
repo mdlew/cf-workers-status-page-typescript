@@ -1,3 +1,8 @@
+#
+# We intentionally allow newly-published package versions in CI (e.g., Dependabot updates),
+# so disable pnpm's minimum release age gate at the repository level.
+minimumReleaseAge: 0
+
 allowBuilds:
   esbuild: true
   sharp: true
