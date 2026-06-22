@@ -25,7 +25,7 @@
     "vike": "^0.4.259"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20260615.1",
+    "@cloudflare/workers-types": "^4.20260621.1",
     "@commitlint/config-conventional": "^21.0.2",
     "@tailwindcss/vite": "^4.3.1",
     "@types/node": "^25.9.3",
