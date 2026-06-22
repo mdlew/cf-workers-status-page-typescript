@@ -28,7 +28,7 @@
     "@cloudflare/workers-types": "^4.20260621.1",
     "@commitlint/config-conventional": "^21.0.2",
     "@tailwindcss/vite": "^4.3.1",
-    "@types/node": "^25.9.3",
+    "@types/node": "^26.0.0",
     "@types/papaparse": "^5.5.2",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
