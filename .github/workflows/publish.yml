@@ -16,16 +16,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          version: 9
-
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 'lts/*'
           cache: 'pnpm'
+
+      - name: Resolve pnpm version
+        id: pnpm-version
+        run: echo "version=$(npm view pnpm version)" >> "$GITHUB_OUTPUT"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: ${{ steps.pnpm-version.outputs.version }}
 
       - name: Install dependencies
         run: pnpm install --force --fix-lockfile --no-frozen-lockfile
