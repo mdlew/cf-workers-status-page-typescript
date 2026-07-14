@@ -18,7 +18,11 @@ jobs:
 
       - name: Resolve pnpm version
         id: pnpm-version
-        run: echo "version=$(npm view pnpm version)" >> "$GITHUB_OUTPUT"
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(npm view pnpm version)"
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
