@@ -16,10 +16,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      - name: Resolve pnpm version
+        id: pnpm-version
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(npm view pnpm version)"
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
         with:
-          version: latest
+          version: ${{ steps['pnpm-version'].outputs.version }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
