@@ -19,8 +19,8 @@
     "@floating-ui/react": "^0.27.20",
     "clsx": "^2.1.1",
     "papaparse": "^5.5.4",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "react-streaming": "^0.4.20",
     "vike": "^0.4.260"
   },
