@@ -34,7 +34,6 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.4",
     "commitlint": "^21.2.1",
-    "dedent": "^1.7.2",
     "husky": "^9.1.7",
     "tailwindcss": "^4.3.3",
     "tailwindcss-animate": "^1.0.7",
