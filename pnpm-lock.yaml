@@ -30,8 +30,8 @@ importers:
         specifier: ^0.4.20
         version: 0.4.20(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       vike:
-        specifier: ^0.4.264
-        version: 0.4.264(@cloudflare/workers-types@5.20260904.1)(react-streaming@0.4.20(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(srvx@0.12.7)(supports-color@10.2.2)(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13))
+        specifier: ^0.4.266
+        version: 0.4.266(@cloudflare/workers-types@5.20260904.1)(react-streaming@0.4.20(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(srvx@0.12.8)(supports-color@10.2.2)(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13))
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^5.20260904.1
@@ -1312,16 +1312,16 @@ packages:
       oxc-transform-react:
         optional: true
 
-  baseline-browser-mapping@2.11.20:
-    resolution: {integrity: sha512-H0ulySigv6icDJ1F7SjtdCD6PrhTpdYCmP0CactWy1+ekh0AFd0o1Wn5T8b+hnTmdBx19u9yhL6wvCylXMY7zw==}
+  baseline-browser-mapping@2.11.21:
+    resolution: {integrity: sha512-uh8vpY/1/YyFkunIDFH/12p7/7VdPKA1hejMVEbdkEaWnUz0Hesvx5EbiU6XxjyHZIOju+ZMbQJkRh+es3/spQ==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
   blake3-wasm@2.1.5:
     resolution: {integrity: sha512-F1+K8EbfOZE49dtoPtmxUQrpXaBIl3ICvasLh+nJta0xkz+9kF/7uet9fLnwKqhDrmj6g+6K3Tw9yQPUg2ka5g==}
 
-  browserslist@4.28.8:
-    resolution: {integrity: sha512-V2NpofLblG64mfOtSgDhOJESZEGogzDMBv/q+W6oc4LXWP/q75eOXoOaaOu1EOadB9U4Bwx/e0yzbvwKH8zalA==}
+  browserslist@4.28.9:
+    resolution: {integrity: sha512-EWazOblFYUvlGZcfGhPUPmYh3nikUxBVb+y9MJun5f3hBi812X+8MSQTujLBtgK3cf51fJWbWfOjyeO954d+Eg==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
@@ -1365,8 +1365,8 @@ packages:
     resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
     engines: {node: '>=8'}
 
-  electron-to-chromium@1.5.416:
-    resolution: {integrity: sha512-K6bvB2BjnNrugtIih6ewlbBI9DXa976jIdiIlRLHhBoEI9a4JaQjjHyF+A1IQI543aQYR4LnmOrT/K5fZj0aPA==}
+  electron-to-chromium@1.5.422:
+    resolution: {integrity: sha512-UvA/32XqrLDdZSn7Jllo1AYNcWji/G0d5M0GTViE7KoGBiMunw3a34Sb2KO4ZZyrSEhqsxFoVhWWJshdyfKqJA==}
 
   enhanced-resolve@5.24.3:
     resolution: {integrity: sha512-PwKooW9JUzh5chmYfHM3IQl5OkK2u2Nm011MgeZrss3JmFraUx/fqrf78kk8GUMYoibx/14MdwTl/1WKkG7TpQ==}
@@ -1702,8 +1702,8 @@ packages:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
 
-  srvx@0.12.7:
-    resolution: {integrity: sha512-PIaq1pDGg3EU2OGSN3pzRfYVu9MJDzLdojlGN6E3lvhAdxqn/lNMJFMA1xGA38jYkBb0V9xw02QEVVMDb0PExA==}
+  srvx@0.12.8:
+    resolution: {integrity: sha512-7k9HoDhluTlD7UJ+F+OopZoPZXB2J8f/5nW2VMLaB8KsSlZlRQxyyoX0hWEQCxB+F+3ZvB5QX3LqB6xSBRfxQQ==}
     engines: {node: '>=20.16.0'}
     hasBin: true
 
@@ -1774,8 +1774,8 @@ packages:
     peerDependencies:
       browserslist: '>= 4.21.0'
 
-  vike@0.4.264:
-    resolution: {integrity: sha512-Qo1LehZcdRu96JW6S4ZXU7DBZ5WVj3Y+IfJhopqUClNkRbDdstraYK/Y+PMKeMGpuPaDlImbZS//1Hto5OH9JQ==}
+  vike@0.4.266:
+    resolution: {integrity: sha512-RV7KqAmuKDJqzO7JCdKYIke6XqBoBkZXq6EBe5M9o4VdU1/SS8e3BqjzpfIXQprBBYS2XvEA028OvYyK9ewcnA==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
@@ -1913,7 +1913,7 @@ snapshots:
     dependencies:
       '@babel/compat-data': 7.29.7
       '@babel/helper-validator-option': 7.29.7
-      browserslist: 4.28.8
+      browserslist: 4.28.9
       lru-cache: 5.1.1
       semver: 6.3.1
 
@@ -2385,7 +2385,7 @@ snapshots:
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.5
+      '@jridgewell/sourcemap-codec': 1.6.0
       '@jridgewell/trace-mapping': 0.3.31
 
   '@jridgewell/remapping@2.3.5':
@@ -2402,7 +2402,7 @@ snapshots:
   '@jridgewell/trace-mapping@0.3.31':
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
-      '@jridgewell/sourcemap-codec': 1.5.5
+      '@jridgewell/sourcemap-codec': 1.6.0
 
   '@jridgewell/trace-mapping@0.3.9':
     dependencies:
@@ -2620,33 +2620,33 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
-  '@universal-deploy/netlify@0.2.3(srvx@0.12.7)(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13))':
+  '@universal-deploy/netlify@0.2.3(srvx@0.12.8)(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13))':
     dependencies:
-      '@universal-deploy/store': 0.2.2(srvx@0.12.7)
+      '@universal-deploy/store': 0.2.2(srvx@0.12.8)
       vite: 8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13)
     transitivePeerDependencies:
       - srvx
 
   '@universal-deploy/node@0.1.10(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13))':
     dependencies:
-      '@universal-deploy/store': 0.2.2(srvx@0.12.7)
+      '@universal-deploy/store': 0.2.2(srvx@0.12.8)
       magic-string: 0.30.21
-      srvx: 0.12.7
+      srvx: 0.12.8
     optionalDependencies:
       vite: 8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13)
 
-  '@universal-deploy/store@0.2.2(srvx@0.12.7)':
+  '@universal-deploy/store@0.2.2(srvx@0.12.8)':
     dependencies:
       rou3: 0.8.1
     optionalDependencies:
-      srvx: 0.12.7
+      srvx: 0.12.8
 
-  '@universal-deploy/vite@0.1.11(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.7)(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13))':
+  '@universal-deploy/vite@0.1.11(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.8)(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13))':
     dependencies:
-      '@universal-deploy/netlify': 0.2.3(srvx@0.12.7)(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13))
+      '@universal-deploy/netlify': 0.2.3(srvx@0.12.8)(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13))
       '@universal-deploy/node': 0.1.10(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13))
-      '@universal-deploy/store': 0.2.2(srvx@0.12.7)
-      '@universal-middleware/express': 0.4.31(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.7)
+      '@universal-deploy/store': 0.2.2(srvx@0.12.8)
+      '@universal-middleware/express': 0.4.31(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.8)
       magic-string: 0.30.21
       rou3: 0.8.1
     optionalDependencies:
@@ -2662,18 +2662,18 @@ snapshots:
       - hono
       - srvx
 
-  '@universal-middleware/core@0.4.18(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.7)':
+  '@universal-middleware/core@0.4.18(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.8)':
     dependencies:
       regexparam: 3.0.0
       tough-cookie: 6.0.2
     optionalDependencies:
       '@cloudflare/workers-types': 5.20260904.1
-      srvx: 0.12.7
+      srvx: 0.12.8
 
-  '@universal-middleware/express@0.4.31(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.7)':
+  '@universal-middleware/express@0.4.31(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.8)':
     dependencies:
-      '@universal-middleware/core': 0.4.18(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.7)
-      '@universal-middleware/node': 0.2.2(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.7)
+      '@universal-middleware/core': 0.4.18(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.8)
+      '@universal-middleware/node': 0.2.2(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.8)
     transitivePeerDependencies:
       - '@cloudflare/workers-types'
       - '@hattip/core'
@@ -2685,9 +2685,9 @@ snapshots:
       - hono
       - srvx
 
-  '@universal-middleware/node@0.2.2(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.7)':
+  '@universal-middleware/node@0.2.2(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.8)':
     dependencies:
-      '@universal-middleware/core': 0.4.18(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.7)
+      '@universal-middleware/core': 0.4.18(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.8)
     transitivePeerDependencies:
       - '@cloudflare/workers-types'
       - '@hattip/core'
@@ -2704,17 +2704,17 @@ snapshots:
       '@rolldown/pluginutils': 1.0.1
       vite: 8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13)
 
-  baseline-browser-mapping@2.11.20: {}
+  baseline-browser-mapping@2.11.21: {}
 
   blake3-wasm@2.1.5: {}
 
-  browserslist@4.28.8:
+  browserslist@4.28.9:
     dependencies:
-      baseline-browser-mapping: 2.11.20
+      baseline-browser-mapping: 2.11.21
       caniuse-lite: 1.0.30001810
-      electron-to-chromium: 1.5.416
+      electron-to-chromium: 1.5.422
       node-releases: 2.0.54
-      update-browserslist-db: 1.3.2(browserslist@4.28.8)
+      update-browserslist-db: 1.3.2(browserslist@4.28.9)
 
   buffer-from@1.1.2: {}
 
@@ -2740,7 +2740,7 @@ snapshots:
 
   detect-libc@2.1.2: {}
 
-  electron-to-chromium@1.5.416: {}
+  electron-to-chromium@1.5.422: {}
 
   enhanced-resolve@5.24.3:
     dependencies:
@@ -3105,7 +3105,7 @@ snapshots:
 
   source-map@0.6.1: {}
 
-  srvx@0.12.7: {}
+  srvx@0.12.8: {}
 
   supports-color@10.2.2: {}
 
@@ -3176,13 +3176,13 @@ snapshots:
     dependencies:
       pathe: 2.0.3
 
-  update-browserslist-db@1.3.2(browserslist@4.28.8):
+  update-browserslist-db@1.3.2(browserslist@4.28.9):
     dependencies:
-      browserslist: 4.28.8
+      browserslist: 4.28.9
       escalade: 3.2.0
       picocolors: 1.1.1
 
-  vike@0.4.264(@cloudflare/workers-types@5.20260904.1)(react-streaming@0.4.20(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(srvx@0.12.7)(supports-color@10.2.2)(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13)):
+  vike@0.4.266(@cloudflare/workers-types@5.20260904.1)(react-streaming@0.4.20(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(srvx@0.12.8)(supports-color@10.2.2)(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13)):
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/types': 7.29.8
@@ -3190,10 +3190,10 @@ snapshots:
       '@brillout/json-serializer': 0.5.25
       '@brillout/picocolors': 1.0.31
       '@brillout/vite-plugin-server-entry': 0.7.21
-      '@universal-deploy/store': 0.2.2(srvx@0.12.7)
-      '@universal-deploy/vite': 0.1.11(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.7)(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13))
-      '@universal-middleware/core': 0.4.18(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.7)
-      '@universal-middleware/node': 0.2.2(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.7)
+      '@universal-deploy/store': 0.2.2(srvx@0.12.8)
+      '@universal-deploy/vite': 0.1.11(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.8)(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.13))
+      '@universal-middleware/core': 0.4.18(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.8)
+      '@universal-middleware/node': 0.2.2(@cloudflare/workers-types@5.20260904.1)(srvx@0.12.8)
       cac: 6.7.14
       convert-route: 1.1.1
       es-module-lexer: 1.7.0
