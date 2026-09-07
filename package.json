@@ -24,12 +24,12 @@
     "vike": "^0.4.264"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^5.20260828.1",
+    "@cloudflare/workers-types": "^5.20260904.1",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.4.0",
+    "@types/node": "^26.4.1",
     "@types/papaparse": "^5.5.2",
     "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.5",
+    "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
     "tailwindcss": "^4.3.3",
     "tailwindcss-animate": "^1.0.7",
