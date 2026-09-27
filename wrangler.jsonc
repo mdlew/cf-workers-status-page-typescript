@@ -9,7 +9,11 @@
   "main": "./src/worker/index.ts",
 
   // Compatibility date for Cloudflare Workers runtime
-  "compatibility_date": "2026-02-28",
+  "compatibility_date": "2026-09-26",
+
+  "cache": {
+    "enabled": true
+  },
 
   // Enable workers.dev subdomain for development
   "workers_dev": false,

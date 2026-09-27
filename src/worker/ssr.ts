@@ -159,6 +159,11 @@ export async function handleSsr(
     newHeaders.set("Cross-Origin-Opener-Policy", "same-origin");
     newHeaders.set("Cross-Origin-Resource-Policy", "same-site");
     newHeaders.set("Cross-Origin-Embedder-Policy", "require-corp");
+    // Set Cloudflare workers cache for 30 minutes; serve stale for up to 5 minutes while revalidating in the background
+    newHeaders.set(
+      "Cache-Control",
+      "public, max-age=1800, stale-while-revalidate=300",
+    );
     return new Response(stream, { headers: newHeaders, status });
   }
 }
