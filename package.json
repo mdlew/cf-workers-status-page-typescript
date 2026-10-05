@@ -24,9 +24,9 @@
     "vike": "^0.4.266"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^5.20260925.1",
+    "@cloudflare/workers-types": "^5.20261002.1",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.6.2",
+    "@types/node": "^26.6.4",
     "@types/papaparse": "^5.5.2",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
@@ -35,7 +35,7 @@
     "tailwindcss-animate": "^1.0.7",
     "tsx": "latest",
     "typescript": "latest",
-    "vite": "^8.3.1",
+    "vite": "^8.3.2",
     "wrangler": "latest"
   }
 }
