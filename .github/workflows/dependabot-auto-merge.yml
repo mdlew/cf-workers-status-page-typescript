@@ -117,6 +117,7 @@ jobs:
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
 
       - name: Comment on major version updates
         if: needs.dependabot.outputs.update-type == 'version-update:semver-major'
