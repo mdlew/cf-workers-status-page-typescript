@@ -8,8 +8,8 @@ Dependabot is configured to automatically:
 - Check for dependency updates weekly (every Monday at 09:00 UTC)
 - Create pull requests for outdated dependencies
 - Group related updates to reduce PR noise
-- Add guidance comments on safe updates (patch and minor versions) for manual review
-- Flag major updates for manual review
+- Build and enable squash auto-merge for minor version updates
+- Leave patch and major updates for manual review
 
 ## Configuration Files
 
@@ -22,10 +22,10 @@ This is the main configuration file that controls Dependabot's behavior:
 
 ### `.github/workflows/dependabot-auto-merge.yml`
 
-This workflow automates the merge process for safe dependency updates:
+This workflow handles version updates based on their semantic version change:
 
-- **Patch updates** (`1.0.0` → `1.0.1`): Commented for manual merge
-- **Minor updates** (`1.0.0` → `1.1.0`): Commented for manual merge
+- **Patch updates** (`1.0.0` → `1.0.1`): Commented for manual review and merge
+- **Minor updates** (`1.0.0` → `1.1.0`): The project build must pass before squash auto-merge is enabled
 - **Major updates** (`1.0.0` → `2.0.0`): Require manual review
 
 ## Key Features
@@ -69,15 +69,19 @@ This makes it easier to:
 
 The auto-merge workflow has three behaviors:
 
-**Comment for review (patch & minor):**
+**Patch updates stay manual:**
 ```
 💬 Commented with guidance for manual review and merge
 ```
 
-**Manual review (major):**
+**Minor updates:**
+```
+✅ Project build runs before squash auto-merge is enabled
+```
+
+**Major updates stay manual:**
 ```
 ⚠️ Comment added: "Major version update detected - please review"
-🏷️ Labeled: "major-update"
 ```
 
 **Labeling:**
@@ -99,19 +103,23 @@ Set to `auto` - Dependabot will automatically rebase PRs when the base branch ch
    - Check release notes and changelogs
    - Look for breaking changes
    - Test locally before merging
-   - Use the project's test suite
+   - Use the project's build and test checks
 
-2. **Monitor Security Alerts**
+2. **Keep Auto-Merge Checks Meaningful**
+   - Minor updates are only auto-merged after the project build succeeds
+   - Configure required status checks in repository settings if additional checks should gate auto-merge
+
+3. **Monitor Security Alerts**
    - Dependabot creates PRs for security vulnerabilities immediately
    - These are labeled with `security` by GitHub
    - Prioritize reviewing and merging security updates
 
-3. **Keep CI Green (Optional)**
+4. **Keep CI Green (Optional)**
    - When CI checks are configured and marked as required, they help validate Dependabot PRs before you manually merge them
    - Ensure your test suite covers critical paths
    - Fix failing tests promptly
 
-4. **Customize When Needed**
+5. **Customize When Needed**
    - Uncomment `reviewers` and `assignees` in `dependabot.yml`
    - Add specific dependencies to `ignore` list if needed
    - Adjust schedule timing based on your workflow
@@ -193,15 +201,15 @@ To verify your Dependabot configuration:
 
 3. **Verify Workflow Behavior**
    - Wait for next Dependabot PR
-   - Verify guidance comments are added (for patch/minor updates)
+   - Verify patch update comments and successful build before minor auto-merge
    - Check that labels are applied correctly
 
 ## Summary
 
 This Dependabot configuration balances automation with safety:
 
-✅ **Guided**: Routine patch and minor updates receive guidance comments for manual review  
-🔍 **Manual Review**: Major version updates and breaking changes  
+✅ **Automated**: Minor updates are build-checked and squash auto-merged
+🔍 **Manual Review**: Patch and major version updates
 📦 **Organized**: Grouped PRs reduce noise  
 🔒 **Secure**: Immediate security update PRs  
 🏷️ **Labeled**: Easy to filter and manage  

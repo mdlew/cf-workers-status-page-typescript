@@ -22,6 +22,10 @@ jobs:
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 
+      - name: Check out repository
+        if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        uses: actions/checkout@v7
+
       - name: Set up Node.js
         if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
         uses: actions/setup-node@v7
