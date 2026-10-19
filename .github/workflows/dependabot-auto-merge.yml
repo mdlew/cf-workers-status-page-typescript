@@ -21,20 +21,38 @@ jobs:
         uses: dependabot/fetch-metadata@v3
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
-      
-      - name: Comment on patch and minor updates
-        # For patch and minor version updates, add a comment to guide manual review and merge
-        # This avoids unsafe auto-merging when no CI checks are configured on pull requests
-        if: |
-          steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
-          steps.metadata.outputs.update-type == 'version-update:semver-minor'
+
+      - name: Set up Node.js
+        if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+
+      - name: Install pnpm
+        if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        run: npm install --global pnpm
+
+      - name: Check minor update build
+        if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
         run: |
-          gh pr comment "$PR_URL" --body "✅ **Dependabot patch/minor update detected**
+          pnpm install --frozen-lockfile
+          pnpm run build
 
-          This PR updates dependencies with a patch or minor version change.
+      - name: Enable squash auto-merge for minor updates
+        if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        run: gh pr merge "$PR_URL" --auto --squash
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Comment on patch updates
+        if: steps.metadata.outputs.update-type == 'version-update:semver-patch'
+        run: |
+          gh pr comment "$PR_URL" --body "✅ **Dependabot patch update detected**
 
-          Please ensure that all relevant CI checks (if configured) have passed and that the
-          application still builds and runs as expected before merging this PR manually."
+          This PR updates dependencies with a patch version change and is left for manual review.
+
+          Please ensure that the application still builds and runs as expected before merging."
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
