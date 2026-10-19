@@ -18,10 +18,10 @@
     "@floating-ui/react": "^0.27.20",
     "clsx": "^2.1.1",
     "papaparse": "^5.7.0",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "react-streaming": "^0.4.21",
-    "vike": "^0.4.267"
+    "vike": "^0.4.268"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20261016.1",
