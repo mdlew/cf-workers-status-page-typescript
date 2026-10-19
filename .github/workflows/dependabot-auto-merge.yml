@@ -7,6 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 
 permissions:
+  actions: write
   contents: write
   pull-requests: write
 
@@ -45,6 +46,27 @@ jobs:
       - name: Enable squash auto-merge for minor updates
         if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
         run: gh pr merge "$PR_URL" --auto --squash --match-head-commit "${{ github.event.pull_request.head.sha }}"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Wait for merge and dispatch deployment
+        if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        run: |
+          for attempt in {1..360}; do
+            state="$(gh pr view "$PR_URL" --json state --jq '.state')"
+            if [[ "$state" == "MERGED" ]]; then
+              gh workflow run publish.yml --ref master
+              exit 0
+            fi
+            if [[ "$state" == "CLOSED" ]]; then
+              echo "The Dependabot PR was closed without merging."
+              exit 1
+            fi
+            sleep 30
+          done
+          echo "Timed out waiting for the Dependabot PR to merge."
+          exit 1
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

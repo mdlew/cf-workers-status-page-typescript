@@ -8,7 +8,7 @@ Dependabot is configured to automatically:
 - Check for dependency updates weekly (every Monday at 09:00 UTC)
 - Create pull requests for outdated dependencies
 - Group related updates to reduce PR noise
-- Build and enable squash auto-merge for minor version updates
+- Build and enable squash auto-merge for minor version updates, then dispatch production deployment after merge
 - Leave patch and major updates for manual review
 
 ## Configuration Files
@@ -25,7 +25,7 @@ This is the main configuration file that controls Dependabot's behavior:
 This workflow handles version updates based on their semantic version change:
 
 - **Patch updates** (`1.0.0` → `1.0.1`): Commented for manual review and merge
-- **Minor updates** (`1.0.0` → `1.1.0`): The project build must pass before squash auto-merge is enabled
+- **Minor updates** (`1.0.0` → `1.1.0`): The project build must pass before squash auto-merge is enabled; production deployment is dispatched after merge
 - **Major updates** (`1.0.0` → `2.0.0`): Require manual review
 
 ## Key Features
@@ -76,7 +76,7 @@ The auto-merge workflow has three behaviors:
 
 **Minor updates:**
 ```
-✅ Project build runs before squash auto-merge is enabled
+✅ Project build runs before squash auto-merge is enabled, and deployment is dispatched after merge
 ```
 
 **Major updates stay manual:**
