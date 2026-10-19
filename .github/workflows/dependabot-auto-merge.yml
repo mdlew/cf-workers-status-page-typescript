@@ -2,20 +2,19 @@ name: Dependabot auto-merge
 
 # Trigger on pull request events (opened, synchronized, reopened)
 # This allows auto-merge to be re-evaluated when PRs are updated
-on: 
+on:
   pull_request:
     types: [opened, synchronize, reopened]
-
-permissions:
-  actions: write
-  contents: write
-  pull-requests: write
 
 jobs:
   dependabot:
     runs-on: ubuntu-latest
-    # Only run for Dependabot PRs
     if: github.actor == 'dependabot[bot]'
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      update-type: ${{ steps.metadata.outputs.update-type }}
     steps:
       - name: Dependabot metadata
         id: metadata
@@ -23,35 +22,56 @@ jobs:
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 
+  build:
+    runs-on: ubuntu-latest
+    needs: dependabot
+    if: needs.dependabot.outputs.update-type == 'version-update:semver-minor'
+    permissions:
+      contents: read
+    steps:
       - name: Check out repository
-        if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
         uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Set up Node.js
-        if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
         uses: actions/setup-node@v7
         with:
           node-version: "22"
 
       - name: Install pnpm
-        if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
         run: npm install --global pnpm
 
       - name: Check minor update build
-        if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
         run: |
           pnpm install --frozen-lockfile
           pnpm run build
 
+  manage:
+    runs-on: ubuntu-latest
+    needs: [dependabot, build]
+    if: >-
+      always() &&
+      needs.dependabot.result == 'success' &&
+      (
+        (needs.dependabot.outputs.update-type == 'version-update:semver-minor' && needs.build.result == 'success') ||
+        needs.dependabot.outputs.update-type == 'version-update:semver-patch' ||
+        needs.dependabot.outputs.update-type == 'version-update:semver-major'
+      )
+    permissions:
+      actions: write
+      contents: write
+      pull-requests: write
+    steps:
       - name: Enable squash auto-merge for minor updates
-        if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        if: needs.dependabot.outputs.update-type == 'version-update:semver-minor'
         run: gh pr merge "$PR_URL" --auto --squash --match-head-commit "${{ github.event.pull_request.head.sha }}"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Wait for merge and dispatch deployment
-        if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        if: needs.dependabot.outputs.update-type == 'version-update:semver-minor'
         run: |
           for attempt in {1..360}; do
             state="$(gh pr view "$PR_URL" --json state --jq '.state')"
@@ -70,9 +90,9 @@ jobs:
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Comment on patch updates
-        if: steps.metadata.outputs.update-type == 'version-update:semver-patch'
+        if: needs.dependabot.outputs.update-type == 'version-update:semver-patch'
         run: |
           gh pr comment "$PR_URL" --body "✅ **Dependabot patch update detected**
 
@@ -82,10 +102,9 @@ jobs:
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Comment on major version updates
-        # Add a comment on major version updates to remind about manual review
-        if: steps.metadata.outputs.update-type == 'version-update:semver-major'
+        if: needs.dependabot.outputs.update-type == 'version-update:semver-major'
         run: |
           gh pr comment "$PR_URL" --body "🔍 **Major version update detected**
 
@@ -96,16 +115,16 @@ jobs:
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Label Dependabot PRs
         # Add helpful labels based on update type
         # Only runs when UPDATE_TYPE matches one of the expected semver types
         # Continue on error if labels don't exist in the repository
         continue-on-error: true
         if: |
-          steps.metadata.outputs.update-type == 'version-update:semver-major' ||
-          steps.metadata.outputs.update-type == 'version-update:semver-minor' ||
-          steps.metadata.outputs.update-type == 'version-update:semver-patch'
+          needs.dependabot.outputs.update-type == 'version-update:semver-major' ||
+          needs.dependabot.outputs.update-type == 'version-update:semver-minor' ||
+          needs.dependabot.outputs.update-type == 'version-update:semver-patch'
         run: |
           if [[ "$UPDATE_TYPE" == "version-update:semver-major" ]]; then
             gh pr edit "$PR_URL" --add-label "major-update"
@@ -117,4 +136,4 @@ jobs:
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          UPDATE_TYPE: ${{ steps.metadata.outputs.update-type }}
+          UPDATE_TYPE: ${{ needs.dependabot.outputs.update-type }}
