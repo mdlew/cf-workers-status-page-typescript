@@ -8,8 +8,8 @@ Dependabot is configured to automatically:
 - Check for dependency updates weekly (every Monday at 09:00 UTC)
 - Create pull requests for outdated dependencies
 - Group related updates to reduce PR noise
-- Build and enable squash auto-merge for minor version updates, then dispatch production deployment after merge
-- Leave patch and major updates for manual review
+- Build and enable squash auto-merge for patch and minor version updates, then dispatch production deployment after merge
+- Leave major updates for manual review
 
 ## Configuration Files
 
@@ -24,7 +24,7 @@ This is the main configuration file that controls Dependabot's behavior:
 
 This workflow handles version updates based on their semantic version change:
 
-- **Patch updates** (`1.0.0` → `1.0.1`): Commented for manual review and merge
+- **Patch updates** (`1.0.0` → `1.0.1`): The project build must pass before squash auto-merge is enabled; production deployment is dispatched after merge
 - **Minor updates** (`1.0.0` → `1.1.0`): The project build must pass before squash auto-merge is enabled; production deployment is dispatched after merge
 - **Major updates** (`1.0.0` → `2.0.0`): Require manual review
 
@@ -67,14 +67,9 @@ This makes it easier to:
 
 ### 4. Auto-Merge Strategy
 
-The auto-merge workflow has three behaviors:
+The auto-merge workflow has two behaviors:
 
-**Patch updates stay manual:**
-```
-💬 Commented with guidance for manual review and merge
-```
-
-**Minor updates:**
+**Patch and minor updates:**
 ```
 ✅ Project build runs before squash auto-merge is enabled, and deployment is dispatched after merge
 ```
@@ -83,6 +78,8 @@ The auto-merge workflow has three behaviors:
 ```
 ⚠️ Comment added: "Major version update detected - please review"
 ```
+
+If an automatic merge does not complete within three hours, the workflow cancels auto-merge. If the PR merges while cancellation is in progress, deployment is still dispatched.
 
 **Labeling:**
 - `major-update`: Major version changes
@@ -106,7 +103,7 @@ Set to `auto` - Dependabot will automatically rebase PRs when the base branch ch
    - Use the project's build and test checks
 
 2. **Keep Auto-Merge Checks Meaningful**
-   - Minor updates are only auto-merged after the project build succeeds
+   - Patch and minor updates are only auto-merged after the project build succeeds
    - Configure required status checks in repository settings if additional checks should gate auto-merge
 
 3. **Monitor Security Alerts**
@@ -201,15 +198,15 @@ To verify your Dependabot configuration:
 
 3. **Verify Workflow Behavior**
    - Wait for next Dependabot PR
-   - Verify patch update comments and successful build before minor auto-merge
+   - Verify successful builds before patch and minor auto-merges
    - Check that labels are applied correctly
 
 ## Summary
 
 This Dependabot configuration balances automation with safety:
 
-✅ **Automated**: Minor updates are build-checked and squash auto-merged
-🔍 **Manual Review**: Patch and major version updates
+✅ **Automated**: Patch and minor updates are build-checked and squash auto-merged
+🔍 **Manual Review**: Major version updates
 📦 **Organized**: Grouped PRs reduce noise  
 🔒 **Secure**: Immediate security update PRs  
 🏷️ **Labeled**: Easy to filter and manage  

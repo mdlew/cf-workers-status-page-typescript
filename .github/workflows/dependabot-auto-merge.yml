@@ -25,7 +25,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: dependabot
-    if: needs.dependabot.outputs.update-type == 'version-update:semver-minor'
+    if: >-
+      needs.dependabot.outputs.update-type == 'version-update:semver-minor' ||
+      needs.dependabot.outputs.update-type == 'version-update:semver-patch'
     permissions:
       contents: read
     steps:
@@ -42,7 +44,7 @@ jobs:
       - name: Install pnpm
         run: npm install --global pnpm
 
-      - name: Check minor update build
+      - name: Check patch and minor update build
         run: |
           pnpm install --frozen-lockfile
           pnpm run build
@@ -54,8 +56,13 @@ jobs:
       always() &&
       needs.dependabot.result == 'success' &&
       (
-        (needs.dependabot.outputs.update-type == 'version-update:semver-minor' && needs.build.result == 'success') ||
-        needs.dependabot.outputs.update-type == 'version-update:semver-patch' ||
+        (
+          (
+            needs.dependabot.outputs.update-type == 'version-update:semver-minor' ||
+            needs.dependabot.outputs.update-type == 'version-update:semver-patch'
+          ) &&
+          needs.build.result == 'success'
+        ) ||
         needs.dependabot.outputs.update-type == 'version-update:semver-major'
       )
     permissions:
@@ -63,15 +70,19 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: Enable squash auto-merge for minor updates
-        if: needs.dependabot.outputs.update-type == 'version-update:semver-minor'
+      - name: Enable squash auto-merge for patch and minor updates
+        if: >-
+          needs.dependabot.outputs.update-type == 'version-update:semver-minor' ||
+          needs.dependabot.outputs.update-type == 'version-update:semver-patch'
         run: gh pr merge "$PR_URL" --auto --squash --match-head-commit "${{ github.event.pull_request.head.sha }}"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Wait for merge and dispatch deployment
-        if: needs.dependabot.outputs.update-type == 'version-update:semver-minor'
+        if: >-
+          needs.dependabot.outputs.update-type == 'version-update:semver-minor' ||
+          needs.dependabot.outputs.update-type == 'version-update:semver-patch'
         run: |
           for attempt in {1..360}; do
             state="$(gh pr view "$PR_URL" --json state --jq '.state')"
@@ -85,20 +96,24 @@ jobs:
             fi
             sleep 30
           done
-          echo "Timed out waiting for the Dependabot PR to merge."
+
+          echo "Timed out waiting for the Dependabot PR to merge; cancelling auto-merge."
+          gh pr merge "$PR_URL" --disable-auto || true
+
+          state="$(gh pr view "$PR_URL" --json state --jq '.state')"
+          if [[ "$state" == "MERGED" ]]; then
+            gh workflow run publish.yml --ref master
+            exit 0
+          fi
+
+          auto_merge="$(gh pr view "$PR_URL" --json autoMergeRequest --jq '.autoMergeRequest')"
+          if [[ "$auto_merge" != "null" ]]; then
+            echo "Failed to cancel auto-merge for the Dependabot PR."
+            exit 1
+          fi
+
+          echo "Auto-merge was cancelled after the timeout."
           exit 1
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Comment on patch updates
-        if: needs.dependabot.outputs.update-type == 'version-update:semver-patch'
-        run: |
-          gh pr comment "$PR_URL" --body "✅ **Dependabot patch update detected**
-
-          This PR updates dependencies with a patch version change and is left for manual review.
-
-          Please ensure that the application still builds and runs as expected before merging."
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
