@@ -24,7 +24,7 @@
     "vike": "^0.4.268"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^5.20261016.1",
+    "@cloudflare/workers-types": "^5.20261023.1",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.6.5",
     "@types/papaparse": "^5.5.2",
@@ -35,7 +35,7 @@
     "tailwindcss-animate": "^1.0.7",
     "tsx": "latest",
     "typescript": "latest",
-    "vite": "^8.3.4",
+    "vite": "^8.3.5",
     "wrangler": "latest"
   }
 }
