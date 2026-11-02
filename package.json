@@ -20,7 +20,7 @@
     "papaparse": "^5.7.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
-    "react-streaming": "^0.4.21",
+    "react-streaming": "^0.4.23",
     "vike": "^0.4.268"
   },
   "devDependencies": {
