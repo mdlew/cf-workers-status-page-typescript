@@ -18,8 +18,8 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       papaparse:
-        specifier: ^5.7.0
-        version: 5.7.0
+        specifier: ^5.7.1
+        version: 5.7.1
       react:
         specifier: ^19.3.1
         version: 19.3.1
@@ -27,11 +27,11 @@ importers:
         specifier: ^19.3.1
         version: 19.3.1(react@19.3.1)
       react-streaming:
-        specifier: ^0.4.25
-        version: 0.4.25(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+        specifier: ^0.4.26
+        version: 0.4.26(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       vike:
         specifier: ^0.4.270
-        version: 0.4.270(@cloudflare/workers-types@5.20261113.1)(react-streaming@0.4.25(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(srvx@0.12.8)(supports-color@10.2.2)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))
+        version: 0.4.270(@cloudflare/workers-types@5.20261113.1)(react-streaming@0.4.26(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(srvx@0.12.8)(supports-color@10.2.2)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^5.20261113.1
@@ -1409,8 +1409,8 @@ packages:
     resolution: {integrity: sha512-YHs7BmmcsdAI5Ozuf8JZo6PT0mv2GIWC9vMfvUC3dp65M8hn7Ux8CPL+2oBI7juNuj9d0ndhTcznq2ODBps9cQ==}
     engines: {node: '>=18'}
 
-  papaparse@5.7.0:
-    resolution: {integrity: sha512-qBGxg/7Q3Kl9Wfhrz2Z74UnvnHTXLNG6jmKJFeBvP2+y4lV7So+7SR62+Zd47JvdrCkX+nDcnr0ObPzek/+6RA==}
+  papaparse@5.7.1:
+    resolution: {integrity: sha512-qOR+UDWv6D3hMxnWWOk0ZpBdCkd+kw5Yh7aXOaNSQU8A+73EA2bhW7EiUix/hY0yulUi5FRvt7PpYSI2VDvY0g==}
 
   path-to-regexp@6.3.0:
     resolution: {integrity: sha512-Yhpw4T9C6hPpgPeA28us07OJeqZ5EzQTkbfwuhsUg0c237RomFoETJgmp2sa3F/41gfLE6G5cqcYwznmeEeOlQ==}
@@ -1434,8 +1434,8 @@ packages:
     peerDependencies:
       react: ^19.3.1
 
-  react-streaming@0.4.25:
-    resolution: {integrity: sha512-kz5MZIbSjLZUAzZiBlIY8UI0RaEwU/zXaPvJ1rhkr58C6MSYO/anM3t4RxhUWbMrKSYF54ln+tkLIS5hQTTEWw==}
+  react-streaming@0.4.26:
+    resolution: {integrity: sha512-N64gMu56fPVS3lUyzdwKb8DqxRPLIaVaJF9RhOJ5nFRCTdfk9OSYMlVcomOk9mQYKoss0FD/jzh9UsRlHIU6Wg==}
     peerDependencies:
       react: '>=19'
       react-dom: '>=19'
@@ -2617,7 +2617,7 @@ snapshots:
 
   node-releases@2.0.54: {}
 
-  papaparse@5.7.0: {}
+  papaparse@5.7.1: {}
 
   path-to-regexp@6.3.0: {}
 
@@ -2638,7 +2638,7 @@ snapshots:
       react: 19.3.1
       scheduler: 0.28.0
 
-  react-streaming@0.4.25(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
+  react-streaming@0.4.26(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
       '@brillout/import': 0.2.6
       '@brillout/json-serializer': 0.5.27
@@ -2827,7 +2827,7 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
-  vike@0.4.270(@cloudflare/workers-types@5.20261113.1)(react-streaming@0.4.25(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(srvx@0.12.8)(supports-color@10.2.2)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)):
+  vike@0.4.270(@cloudflare/workers-types@5.20261113.1)(react-streaming@0.4.26(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(srvx@0.12.8)(supports-color@10.2.2)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)):
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/types': 7.29.8
@@ -2852,7 +2852,7 @@ snapshots:
       tinyglobby: 0.2.17
       vite-plugin-wrapper: 0.1.1(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))
     optionalDependencies:
-      react-streaming: 0.4.25(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      react-streaming: 0.4.26(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)
     transitivePeerDependencies:
       - '@cloudflare/workers-types'
